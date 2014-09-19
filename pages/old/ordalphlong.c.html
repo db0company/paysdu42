@@ -1,0 +1,118 @@
+/*
+** Bonjour les petits potes !
+** Ceci est une explication de la maniere la plus simple de faire un Ordalphlong.
+** Ordalphlong est un exercice tres frequent en exam machine.
+** Cette maniere de faire n&rsquo;est pas optimise, un peu crade, mais je pense qu&rsquo;elle peut etre comprise par tout le monde !
+** Je vous rappelle qu&rsquo;il faut avoir minimum un 15 dans l&rsquo;annee en exam pour valider le module,
+** et comme cet exo tombe souvent, apprenez a le faire.
+** En plus, il reprend pas mal de points de la piscine, donc ca rafraichit la memoire ;-)
+** Bonne chance a vos exams ! Restez concentres, ne paniquez surtout pas si vous n&rsquo;y arrivez pas car
+** ce n&rsquo;est pas en sortant en premier de la salle que vous y arriverez.
+*/
+
+/*
+## ETAPE 1
+
+** Faire un str_to_wordtab.
+
+char**tab;
+inti;
+intj;
+intmot;
+intnb_mot;
+intmot;
+
+nb_mot = fonction_qui_compte_le_nombre_de_mot_en_tout(); (Cette fonction ressemble a celle d&rsquo;apres ;-))
+je malloc tab du nombre de mots + 1;
+i = 0;
+mot = 0;
+* Tant que je ne suis pas a la fin de ma chaine de caractere.
+* Tant que je ne suis pas a la fin de ma chaine de caractere ET que j&rsquo;ai des espaces ou des tabulations.
+i++;
+j = i; (sauvegarder la position du debut du mot)
+* Tant que je ne suis pas a la fin de ma chaine de caractere ET que j&rsquo;ai autre chose que des espaces ou des tabulations.
+i++;
+tab[mot] = malloc de la taille de i - j (longueur du mot) + 1
+tab[mot] = my_strNcpy(adresse de str de j (pointeur vers le debut du mot dans la chaine de caractere ;P), tab[mot], (i - j) = longueur du mot);
+mot++; (je passe au mot suivant)
+tab[mot] = NULL;
+*/
+
+/* Je fais une petite fonction d&rsquo;affichage pour tester avant de passer a l&rsquo;etape suivante ;-) */
+
+/*
+## ETAPE 2
+
+** Faire un tri de longueur !
+
+Personnellement, je ne sais pas trop utiliser le tri a bulles. J&rsquo;ai mon propre algo, mais comme le tri a bulle est cence etre tres simple, je vais plutot expliquer le tri a bulles.
+
+intordre; (dit si c&rsquo;est finit de ranger ou pas)
+inti;
+
+* Tant que ordre = 0 (pas finit de ranger)
+ordre = 1;
+* Tant que je suis pas a la fin de mon tableau (!= NULL)
+* Si l&rsquo;element suivant n&rsquo;est pas NULL ET mon element est plus long que mon element suivant
+ordre = 0;
+J&rsquo;echange les pointeurs de mon element et mon element suivant (swap)
+*/
+
+/* Je fais une petite fonction d&rsquo;affichage pour tester avant de passer a l&rsquo;etape suivante ;-) */
+
+/*
+## ETAPE 3
+
+** Faire un tri par ordre ascii en conservant la longueur.
+
+C&rsquo;est le meme algo de tri que precedemment, a peu de chose pres : la condition.
+La nouvelle condition :
+
+* Si l&rsquo;element suivant n&rsquo;est pas NULL ET
+la longueur de mon element est egalle a celle de mon element suivant ET
+my_strcmp(mon element, mon element suivant) < 0
+
+Le strcmp est le meme qu&rsquo;en piscine. Cependant, comme on doit aussi ne pas tenir compte de la casse (minuscule = majuscule), il faut legerement la modifier.
+La methode la plus simple et facile a expliquer :
+Dans strcmp, faire une copie de s1 et s2, dans laquelle des qu&rsquo;on a une majuscule, on la met en minuscule.
+Pour les comparaisons, utiliser les copies plutot que les originaux.
+*/
+
+/* Je fais une petite fonction d&rsquo;affichage pour tester avant de passer a l&rsquo;etape suivante ;-) */
+
+/*
+## ETAPE 4
+
+** Afficher notre joli tableau trie :)
+
+* Je parcours mon joli tableau
+* Si element suivant != NULL ET longueur de element et element suivant egales
+j&rsquo;affiche element suivi d&rsquo;un espace;
+* Sinon (longueurs differentes :))
+j&rsquo;affiche element suivi de \n;
+*/
+
+/*
+
+** Et voilou~~
+
+** Je vous conseille d&rsquo;essayer de le faire hors exam avant de le faire a l&rsquo;exam.
+
+** Si vous avez des questions a poser sur quelques chose que vous n&rsquo;avez pas compris, n&rsquo;hesitez pas a me contacter ! (ns_who ou mail) Je repondrais a vos questions avec plaisir, si j&rsquo;en suis capable. Si je ne sais pas y repondre (je suis qu&rsquo;en tek1 !), demandez aux gentils monsieurs en rouge.
+
+** Si j&rsquo;ai dit une betise dans mon explication, que j&rsquo;ai fait du caca, n&rsquo;hesitez pas a me le dire ! Je debute tout juste le C, donc c&rsquo;est normal que je puisse faire des erreurs... Et il vaut mieux que je les corrige avant que d&rsquo;autres ne les fasse a cause de moi !
+
+** Merci d&rsquo;avoir suivi ma petite explication, j&rsquo;espere qu&rsquo;elle vous aidera.
+** Encore bonne chance pour les exams !
+
+*/
+
+/*
+     _ _      ___    lepage_b
+    | | |    / _ \
+  __| | |__ | | | |     sur db0.fr
+ / _` | &rsquo;_ \| | | |
+| (_| | |_) | |_| |        et Zerofansub.net
+ \__,_|_.__/ \___/
+
+*/

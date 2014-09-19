@@ -1,0 +1,1085 @@
+<h3>Impatient - C</h3>
+
+<p>
+  <i>Ce cours convient aux debutants pour qui le C est le tout premier langage de programmation etudie mais aussi aux personnes ayant deja programme en C et souhaitant avoir quelques rappels.</i>
+</p>
+
+<h4>La Compilation</h4> 
+<p>On compile avec <strong>gcc</strong> (alias <strong>cc</strong>).</p> 
+ <p>Le compilateur genere alors un fichier (executable) <strong>a.out</strong>.<br />
+   Il est possible de modifier le nom du fichier grace a l'option <strong>-o</strong>
+   <div class="code">     gcc <strong>-o</strong> nom_executable mon_code.c</div>
+ </p> 
+ <p>S'il y a une ou plusieurs erreurs, elles seront affichees et la compilation s'arretera.<br />
+   Cependant, certaines "erreurs" peuvent ne pas empecher la compilation, on les appelle les <strong>Warnings</strong>.<br />
+   Il est malgre tout tres important de corriger ces petits erreurs car la plupart du temps, elle perturberont le fonctionnement normal du programme.<br /><br />
+   Pour afficher plus de Warnings, il est possible (et conseille) d'ajouter des options (appellees flags de compilation) :
+   <ul>
+     <li><strong>-w</strong> : Desactive tout les warnings (deconseille)</li>
+     <li><strong>-Wall</strong> : Affiche plus de warnings <a href="#" onClick="show('Wall');return(false)" id="plus">(details)</a></li>
+     <div id="Wall" style="display: none;">
+       Les options de Warnings activees sont les suivantes :<br />
+       <ul>
+	 <li>-Waddress   </li>
+          <li>-Wc++0x-compat  </li>
+          <li>-Wchar-subscripts  </li>
+          <li>-Wenum-compare</li>
+          <li>-Wimplicit-int</li>
+          <li>-Wimplicit-function-declaratino</li>
+          <li>-Wcomment  </li>
+          <li>-Wformat   </li>
+          <li>-Wmain</li>
+          <li>-Wmissing-braces</li>  
+          <li>-Wnonnull  </li>
+          <li>-Wparentheses  </li>
+          <li>-Wpointer-sign  </li>
+          <li>-Wreorder   </li>
+          <li>-Wreturn-type  </li>
+          <li>-Wsequence-point  </li>
+          <li>-Wstrict-aliasing  </li>
+          <li>-Wstrict-overflow=1  </li>
+          <li>-Wswitch  </li>
+          <li>-Wtrigraphs  </li>
+          <li>-Wuninitialized  </li>
+          <li>-Wunknown-pragmas  </li>
+          <li>-Wunused-function  </li>
+          <li>-Wunused-label     </li>
+          <li>-Wunused-value     </li>
+          <li>-Wunused-variable  </li>
+          <li>-Wvolatile-register-var </li>
+       </ul>
+     </div>
+     <li><strong>-Wextra</strong> : Affiche encore plus de warnings <a href="#" onClick="show('Wextra');return(false)" id="plus">(details)</a></li>
+     <div id="Wextra" style="display: none;">
+       Les options de Warnings activees sont les suivantes :<br />
+       <ul>
+	  <li>-Wclobbered  </li>
+          <li>-Wempty-body  </li>
+          <li>-Wignored-qualifiers </li>
+          <li>-Wmissing-field-initializers  </li>
+          <li>-Wmissing-parameter-type </li>
+          <li>-Wold-style-declaration </li>
+          <li>-Woverride-init  </li>
+          <li>-Wsign-compare  </li>
+          <li>-Wtype-limits  </li>
+          <li>-Wuninitialized  </li>
+          <li>-Wunused-parameter </li>
+          <li>-Wunused-but-set-parameter</li>
+       </ul>
+     </div>
+     <li><strong>-Werror</strong> : Considere les warnings comme des erreurs et cesse la compilation</li>
+     <li><strong>-pedantic</strong> : Affiche des warnings en cas de non respect de la norme ISO C</li>
+   </ul>
+   Beaucoup d'autres sont disponibles. Reportez-vous au <a href="?page=impatient-man-pages">man</a> gcc.
+ </p> 
+   
+<p>
+  Il est aussi possible de demander au compilateur d'effectuer (ou pas) des optimisations :
+  <ul>
+    <li><strong>-O0</strong> : Desactive toutes les optimisations</li>
+    <li><strong>-O1</strong> : Optimisation de niveau 1 <a href="#" onClick="show('O1');return(false)" id="plus">(details)</a>
+    <div id="O1" style="display: none;">
+      Les options d'optimisation activees sont les suivantes :
+      <ul>
+	<li>-fauto-inc-dec </li>
+	<li>-fcprop-registers </li>
+	<li>-fdce </li>
+	<li>-fdefer-pop</li> 
+	<li>-fdelayed-branch</li> 
+	<li>-fdse </li>
+	<li>-fguess-branch-probability </li>
+	<li>-fif-conversion2 </li>
+	<li>-fif-conversion </li>
+	<li>-fipa-pure-const </li>
+	<li>-fipa-profile </li>
+	<li>-fipa-reference </li>
+	<li>-fmerge-constants</li>
+	<li>-fsplit-wide-types </li>
+	<li>-ftree-bit-ccp </li>
+	<li>-ftree-builtin-call-dce </li>
+	<li>-ftree-ccp </li>
+	<li>-ftree-ch </li>
+	<li>-ftree-copyrename </li>
+	<li>-ftree-dce </li>
+	<li>-ftree-dominator-opts </li>
+	<li>-ftree-dse </li>
+	<li>-ftree-forwprop </li>
+	<li>-ftree-fre </li>
+	<li>-ftree-phiprop </li>
+	<li>-ftree-sra </li>
+	<li>-ftree-pta </li>
+	<li>-ftree-ter </li>
+	<li>-funit-at-a-time</li>
+      </ul>
+    </div>
+    </li>
+    <li><strong>-O2</strong> : Optimisation de niveau 2 <a href="#" onClick="show('O2');return(false)" id="plus">(details)</a>
+    <div id="O2" style="display: none;">
+      Les options d'optimisation activees, en plus de toutes celles de -O1, sont les suivantes :
+      <ul>
+	  <li>-fthread-jumps </li>
+          <li>-falign-functions</li>
+	  <li>-falign-jumps </li>
+          <li>-falign-loops</li>
+	  <li>-falign-labels </li>
+          <li>-fcaller-saves </li>
+          <li>-fcrossjumping </li>
+          <li>-fcse-follow-jumps</li>
+	  <li>-fcse-skip-blocks </li>
+          <li>-fdelete-null-pointer-checks </li>
+          <li>-fexpensive-optimizations </li>
+          <li>-fgcse</li>
+	  <li>-fgcse-lm  </li>
+          <li>-finline-small-functions </li>
+          <li>-findirect-inlining </li>
+          <li>-fipa-sra </li>
+          <li>-foptimize-sibling-calls </li>
+          <li>-fpartial-inlining </li>
+          <li>-fpeephole2 </li>
+          <li>-fregmove </li>
+          <li>-freorder-blocks</li>
+	  <li>-freorder-functions </li>
+          <li>-frerun-cse-after-loop  </li>
+          <li>-fsched-interblock</li>
+	  <li>-fsched-spec </li>
+          <li>-fschedule-insns</li>
+	  <li>-fschedule-insns2 </li>
+          <li>-fstrict-aliasing</li>
+	  <li>-fstrict-overflow </li>
+          <li>-ftree-switch-conversion </li>
+          <li>-ftree-pre </li>
+          <li>-ftree-vrp</li>
+      </ul>
+    </div>
+    </li>
+    <li><strong>-O3</strong> : Optimisation de niveau 3 <a href="#" onClick="show('O3');return(false)" id="plus">(details)</a>
+    <div id="O3" style="display: none;">
+      Les options d'optimisation activees, en plus de toutes celles de -O1 et -O2, sont les suivantes :
+      <ul>
+	<li>-finline-functions</li> 
+	<li>-funswitch-loops</li> 
+	<li>-fpredictive-commoning</li> 
+	<li>-fgcse-after-reload</li> 
+	<li>-ftree-vectorize</li> 
+	<li>-fipa-cp-clone</li> 
+      </ul>
+    </div>
+    </li>
+  </ul>
+  Cependant, je ne recommande pas l'utilisation de ceux-ci <a href="#" onClick="show('optimisation');return(false)" id="plus">(pourquoi ?)</a>.</li>
+<div id="optimisation" style="display: none;">
+  <div class="code">         $> cat test.c
+	 /*
+	 ** Made by	db0
+	 ** Contact	db0company@gmail.com
+	 ** Website	http://db0.fr/
+	 */
+	 int		main(void)
+	 {
+	   char		*tab = "abc";
+
+	   tab[4] = 'd';
+	   return (0);
+	 }
+	 $> gcc -W -Wall -ansi -pedantic -Wextra -Werror <strong>-O0</strong> test.c
+	 $> ./a.out
+	 Segmentation fault
+	 $> gcc -W -Wall -ansi -pedantic -Wextra -Werror <strong>-O3</strong> test.c
+	 $> ./a.out
+	 $></div>
+  ------> Ici, on voit qu'avec le flag d'optimisation -O3, le compilateur s'est contente de retirer la ligne qui provoquait l'erreur de segmentation sans meme nous en avertir. Et si, dans le fonctionnement de mon programme, cette ligne etait essentielle ? Je n'aurais alors pas vu l'erreur et n'aurait pas compris pourquoi le fonctionnement de mon programme n'etait pas celui attendu.
+	</div>
+	</p>
+	<p>
+	  Exemple de compilation :
+	  <div class="code">     gcc -O0 -Wall -Wextra -Werror -pedantic -o mon_executable mon_code.c</div>
+	  Pour eviter d'avoir a taper cette longue commande a chaque compilation, faites-vous un alias ! <a href="#" onClick="show('alias');return(false)" id="plus">(Comment faire ?)</a>
+	  <div id="alias" style="display: none;">
+	    <ul>
+	      <li>Ouvrir le fichier <strong>~/SHELLrc</strong> (en remplacant SHELL par sh, csh, tcsh, bash, 42sh,...)</li>
+	      <li>Ajouter une ligne de type :
+		<div class="code"><strong>alias</strong> mycc 'gcc -O0 -Wall -Wextra -Werror -pedantic'</div>
+	      </li>
+	      <li>Puis tapez <div class="code"><strong>source</strong> ~/SHELLrc</div></li>
+	      <li>Et enfin, pour compilez, faites <div class="code">mycc -o mon_executable mon_code.c</div></li>
+	      <li>C'est plus court, n'est-ce pas ?</li>
+	    </ul>
+	  </div>
+	</p>
+	<p>
+	  Une fois que le programme est compile, on peut le lancer pour voir ce qu'il fait :
+	  <div class="code">     ./mon_executable	  </div> 
+	</p>
+
+	
+
+<h4>Structure d'un code en C</h4> 
+<ul> 
+  <li>Un code C s'execute en suivant des instructions lignes par lignes dans des <strong>fonctions</strong>.</li> 
+  <li>La premiere fonction appellee est la fonction <strong>main</strong>. Il doit toujours y en avoir une dans un programme en C.</li>
+  <li>Une fonction se <strong>declare</strong> de la maniere suivante :
+    <div class="code">
+      <span class="green">type_de_variable_retournee</span>	<span class="blue">nom_fonction</span>(<span class="green">type_argument1</span> <span class="yellow">nom_argument1</span>, <span class="green">type_argument2</span> <span class="yellow">nom_argument2</span>)
+      {
+        instruction1;
+        instruction2;
+        <span class="cyan">return</span> (valeur_retournee);
+      }
+    </div>
+  </li> 
+  <li>Une fonction peut appeler d'autres fonctions :
+    <div class="code">
+      valeur_retournee = ma_fonction(argument1, argument2);
+    </div>
+  </li>
+</ul> 
+
+<h4>Les variables</h4> 
+<p>Les instructions utilisent des "<strong>variables</strong>".<br />
+  Ces variables ont des types et on peut stocker des nombres dedans.<br />
+</p> 
+<table cellpadding="2" cellspacing="2" border="0">
+  <tbody>
+    <tr>
+      <th>Type</th>
+      <th>Nombre d'octets en m&eacute;moire</th>
+      <th>Nombre de bits en m&eacute;moire</th>
+      <th>Limite inf&eacute;rieure</th>
+      <th>Limite sup&eacute;rieure</th>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>1 octet</td>
+      <td>8 bits</td>
+      <td>- 128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>unsigned char</td>
+      <td>1 octet</td>
+      <td>8 bits</td>
+      <td>0</td>
+      <td>255</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>2 octets</td>
+      <td>8 x 2 = 16&nbsp;bits</td>
+      <td>- 32 768</td>
+      <td>32 767</td>
+    </tr>
+    <tr>
+      <td>unsigned short</td>
+      <td>2 octets</td>
+      <td>8 x 2 = 16 bits</td>
+      <td>0</td>
+      <td>65 535</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>- 2 147 483 648</td>
+      <td>2 147 483 647</td>
+    </tr>
+    <tr>
+      <td>unsigned int</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>0</td>
+      <td>4 294 967 295</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>-2 147 483 648</td>
+      <td>2 147 483 647</td>
+    </tr>
+    <tr>
+      <td>unsigned long</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>0</td>
+      <td>4 294 967 295</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>-3.4 x 10-38</td>
+      <td>3.4 x 1038</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>8 octets</td>
+      <td>8 x 8 = 64 bits</td>
+      <td>-1.7 x 10-308</td>
+      <td>1.7 x 10308</td>
+    </tr>
+    <tr>
+      <td>long double</td>
+      <td>12 octets</td>
+      <td>8 x 12 = 96 bits</td>
+      <td>-3.4 x 10-4932</td>
+      <td> 3.4 x 104932</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Pour utiliser une variable, on doit la declarer avant les instructions :
+<div class="code">type		nom;
+</div>   
+<p>
+
+<h4>Un exemple...</h4>
+<p>... vaut mieux qu'un long discours !
+  <div class="code">
+    int			subtraction(int a, int b)
+    {
+      int		result;
+
+      result = a - b;
+      return (result);
+    }
+    int			main(void)
+    {
+      int		i;
+    
+      i = 3;
+      i = i + 5;
+      i = subtraction(i, 2);
+      return (0);
+    }
+  </div> 
+
+Voici ce qu'il se passe ici :
+<ul>
+  <li>Le programme commence son execution par la fonction <strong>main</strong>.</li>
+  <li>Dans celle-ci, on declare une variable de type <strong>int</strong> et de nom "<strong>i</strong>".</li>
+  <li>On assigne ensuite une valeur a la variable i grace au "<strong>=</strong>".<br />
+    --> i = 3.</li>
+  <li>L'instruction suivante utilise la valeur de i (3) et lui ajoute 5. Elle mets ensuite ce resultat dans i, ce qui ecrase son ancienne valeur.<br />
+    --> i = 8.</li>
+  <li>L'instruction suivante <strong>appelle une fonction</strong> auquelle elle donne deux arguments : i (8) et 2.</li>
+  <li>On entre alors dans la fonction substraction. On voit qu'elle prend en parametre 2 arguments de type int (a et b). Ca tombe bien, c'est ce qu'on lui a envoye lors de l'appel !<br />
+    --> a = 8 et b = 2.</li>
+  <li>On declare ensuite une nouvelle variable de type int nomme "result".<br />
+    --> a = 8, b = 2 et result = valeur inconnue (/!\ pas forcement = 0)</li>
+  <li>On effectue le calcul de a - b, c'est a dire 8 - 2, et on met cette valeur dans "result".<br />
+    --> a = 8, b = 2 et result = 6</li>
+  <li>L'instruction <strong>return</strong> renvoie la valeur de result et on retourne dans la fonction main.</li>
+  <li>La valeur que la fonction a renvoye est placee dans i.<br />
+    --> i = 6. (a, b et result n'existe plus : ils etaient propres a la fonction substraction).</li>
+  <li>La fonction main a alors terminee ses instructions et fais donc la derniere instruction qui retourne une valeur. (la valeur 0 signifie que l'execution du programme s'est bien passe. Une autre valeur signifie qu'il y a eu une erreur).</li>
+</ul>
+      Vous pouvez le compiler et le lancer, il n'affiche rien :)
+</p>
+
+<h4>Afficher des variables</h4>
+<p>
+  Pour donner a une variable comme valeur une lettre, on a deux solutions :
+  <ul>
+    <li>Lui donner sa valeur de maniere claire en utilisant des quotes :
+      <div class="code">char		c;
+
+c = 'a';</div></li>
+    <li>Donner sa valeur ASCII :
+      <div class="code">char		c;
+
+c = 97;</div></li>
+</ul>
+Pour connaitre les valeurs ASCII de chaque lettre, on utilise la table ASCII que l'on peut consulter grace au <a href="?page=impatient-man-pages">man</a> ascii.
+</p>
+<table>
+  <tbody>
+    <tr>
+      <th>Decimal</th>
+      <th>Caractere</th>
+      <th>Autre notation</th>
+      <th>Detail</th>
+      <th>Decimal</th>
+      <th>Caractere</th>
+      <th>Autre notation</th>
+      <th>Detail</th>
+    </tr>
+    </tr>
+    <tr>
+      <td>00</td>
+      <td>NUL</td>
+      <td>\0</td>
+      <td>0 (Zero), NULL, '\0'</td>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td>SOH</td>
+      <td></td>
+      <td>Start Of Header</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>STX</td>
+      <td></td>
+      <td>Start Of Text</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>ETX</td>
+      <td></td>
+      <td>End Of Text</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>EOT</td>
+      <td></td>
+      <td>End Of Transmission</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td>ENQ</td>
+      <td></td>
+      <td>Enquiry</td>
+    </tr>
+    <tr>
+      <td>06</td>
+      <td>ACK</td>
+      <td></td>
+      <td>Acknowledge</td>
+    </tr>
+    <tr>
+      <td>07</td>
+      <td>BEL</td>
+      <td>\a</td>
+      <td>"bell" = cloche, sonnerie</td>
+    </tr>
+    <tr>
+      <td>08</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>09</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+   <tr>
+      <td>86</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>125</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+  </tbody>
+</table>
+<!-- 
+ 
+<h4></h4> 
+<ul> 
+ <li></li> 
+ <li></li> 
+ <li></li> 
+ <li></li> 
+ <li></li> 
+</ul> 
+
+<li><strong></strong> : </li>
+
+<div class="code">
+</div>
+ 
+-->
+
+<h4>En cours...</h4> 
+
+<a href="http://commentaires.zerofansub.net/t240.htm" target="_blank">
+ Commentaires
+</a>
+ |
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&t=240" target="_blank">
+ Ajouter un commentaire
+</a>

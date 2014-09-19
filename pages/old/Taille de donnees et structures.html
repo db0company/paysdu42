@@ -1,0 +1,135 @@
+<h3>Taille de données en mémoire et structures</h3>
+<div class="news">
+Tout d'abord, il faut savoir que les types de données ont chacun une taille :<br /><br />
+<table style="width: 100%; padding:2px;"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr style="background-color: rgb(190, 207, 236); font-weight: bold;">
+      <td>Type</td>
+      <td>Nombre d'octets en m&eacute;moire</td>
+      <td>Nombre de bits en m&eacute;moire</td>
+      <td>Limite inf&eacute;rieure</td>
+      <td>Limite sup&eacute;rieure</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>1 octet</td>
+      <td>8 bits</td>
+      <td>- 128</td>
+      <td>127</td>
+    </tr>
+    <tr style="background-color: rgb(231, 237, 248);">
+      <td>unsigned char</td>
+      <td>1 octet</td>
+      <td>8 bits</td>
+      <td>0</td>
+      <td>255</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>2 octets</td>
+      <td>8 x 2 = 16&nbsp;bits</td>
+      <td>- 32 768</td>
+      <td>32 767</td>
+    </tr>
+    <tr style="background-color: rgb(231, 237, 248);">
+      <td>unsigned short</td>
+      <td>2 octets</td>
+      <td>8 x 2 = 16 bits</td>
+      <td>0</td>
+      <td>65 535</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>- 2 147 483 648</td>
+      <td>2 147 483 647</td>
+    </tr>
+    <tr style="background-color: rgb(231, 237, 248);">
+      <td>unsigned int</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>0</td>
+      <td>4 294 967 295</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>-2 147 483 648</td>
+      <td>2 147 483 647</td>
+    </tr>
+    <tr style="background-color: rgb(231, 237, 248);">
+      <td>unsigned long</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>0</td>
+      <td>4 294 967 295</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>4 octets</td>
+      <td>8 x 4 = 32 bits</td>
+      <td>-3.4 x 10-38</td>
+      <td>3.4 x 1038</td>
+    </tr>
+    <tr style="background-color: rgb(231, 237, 248);">
+      <td>double</td>
+      <td>8 octets</td>
+      <td>8 x 8 = 64 bits</td>
+      <td>-1.7 x 10-308</td>
+      <td>1.7 x 10308</td>
+    </tr>
+    <tr>
+      <td>long double</td>
+      <td>12 octets</td>
+      <td>8 x 12 = 96 bits</td>
+      <td>-3.4 x 10-4932</td>
+      <td> 3.4 x 104932</td>
+    </tr>
+  </tbody>
+</table>
+<br /><br />
+Cependant, la taille prise en mémoire est toujours "arrondie" à 4 octets près. Par exemple, quand on déclare un char, même si on a accés qu'à 1 octets, il en prend en réalité 4 en mémoire. C'est la raison pour laquelle on déclare généralement des int même si on a pas besoin de grandes valeurs.<br />
+<br />
+Pourtant, ce n'est pas ce qui se passe lorsque l'on déclare des structures.<br />
+Observons plusieurs structures et leurs comportements en mémoire :<br />
+
+struct	a<br />
+{<br />
+	char	a;<br />
+	char	b;<br />
+};<br />
+<img style="float: none;" src="/images/old/2char.png" alt="char" /><br/>
+<br />
+struct	b<br />
+{<br />
+	int		a<br />
+	char	b;<br />
+	int		c<br />
+	char	d;<br />
+};<br />
+<img style="float: none;" src="/images/old/1int.png" alt="char" /> 
+<img style="float: none;" src="/images/old/1char.png" alt="char" /> 
+<img style="float: none;" src="/images/old/1int.png" alt="char" /> 
+<img style="float: none;" src="/images/old/1char.png" alt="char" /> 
+<br />
+<br />
+struct	c<br />
+{<br />
+	int		a;<br />
+	int		b;<br />
+	char	c;<br />
+	char	d;<br />
+};<br />
+<img style="float: none;" src="/images/old/1int.png" alt="char" /> 
+<img style="float: none;" src="/images/old/1int.png" alt="char" /> 
+<img style="float: none;" src="/images/old/2char.png" alt="char" /> 
+<br />
+<h4>Bilan</h4>
+On a pu observer qu'il est plus intéressant de "trier" les types de données en mémoire par ordre décroissant, du plus grand au plus petit.<br />
+<b>À noter :</b> Un pointeur prend en général (sous FreeBSD en tout cas) 4 octets, peu importe la donnée vers laquelle il pointe.<br />
+Attention ! Ce n'est pas toujours vrai. Essayez par exemple de compiler un programme qui cast en (void *) un pointeur, vous aurez droit à un joli warning :<br />
+<i>warning: cast from pointer to integer of different size</i><br /><br />
+Bonnes structures, les petits potes !

@@ -1,0 +1,55 @@
+<h3>Dev - C - Itoa</h3>
+<p>
+  Rien de bien interessant.<br />
+  Une fonction qui, je crois, existait deja mais est devenu obsolete depuis sprintf : <strong>itoa</strong>.<br />
+  Comme son nom l'indique, elle fait le contraire d'atoi et change un nombre en string dans une base donnee.
+</p>
+
+<h4>Mini man</h4>
+<div class="code"><pre>
+ITOA                   db0 company Manual for "Paysdu42"               ITOA
+
+NAME
+       itoa, itoadup - convert an integer to a string
+
+SYNOPSIS
+       #include "itoa.h"
+
+       void            itoa(int input, char *buffer, int radix);
+       char            *itoadup(int input, int radix);
+
+DESCRIPTION
+       The itoa() function make a string with the integer input and put it in
+       the buffer using radix as the base number.
+       radix must be less than 37.
+
+       The itoadup() function do the same as itoa() but alloc the buffer
+       and return it. After using it, you must free it.
+
+RETURN VALUE
+       itoa() did not return anything, so you have to check the radix yourself
+       itoadup() return NULL if radix is wrong or if allocation failed.
+
+SEE ALSO
+       atoi(3)
+
+db0 company                       2010-08-16                           ITOA</pre></div>
+
+<div class="download">
+                  .
+   .. ............;;.
+    ..::::::::::::;;;;.      [  <a href="files/libitoa.tar">Download</a>  ]
+  . . ::::::::::::;;:'
+                  :'
+
+
+</div>
+
+
+<a href="http://commentaires.zerofansub.net/t242.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&amp;t=242" target="_blank">
+  Ajouter un commentaire
+</a>

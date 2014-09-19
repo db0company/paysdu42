@@ -1,0 +1,304 @@
+<h3>Impatient Perl</h3>
+
+<h4>Sommaire</h4>
+<ol>
+  <li><a href="#particularites">Particularites</a></li>
+  <li><a href="#le-fichier">Le fichier</a></li>
+  <li><a href="#les-types-de-variable">Les types de variables</a></li>
+  <li><a href="#utilisation-de-variables">Utilisation de variables</a></li>
+  <li><a href="#variables-particulieres">Variables particulieres</a></li>
+  <li><a href="#operateurs-et-mots-cles">Operateurs et mots-cles</a></li>
+  <li><a href="#les-fonctions">Les fonctions</a></li>
+  <li><a href="#exemple">Exemple</a></li>
+  <li><a href="#manipulation-de-fichiers">Manipulation de fichiers</a></li>
+</ol>
+
+<hr />
+
+<h4 id="particularites">Particularites</h4>
+<ul>
+  <li>Adapte a la manipulation de strings et de fichiers.</li>
+  <li>Se lance avec "perl fichier.pl" ou
+    "./fichier.pl" avec les droits d'execution sur le fichier (755).</li>
+  <li>Pas de pre-compilation. Le code est interprete pendant l'execution.</li>
+  <li>Perl commence par lire le script puis l'execute apres.
+    On peut donc declarer des fonctions apres les avoir appelees.
+  </li>
+</ul>
+
+
+<h4 id="le-fichier">Le fichier</h4>
+<ul>
+  <li>Extension ".pl".</li>
+  <li>Pas d'indentation particuliere (ne pas confondre avec Python)</li>
+  <li>Premiere ligne :
+    <pre><code>
+      <strong>#!/usr/local/bin/perl -w</strong>
+    </pre></code>
+    (a adapter en fonction de l'emplacement de perl)</li>
+  <li>Il est conseille de mettre ces lignes en debut de fichier :<br />
+    <pre><code>
+      use warnings;
+      use strict;
+    </pre></code>
+    Elles permettent de loader des modules qui affichent des Warnings en cas de problemes.
+  </li>
+  <li>Les lignes de commentaires commencent par un "<strong>#</strong>"</li>
+</ul>
+
+
+<h4 id="les-types-de-variable">Les types de variables</h4>
+<ul>
+  <li>Leurs noms ne doivent contenir que des chiffres, des lettres et des underscore ("_").
+  Ils ne doivent pas commencer par un chiffre.</li>
+  <li>Les variables <strong>scalaires</strong> commencent par un "<strong>$</strong>".<br />
+    Elles peuvent etre des nombres :<br />
+    - En decimal 42,<br />
+    - En octal 052,<br />
+    - En hexadecimal 0x2A<br />
+    - En flottant 42.0<br />
+    Ou des chaines de caracteres :<br />
+    - "ma chaine de caracteres entourees de guillemets."
+  </li>
+  <li>Les variables <strong>tableaux</strong> commencent par un "<strong>@</strong>".<br />
+    Elles correspondent a des tableaux de variables.
+  </li>
+  <li>Les variables <strong>hash</strong>  commencent par un "<strong>%</strong>".<br />
+    Elles correspondent a des tableaux de type "cles" ->  "valeur".
+  </li>
+  <li>Les variables <strong>anonymes</strong>  commencent par un "<strong>$</strong>".<br />
+    Elles correspondent a des "pointeurs" vers des variable sans nom.
+  </li>
+</ul>
+
+<h4 id="utilisation-de-variables">Utilisation de variables</h4>
+<ul>
+  <li>On declare et on initialise une variable grace a <strong>my</strong> :<br />
+    <pre><code>
+      my $ma_variable = 42;
+      my $ma_chaine_de_caracteres = "le pays du 42";
+      my @mon_tableau = (1, "deux", 3.0);
+      my %mon_tableau_hash = ("nom" => "toto", "age" => 42, "adresse" => "le pays du 42");
+
+      my $mon_pointeur_vers_ma_variable = \$ma_variable;
+      my $mon_pointeur_vers_scalar_anonyme = \42;
+      my $je_donne_un_nom_au_scalar_anonyme = ${$mon_pointeur_vers_scalar_anonyme};
+      my $mon_pointeur_vers_tableau_anonyme = ["quatre", 5.0, 6];
+      my @je_donne_un_nom_au_tableau_anonyme = @{$mon_pointeur_vers_tableau_anonyme};
+      my $mon_pointeur_vers_hash_anonyme = { "nom" => "tata", "age" => 21, "adresse" => "le pays du 42/2" };
+      my %je_donne_un_nom_au_hash_anonyme = %{$mon_pointeur_vers_hash_anonyme};
+    </code></pre>
+  </li>
+  <li>On affiche des variables grace a <strong>print</strong> ou <strong>Dumper</strong> :<br />
+    <pre><code>
+      print "ma_variable             : $ma_variable\n";
+      print "ma_chaine_de_caracteres : $ma_chaine_de_caracteres\n";
+      print "mon_tableau             : @mon_tableau\n";
+      
+      print Dumper($ma_variable);
+      print Dumper($ma_chaine_de_caracteres);
+      print Dumper(@mon_tableau);
+      print Dumper(%mon_tableau_hash);
+      </code></pre>
+  </li>
+</ul>
+
+<h4 id="variables-particulieres">Variables particulieres</h4>
+<ul>
+  <li>On recupere les arguments passes en ligne de commande avec le tableau <strong>@ARGV</strong>.<br />
+    Le premier element du tableau, @ARGV[0], n'est pas le nom de la commande mais bien le premier argument.</li>
+  <li>On recuper le nombre d'arguments passes en ligne de commande avec <strong>$#ARGV</strong>.<br />
+    C'est egal a -1 s'il n'y a pas d'arguments, 0 s'il y en a un, etc.</li>
+  <li>Le nom du script est dans <strong>$0</strong> ou <strong>$^X</strong>.</li>
+  <li>On recupere le PID grace a <strong>$$</strong>.</li>
+  <li>La variable courant est dans <strong>$_</strong>.<br />
+    Elle sert par exemple dans des boucles while, des fonctions, des eval, etc.</li>
+  <li>La derniere erreur qui s'est produite se trouve dans <strong>$!</strong>.<br />
+    C'est a la fois le numero de l'erreur et le message d'erreur selon la maniere dont il est utilise.</li>
+  <li>On peut recuperer les variables d'environnement dans le tableau de hash <strong>%ENV</strong>.</li>
+  <li>On recupere le nom du systeme d'exploitation (MSWin32, linux ou darwin) grace a <strong>$^O</strong></li>
+  <li>On utilise les signaux grace au tableau de hash <strong>%SIG</strong> (man perlipc(1)).</li>
+</ul>
+
+<h4 id="operateurs-et-mots-cles">Operateurs et mots-cles</h4>
+<ul>
+  <li>Calculs, bits : <strong>+ - * / = & | ^ >> << >>></strong></li>
+  <li>Comparaison, logique : <strong>== < <= > >= != || && !</strong></li>
+  <li>Comparaison de strings :<br />
+    - concatenation : <strong>.</strong><br />
+    - egal : <strong>eq</strong> (==)<br />
+    - inferieur : <strong>lt</strong> (<)<br />
+    - inferieur/egal : <strong>le</strong> (<=)<br />
+    - superieur : <strong>gt</strong> (>)<br />
+    - superieur/egal : <strong>ge</strong> (>=)<br />
+    - different : <strong>ne</strong> (!=)<br />
+  </li>
+  <li>Mots-cles :<br />
+    - <strong>if elsif else</strong> :<br />
+    si (condition) {action}<br />
+    ou si (condition) {action}<br />
+    sinon {action}<br />
+    - ternaire : (condition) ? si vrai : sinon;<br />
+    - <strong>unless</strong> : si la condition est fausse (= if (!(condition)))<br />
+    - <strong>while</strong> : boucle "tant que" (condition)<br />
+    - <strong>for</strong> : boucle avec compteur
+    (compteur; condition; modification du compteur)<br />
+    - <strong>until</strong> : boucle avec condition fausse (= while (!(condition)))<br />
+    - <strong>foreach</strong> $nom_elem (@liste) :
+    parcours une liste (par exemple un tableau) et fais
+    l'action indiquee pour chaque element. L'element est alors dans nom_elem.<br />
+    - <strong>next;</strong> : instruction dans une boucle indiquant de passer directement au suivant.<br />
+    - <strong>last;</strong> : instruction arretant une boucle.<br />
+  </li>
+</ul>
+
+<h4 id="les-fonctions">Les fonctions</h4>
+<ul>
+  <li>S'appellent avec <strong>&</strong>
+    <pre><code>
+      &ma_fonction_sans_argument;
+      &ma_fonction_avec_un_argument($argument);
+      &ma_fonction_avec_plusieurs_arguments($arg1, $arg2, $arg3);
+    </code></pre>
+  </li>
+  <li>Se declarent avec <strong>sub</strong>.</li>
+  <li>Quand il n'y a qu'un argument, il se trouve dans la variable <strong>$_</strong>
+    (ou @_ si c'est un tableau, etc.)
+  </li>
+  <li>S'il y en a plusieurs, ils sont dans un tableau <strong>@_</strong>.</li>
+  <li>On accede aux elements d'un tableau avec @_[1], @_[2], @_[3],...</li>
+  <li>Exemple :<br />
+    <pre><code>
+      sub ma_fonction_sans_argument
+      {
+        print "coucou\n";
+      }
+      sub ma_fonction_avec_un_argument
+      {
+        print $_."\n";
+      }
+      sub ma_fonction_avec_plusieurs_arguments
+      {
+        if (@_[1] < @_[2])
+        {
+	  return @_[3];
+	}
+	else
+	{
+	  foreach $elem (@_)
+          {
+            print $elem."\n";
+          }
+        }
+	return @_[1];
+       }
+</code></pre>
+  </li>
+</ul>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7354724707087704";
+/* Cours Perl */
+google_ad_slot = "7603279712";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<h4 id="exemple">Exemple</h4>
+<pre><code>
+  my $variable_trop_cool = 0;
+  
+  &une_super_fonction($variable_trop_cool);
+  
+  sub une_super_fonction
+  {
+    while ($_ < 6)
+    {
+        if ($_ == 0)
+        {
+            print  "je suis dans le if\n";
+        }
+        elsif ($_ == 1)
+        {
+            print  "je suis dans le elsif\n";
+        }
+        elsif ($_ == 2)
+        {
+            $_ += 2;
+            next;
+        }
+        else
+        {
+            print  "je suis dans le else\n";
+        }
+        unless ($_ > 3)
+        {
+            print "je ne suis pas superieur a 3\n";
+        }
+        print $_." prochain tour de boucle\n";
+        $_++;
+    }
+  }
+  
+</code></pre>
+
+<h4 id="manipulation-de-fichiers">Manipulation de fichiers</h4>
+<ul>
+  <li><strong>STDIN</strong> et <strong>STDOUT</strong> sont l'entree et la sortie standard.</li>
+  <li><strong>open(FILEHANDLER, chemin_du_fichier)</strong> ouvre ou creer des fichiers.<br />
+    - le filehandler contient les lignes lues dans le fichier.
+    Il n'a pas de caractere pour designer son type donc
+    on le met en general en majuscule.<br />
+    - le chemin_du_fichier peut etre precede d'un <strong>></strong> s'il doit etre creer,
+    d'un <strong>>></strong> si on peut ecrire dedans.
+    S'il n'a pas de signe particulier, c'est une lecture seule.
+  </li>
+  <li>Cette fonction (et d'autres) peut echouer. On peut alors quitter avec <strong>die</strong>.</li>
+  <li><strong>close(FILEHANDLER);</strong> s'appelle une fois l'utilisation du fichier terminee.</li>
+  <li>Exemple :
+    <pre><code>
+      open(FICHIER1, "mon_fichier.txt") or die "pas reussi a ouvrir le fichier...";
+      while (<FICHIER1>)
+	{
+	  print "j'ai lu la ligne :  $_\n";
+	}
+	close(FICHIER1);
+	open(FICHIER2, ">mon_nouveau_fichier.txt") or die "pas reussi a creer le fichier...";
+	my $i = 0;
+	for($i = 0; $i < 5; $i++)
+	{
+	  print FICHIER2 "coucou ligne".$i."\n";
+	}
+	close(FICHIER2);
+      </code></pre>
+  </li>
+</ul>
+
+
+<!--
+
+<h4></h4>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<h4>En cours...</h4>
+
+-->
+
+
+<a href="http://commentaires.zerofansub.net/t240.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&t=240" target="_blank">
+  Ajouter un commentaire
+</a>

@@ -1,0 +1,45 @@
+<h3>Pourquoi printf affiche tout à la fin ?</h3>
+<div class="news">
+
+  Printf ne fonctionne pas comme celui que nous avons coder.<br />
+  C'etait la tout le but de le recoder :-)<br />
+  En fait, printf fait un buffer dans lequel il concatene tout ce qu'on<br />
+  lui demande puis 'relache' son buffer d'un coup (affiche a l'ecran)<br />
+  quand il rencontre un '\n'. C'est pour ca que lorsque l'on fait :<br />
+<br />
+  my_putstr("J'ai ");<br />
+  printf("%d", 12);<br />
+  my_putstr("ans.\n");<br />
+<br />
+  On a a l'ecran :<br />
+<br />
+  ($)>./a.out<br />
+  J'ai ans.<br />
+  12($)><br />
+<br />
+  alors qu'en faisant :<br />
+<br />
+  my_putstr("J'ai ");<br />
+  printf("%d\n", 12);<br />
+  my_putstr("ans.\n");<br />
+<br />
+  On a a l'ecran :<br />
+<br />
+  ($)>./a.out<br />
+  J'ai 12<br />
+  ans.<br />
+  ($)><br />
+<br />
+  C'est pour ca qu'un \n a la fin d'un printf doit etre automatique !<br />
+<br />
+  La meilleure solution : utilisez votre printf. En plus, vous serez fiers de dire :<br />
+  "C'est moi qui l'ai fait !" ;-)<br />
+<br />
+  C'est une explication 'en gros' du pourquoi du comment du printf.<br />
+<br />
+Merci à... euh... un astek, pendant ma piscine :)<br />
+
+<div class="commentaires"><a href="http://zero.com.1freebb.com/t166.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=166" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-astuces"><h2><-; Retour à la catégorie "Tek1 / Astuces".</h2></a>

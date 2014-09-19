@@ -1,0 +1,19 @@
+
+/* * * * * * * * * * * * * /
+
+Pour verifier que tout les appels systemes sont verifies, faites :
+
+--> strings ./executable
+Ca affiche tout les appels systemes effectues.
+
+--> grep "appel systeme" *.c
+En remplacant 'appel systeme' par les appels systemes effectues.
+
+Verifier si chaque valeur de retour des appels systemes sont verifies.
+Pour connaitre la valeur de retour en cas d'echec (en general NULL ou -1),
+     --> man !
+
+Merci a moutar_j pour le strings.
+
+/* * * * * * * * * * * * * /
+

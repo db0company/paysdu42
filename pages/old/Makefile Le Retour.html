@@ -1,0 +1,26 @@
+##
+## Le retour du Makefile for mes petits potes in /u/all/lepage_b/cu/public/Au secours ! Je ne sais pas coder en C
+## 
+## Made by barbara lepage
+## Login   <lepage_b@epitech.net>
+## 
+## Started on  Thu Jan  7 18:45:18 2010 barbara lepage
+## Last update Thu Jan  7 18:53:02 2010 barbara lepage
+##
+
+## Compiler sur d'autres OS ? maya, inca, tout ca ? Ha ha ha, vous pensiez que
+## j'allais vous donner la reponse si facilement ? Non. Mais des indices, oui.
+
+## Sur chaque OS, la regle pour compiler est differente.
+## maya : /usr/sfw/bin/gcc , inca, freebsd : gcc suffit.
+## trouvez maintenant un moyen de faire appeler a votre Makefile le bon CC
+## selon la machine. Utilisez l'environnement... mettez ${OSTYPE} et vous
+## verrez ce que votre Makefile va remplacer, ect.
+
+## Une fois que vous avez vos regles de compilation, c'est regle.
+## Oui, c'est tout. Seulement, pour faire un make sous maya, il sera pas
+## content. Il faut faire /usr/ccs/bin/make a la place.
+
+## Vous compilez, ca marche, mais vous avez d'etranges warning d'undeclared ?
+## Quelques petits condition a ajouter dans votre .h, quelques <truc.h> a
+## aller chercher.

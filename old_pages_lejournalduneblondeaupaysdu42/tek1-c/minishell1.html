@@ -1,0 +1,122 @@
+<h3>Minishell 1</h3>
+<div class="news">
+
+Bonjour moutar_j et les autres petits potes !<br />
+Aujourdh'ui, nous allons expliquer sans entrer dans les details<br />
+le principe du minishell1 !<br />
+Amusez-vous bien.<br />
+
+<h3>Le principe d'un shell</h3>
+
+
+TANT QUE l'utilisateur ne ferme pas la session<br />
+FAIRE<br />
+# Émettre un signe d'invite (<em>prompt</em>)<br />
+# Lire la ligne courante<br />
+# Exécuter la commande indiquée sur cette ligne<br />
+FIN<br />
+
+<br />
+<h3>  ETAPE 1 PROMPT</h3>
+  faisons le simple principe d'afficher un prompt qui lit des<br />
+  commandes et fait rien (pour l'instant) puis qui se raffiche.<br />
+
+rappel : mon get_next_line ici present lit sur l'entree standart en renvoie<br />
+   une chaine de caractere correspondant a ce qu'il a lu jusqu'a un '\n'.<br />
+   MAIS ! Pourquoi un get_next_line plutot qu'un simple read, me direz-vous ?<br />
+<br />
+   Parce qu'un read, vous allez lui envoyer une certaine taille de buffer.<br />
+   Il se peut que l'utilisateur (vetu de rouge et sans doute mal-intentione)<br />
+   ecrive plus que ce buffer ! il le depasse, place des octets arbitraires sur<br />
+   la pile au dela de la zone que vous lui avez reserve. Cela ecrase une<br />
+   partie de la pile, et l'utilisateur mal-intotionne y aura place du code !<br />
+   Ainsi, il entrera a l'interieur de votre machine et la detruiera de <br />
+   l'interieur ! Mouhahaha et il deviendra le maitre du monde !<br />
+<br />
+   Ou plus simplement, vous risquez de Segmentation Faulter.<br />
+
+<h3>  ETAPE 2 LANCER UN PROGRAMME - RECUPERER LE PATH</h3>
+  Essayons de lancer un programme. Pour cela, nous utilisons execve.<br />
+  Cette fonction prend en parametre un path. Il faut donc commencer par<br />
+  trouver ce path. Pour cela, notre environnement nous fournit un element<br />
+  appele PATH.<br />
+<br />
+  -- > faire un str_to_wordtab de ce qu'a renvoyer get_next_line.<br />
+  -- > faire une fonction qui recupere le contenu d'un element de l'env.<br />
+<br />
+
+    char *my_getenv(char **env, char *elem/*"PATH"*/)<br />
+{<br />
+  /* je parcours l'env, je trouve la ligne qui commence par PATH*/<br />
+  /* j'envoie l'adresse de ce qui se trouve apres le '=' */<br />
+}<br />
+<br />
+ -- > faire une fonction qui recupere uns a uns les paths dans cet elem<br />
+    -- > faire une fonction qui ajoute a la suite du path recupere le<br />
+    element du tableau de str_to_wordtab.<br />
+    Tester ces paths avec la fonction access. Comment elle marche ? -> man<br />
+
+
+<h3>  ETAPE 3 LANCER UN PROGRAMME - FORKER</h3>
+  Une fois qu'on a recuperer le path, qu'on sait que c'est le bon, on va<br />
+  forker. Pourquoi ? parce qu'apres avoir lancer execve, le programme s'arrete.<br />
+  On veut arreter le programme, pas le minishell. Il faut donc duppliquer le<br />
+  prog. C'est le role de fork. Le cours explique comment il marche.<br />
+  A vous de jouer.<br />
+<br />
+
+<h3>  ETAPE 3 LANCER UN PROGRAMME - EXECVE</h3>
+  execve doit etre execute dans le fils. S'il reussit, alors il ne fera pas ce<br />
+  qu'il y a apres puisqu'il quitte. Sinon, il le fera.<br />
+  il prend en parametre le path calcule precedemment et un tableau a deux<br />
+  dimemsions vers chaque arguments exemple :<br />
+  {"ls", "-l", "-a", ".", NULL}<br />
+  ca tombe bien, c'est exectement ce qu'on a fait avec le str_to_wordtab.<br />
+  et l'environnement sous forme d'un tableau.<br />
+<br />
+
+<br />
+  et voila ! On a lance un programme a partir de notre minishell.<br />
+  Maintenant, on a quelques builtins a realiser. <br />
+  env, setenv et unsetenv. Le mieux serait de le faire avec des listes<br />
+  chainees. Je vous ai appris a en faire dans un precedent cours.<br />
+  Si vous n'etes pas a l'aise, vous pouvez utiliser des tableaux.<br />
+<br />
+
+
+<h3>  ETAPE 4 ENV</h3>
+  -> Si vous prenez la solution liste chainee (trop classe wahou), faites une<br />
+     fonction qui transforme le char **env en t_list *env. Cette fonction<br />
+     ressemblera a l'exo de piscine "my_params_in_list.c" (Jour 11).<br />
+     Afficher cette liste.<br />
+  -> Si vous choisissez de garder un tableau, afficher simplement ce tableau.<br />
+<br />
+
+<h3>  ETAPE 5 SETENV</h3>
+  liste chainee : ajouter un element a la liste. A la fin de la liste. Pas<br />
+  tres difficile :) mais attention, vous devez verifier si l'element n'<br />
+  existe pas deja et si c'est le cas modifier cet element.<br />
+  tableau : ajouter un element a la fin du tableau. Pour ca, il va falloir<br />
+  faire un realloc, c'est a dire free(env) (sauf si c'est le tableau de depart)<br />
+  malloc(la taille du tableau d'avant + 1). pareil, si l'element existe,<br />
+  il faut le modifier.<br />
+
+<h3>  ETAPE 6 UNSETENV</h3>
+liste chainee : parcourir sa liste, trouver (ou pas) l'element, l'enlever.<br />
+pop_elem_from_list (google :))<br />
+  tableau : parcourir le tableau, trouver (ou pas) l'element, realloc le<br />
+tableau en enlevant l'elem.<br />
+
+<h3>  ETAPE 7 CD</h3>
+  la, je me contenterait de vous dire "chdir". Et man. Et google.<br />
+
+<br /><br />
+  Et voila, t'as un super minishell !<br />
+  Merci, db0-lepage_b !<br />
+  Bisous ? Non...? Ok.<br />
+
+<br />
+<div class="commentaires"><a href="http://zero.com.1freebb.com/t165.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=165" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-c"><h2><-; Retour à la catégorie "Tek1 / C".</h2></a>

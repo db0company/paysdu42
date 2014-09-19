@@ -1,0 +1,20 @@
+<h3>Pourquoi utiliser un Get_next_line plutôt qu'un read pour le minishell ?<br />(stack overflow)</h3>
+<div class="news">
+
+   Parce qu'un read, vous allez lui envoyer une certaine taille de buffer.<br />
+   Il se peut que l'utilisateur (vetu de rouge et sans doute mal-intentione)<br />
+   ecrive plus que ce buffer ! il le depasse, place des octets arbitraires sur<br />
+   la pile au dela de la zone que vous lui avez reserve. Cela ecrase une<br />
+   partie de la pile, et l'utilisateur mal-intotionne y aura place du code !<br />
+   Ainsi, il entrera a l'interieur de votre machine et la detruiera de<br />
+   l'interieur ! Mouhahaha et il deviendra le maitre du monde !<br />
+<br />
+   Ou plus simplement, vous risquez de Segmentation Faulter.<br />
+<br />
+
+Merci à "Advanded Linux Programming", encore une fois.<br />
+
+<div class="commentaires"><a href="http://zero.com.1freebb.com/t170.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=170" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-astuces"><h2><-; Retour à la catégorie "Tek1 / Astuces".</h2></a>

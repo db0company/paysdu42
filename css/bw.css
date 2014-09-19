@@ -1,0 +1,25 @@
+body
+{
+    background: white;
+    color: black;
+}
+
+img, .code, td, th
+{
+    border-color: grey;
+}
+
+a
+{
+    color: black;
+}
+
+h4, h3, .menu, #header
+{
+    text-shadow: grey 3px 3px 5px;
+}
+
+.code
+{
+    border: grey solid 2px;
+}

@@ -1,0 +1,70 @@
+/*
+** Bonjour les petits potes !
+** Aujourd'hui,m on va apprendre a faire Hidenp.
+** C'est quoi deja ? Ah oui, un exercice d'exam.
+** Il consiste a rechercher si une chaine s1 est cachee dans une chaines2.
+** Il n'est pas tres long ni tres difficile a faire.
+** Il suffit d'etre logique !
+** Moi, la premiere fois, je l'ai fait en recursif...
+** C'est pas vraiment la bonne methode ^^ Je me suis un peu casse la tete pour rien.
+** Treves de parlotte inutile ! Cette explication reste simple et vaut ce qu'elle vaut.
+** Comme toujours, si je dis du caca, tapez moi.
+** Si vous avez des questions,contactez-moi.
+*/
+
+/*
+  Le main est classique est tres courant en exam.
+  Je donne ici le code directement parce que c'est pas bien complique.
+  Tapez moi si j'ai pas le droit !
+*/
+
+intmain(int argc, char **argv)
+{
+  if (argc > 2)
+    hidenp(argv[1], argv[2]);
+
+  /* Au choix : */
+
+  my_putchar('\n');/*1*/
+  my_putstr("\n");/*2*/
+  write(1, "\n", 1);/*3*/
+
+  return (0);
+}
+/* NB : Vous pouvez aussi renvoyer le nombre a afficher depuis hidenp et afficher tout d'un coup ;-) */
+
+/* exemple : s1 = abc  ; s2 = trucamachinbtruc 
+ *      *   *
+ */
+
+
+/*
+  inti;
+  intj;
+
+i = 0;
+j = 0;
+* Je parcours s2 (dans l'exemple, "trucamachinbtruc")
+* Si s2[i] = s1[j] ET je suis pas a la fin de s1
+j++;
+i++;
+* Si je suis arrive a la fin de s1 (j = longueur ou s1[j] = '\0')
+j'affiche (ou je renvoie) 1;
+* (Sinon)
+j'affiche (ou je renvoie) 0;
+*/
+
+/*
+** Voilou ~~
+** C'est tout simple.
+*/
+
+/*
+     _ _      ___    lepage_b
+    | | |    / _ \
+  __| | |__ | | | |     sur db0.fr
+ / _` | '_ \| | | |
+| (_| | |_) | |_| |        et Zerofansub.net
+ \__,_|_.__/ \___/
+
+*/

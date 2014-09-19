@@ -1,0 +1,218 @@
+<h3>Dev - C - List</h3>
+
+<p>
+  Une biblioth&egrave;que statique en C de listes cha&icirc;n&eacute;es g&eacute;n&eacute;riques.<br />
+  La mise en place, la manipulation, l'ajout et le retrait d'&eacute;l&eacute;ments est facile et intuitif, 
+  &agrave; condition d'&ecirc;tre &agrave; l'aise avec :
+  <ul>
+    <li>void *</li>
+    <li>Les casts</li>
+    <li>Les structures</li>
+    <li>Les pointeurs sur fonctions</li>
+  </ul>
+</p>
+
+<h4>Documentation</h4>
+<div class="code"><pre>
+LIST                   db0 company Manual for "Paysdu42"               LIST
+
+NAME
+       list - Doubly-Linked List Library
+
+SYNOPSIS
+       #include		"list.h"
+
+	bool		put_in_list(t_list ** list, void * data);
+	t_node *	new_node(void * data);
+	t_list *	list_from_table(char **table);
+	void		destroy_list(t_list ** list,
+				     void (*destroy_data)(void *));
+
+DESCRIPTION
+
+	Create a list using the <strong>put_in_list()</strong> function.
+	At the first call, list must be NULL.
+
+	<strong>new_node()</strong> create a new node. You must not use it.
+
+	It is possible to create a list directy from a strings table
+	like argv using the <strong>list_from_table()</strong> function.
+
+	When you're done with the list, you must destroy it using the
+	<strong>destroy_list()</strong> function. The second argument is
+	a function taking the data and detroy it. It can be NULL if the
+	data in the list don't need to be freed, it can be just "free"
+	or your own function.
+
+RETURN VALUE
+	<strong>put_in_list()</strong> return true on success, false on
+	failure (allocation failed, null pointer).
+
+	<strong>new_node()</strong> return a pointer to the new allocated
+	node, NULL on failure.
+
+	<strong>list_from_table()</strong> return the list pointer or NULL
+	on failure.
+	
+
+SYNOPSIS
+	t_list *	duplicate_list(t_list * list);
+	t_list *	duplicate_list_elem(t_list * list,
+					    void * (*duplicate)(void *));
+
+DESCRIPTION
+	Create a simple copy of a list using the
+	<strong>duplicate_list()</strong> function.
+
+	To create a copy of a list applying a function to every element,
+	use the <strong>duplicate_list_elem</strong> which 3rd argument is
+	a function taking the data in the list and returning another data.
+	Usefull if some elements must be reallocated in the copy list.
+
+RETURN VALUE
+	<strong>duplicate_list()</strong> and <strong>duplicate_list()</strong> return a pointer to the
+	new list or NULL on failure (allocation failed).
+
+
+SYNOPSIS
+	void		dump_list(t_list * list, void (*displayer)(void *));
+	void		foreach_list(t_list * list,
+				     void (*function)(void *));
+	bool		foreach_stop_list(t_list * list,
+					   bool (*function)(void *));
+	void		foreach_arg_list(t_list * list,
+					 void (*function)(void * elem,
+							  void * arg),
+					 void * arg);
+	bool		foreach_arg_stop_list(t_list * list,
+					      bool (*function)(void * elem,
+							       void * arg),
+					      void * arg);
+
+DESCRIPTION
+	The collection of <strong>foreach</strong> functions apply a
+	function to every data in the list.
+
+	<strong>foreach_list()</strong> simply apply the function to every datas.
+
+	<strong>foreach_arg_list()</strong> take an extra generic argument void *.
+
+	<strong>foreach_stop_list()</strong> stop applying the function when
+	the function return false.
+
+	<strong>foreach_arg_stop_list()</strong> is the same as previous but
+	with an extra generic argument void *.
+
+RETURN VALUE
+	<strong>foreach_stop_list()</strong> return true if it stop at the
+	first matching data and false if it stop at the end of the list
+	because no data match.
+	The same for <strong>foreach_arg_stop_list()</strong>.
+
+
+SYNOPSIS
+	int		get_list_len(t_list * list);
+	
+	void *		get_data_at(t_list * list, unsigned int position);
+	void *		get_data_as(t_list * list,
+			bool (*match_data)(void *));
+	
+	t_node *	get_node_at(t_list * list, unsigned int position);
+	t_node *	get_node_as(t_list * list,
+				    bool (*match_node)(t_node *));
+DESCRIPTION
+	All the following functions do not modify the list !
+
+	<strong>get_list_len()</strong> return the number of nodes in
+	the list.
+
+	<strong>get_data_at()</strong> return the data at position.
+
+	<strong>get_data_as()</strong> return the first data which function
+	match_data return true.
+
+	<strong>get_node_at()</strong> return the node at position.
+
+	<strong>get_node_as()</strong> return the first node which function
+	match_node return true.
+
+RETURN VALUE
+	Return a NULL pointer on failure (invalid position,
+	no element match).
+	
+
+SYNOPSIS
+	void *		del_node(t_list ** list, t_node * node);
+	void *		del_node_at(t_list ** list, unsigned int pos);
+	void *		del_node_as(t_list ** list,
+				    bool (*match_data)(void *));
+	void		del_all_node_as(t_list ** list,
+					bool (*match_data)(void *),
+					void (*destroy_data)(void *));
+	
+DESCRIPTION
+	All the following functions modify the list !
+	
+	<strong>del_node()</strong> delete a node in the list and return its data.
+	You must not use this function.
+
+	<strong>del_node_at()</strong> delete the node at position and return its data.
+
+	<strong>del_node_as()</strong> delete the first node which match_data
+	return true and return its data.
+
+	Don't forget to free the data if it is allocated and you don't want
+	to use it !
+	
+	<strong>del_all_node_as()</strong> delete all nodes which match_data
+	return true. If datas must be freed, the 3rd argument can be a
+	function which take the data and free it. It can be NULL, juste free
+	or your own function.
+
+RETURN VALUE
+	
+
+SYNOPSIS
+	
+	
+	
+	
+	bool		insert_data_at(t_list * list, unsigned int pos, void * data);
+	bool		insert_data_after(t_list * list, t_node * node, void * data);
+	bool		insert_data_before(t_list * list, t_node * node, void * data);
+	bool		insert_node_at(t_list * list, int pos, t_node * new_node);
+	bool		insert_node_after(t_list * list, t_node * node,
+					  t_node * new_node);
+	bool		insert_node_before(t_list * list, t_node * node,
+					   t_node * new_node);
+	
+DESCRIPTION
+RETURN VALUE
+
+
+
+
+
+SEE ALSO
+       atoi(3)
+
+db0 company                       2010-08-16                           ITOA</pre></div>
+
+<div class="download">
+                  .
+   .. ............;;.
+    ..::::::::::::;;;;.      [  <a href="files/liblist.tar">Download</a>  ]
+  . . ::::::::::::;;:'
+                  :'
+
+
+</div>
+
+
+<a href="http://commentaires.zerofansub.net/t242.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&amp;t=242" target="_blank">
+  Ajouter un commentaire
+</a>

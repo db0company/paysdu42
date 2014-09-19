@@ -1,0 +1,35 @@
+<h3>Dev - SH - Menage Express</h3>
+<p>
+  Petite commande shell qui permet de faire le menage sur sa machine en enlevant les fichiers temporaires.
+</p>
+
+<div class="code">find . -name "*~" -print -and -delete -or -name "#*#" -print -and -delete</div>
+
+<p>
+  La meme qui enleve aussi les .o (ne pas utiliser en root sur /).
+</p>
+
+<div class="code">find . -name "*~" -print -and -delete -or -name "#*#" -print -and -delete -or -name "*.o" -print -and -delete</div>
+
+<p>
+  A mettre en alias dans le fichier de conf ou dans un <a href="?page=impatient-shell-script" target="_blank">script shell</a>.
+</p>
+
+<div class="download">
+                  .
+   .. ............;;.
+    ..::::::::::::;;;;.      [  <a href="files/cl.sh">Download</a>  ]
+  . . ::::::::::::;;:'
+                  :'
+
+
+</div>
+
+
+<a href="http://commentaires.zerofansub.net/t239.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&amp;t=239" target="_blank">
+  Ajouter un commentaire
+</a>

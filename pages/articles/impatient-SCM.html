@@ -1,0 +1,104 @@
+<h3>Impatient SCM (Gestionnaire de versions)</h3>
+
+<h4>Fonctionnement d'un SCM</h4>
+
+Un SCM (ou gestionnaire de versions) permet &agrave; des d&eacute;veloppeurs
+de travailler en m&ecirc;me temps sur un m&ecirc;me projet. Il permet &eacute;galement
+d'avoir un historique de toute les versions du projets.<br />
+<br />
+Un projet est cr&eacute;e sur un serveur.<br />
+Les utilisateurs r&eacute;cup&egrave;rent une copie de ce projet.<br />
+Chacun travaillent sur sa partie du projet.<br />
+Au fur &agrave; mesure de l'avancement de leurs travails, les utilisateurs
+envoient leurs modifications au serveur (on appellent &ccedil;a "commit").<br />
+Les autres utilisateurs peuvent alors mettre &agrave; jour le projet
+qu'ils modifient localement avec les modifications de l'autre utilisateur.<br />
+
+<h4>Les SCM les plus utilis&eacute;s</h4>
+
+Il existe plusieurs SCM :
+<ul>
+  <li><a href="http://subversion.apache.org/" target="_blank">Subversion (SVN)</a></li>
+  <li><a href="http://git-scm.com/" target="_blank">Git</a></li>
+  <li><a href="http://darcs.net/" target="_blank">darcs</a></li>
+  <li><a href="http://mercurial.selenic.com/" target="_blank">Mercurial</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Comparison_of_revision_control_software" target="_blank">Et bien d'autres !</a></li>
+</ul>
+
+Pour cet impatient, on ne pr&eacute;sentera que Git et Subversion (SVN).
+
+<h4>Commandes de base Git et Subversion (SVN)</h4>
+
+<table>
+  <tr>
+    <th>Fran&ccedil;ais</th>
+    <th width="30%">Subversion (SVN)</th>
+    <th width="30%">Git</th>
+  </tr>
+  <tr>
+    <td>R&eacute;cuperer pour la premi&egrave;re fois la derni&egrave;re version du projet en local</td>
+    <td>svn checkout [url]</td>
+    <td>git clone [url]</td>
+  </tr>
+  <tr>
+    <td>Mettre &agrave; jour le projet avec la derni&egrave;re version sur le serveur</td>
+    <td>svn update</td>
+    <td>git pull</td>
+  </tr>
+  <tr>
+    <td>Voir quels fichiers ont &eacute;t&eacute; modifi&eacute;s ou ajout&eacute;s par rapport &agrave; la derni&egrave; version du serveur</td>
+    <td>svn status</td>
+    <td>git status</td>
+  </tr>
+  <tr>
+    <td>Ajouter un nouveau fichier au projet (= pr&eacute;paration au commit)</td>
+    <td>svn add [filename ...]</td>
+    <td>git add [filename ...]</td>
+  </tr>
+  <tr>
+    <td>Ajouter un fichier modifi&eacute; au projet (= pr&eacute;paration au commit)</td>
+    <td>Rien &agrave; faire</td>
+    <td>git add [filename ...]</td>
+  </tr>
+  <tr>
+    <td>Supprimer un fichier du projet (= pr&eacute;paration au commit)</td>
+    <td>svn delete [filename ...]</td>
+    <td>git rm [filename ...]</td>
+  </tr>
+  <tr>
+    <td>Renommer/D&eacute;placer un fichier (= pr&eacute;paration au commit)</td>
+    <td>svn move [filename ...]</td>
+    <td>git mv [filename ...]</td>
+  </tr>
+  <tr>
+    <td>Commit (= envoyer les modifications demand&eacute;es au serveur)</td>
+    <td>svn commit -m "message de commit"</td>
+    <td>git commit -m "message de commit"<br />
+      git push
+    </td>
+  </tr>
+  <tr>
+    <td>Voir la liste des commits et les messages</td>
+    <td>svn log</td>
+    <td>git log</td>
+  </tr>
+  <tr>
+    <td>Afficher l'aide</td>
+    <td>svn help</td>
+    <td>git help</td>
+  </tr>
+  <tr>
+    <td>Voir la diff&eacute;rence entre le fichier modifi&eacute; et le fichier sur le serveur</td>
+    <td>svn diff [filename]</td>
+    <td>git diff [filename]</td>
+  </tr>
+</table>
+
+<br />
+<a href="http://commentaires.zerofansub.net/t274.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&t=274" target="_blank">
+  Ajouter un commentaire
+</a>

@@ -1,0 +1,36 @@
+body
+{
+    background: white url('http://zerofansub.net/images/interface/fond.jpg');
+    color: black;
+    font-family: sans-serif;
+}
+
+.code, td, th
+{
+    border-color: grey;
+}
+
+.code
+{
+    background: black;
+    color: white;
+    font-family: monospace;
+}
+pre
+{
+    font-family: monospace;
+}
+
+a
+{
+    color: grey;
+}
+
+#main
+{
+    background: white;
+    padding: 20px;
+    margin:auto;
+    width: 750px;
+    border: 1px grey solid;
+}

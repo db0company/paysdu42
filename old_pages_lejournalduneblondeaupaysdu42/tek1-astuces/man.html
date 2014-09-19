@@ -1,0 +1,60 @@
+<h3>Lire un man</h3>
+<div class="news">
+
+Depuis le début de l'année, quand tu poses une question, on te réponds "man" ou "RTFM". Et toi, tu as un peu du mal avec les mans.<br />
+
+<h4>Ouvrir un man</h4>
+Ouvrir un terminal et taper :<br />
+<ul><li>man ma_commande</li></ul>
+Oui, bon, là, vous allez dire que je me moque de vous.<br />
+Si vous chercher une commande pour laquelle il y a plusieurs pages de man, pas la peine d'essayer tout les chiffres à l'aveuglette :<br />
+<ul><li>man -a ma_commande</li></ul>
+permet de parcourir toutes les pages de man existantes pour la commande recherchée. Tout simplement, quand on quitte le man (q), on passe au man suivant.<br />
+Si on ne veut pas se taper tout les mans, on peut aussi taper<br />
+<ul><li>whatis man ma_commande</li></ul>
+pour avoir la liste des mans existants.<br />
+Si on ne connait pas le nom exact de la commande ou qu'on cherche un mot clé, on peut taper :
+<ul><li>man -k ma_recherche</li></ul>
+Pour plus d'informations :
+<ul><li>man man</li></ul>
+tout simplement ;)
+
+<h4>De quoi se compose le man ?</h4>
+<textarea style="width: 100%; height: 450px;">
+COMMAND(1)        Manuel de l'utilisateur Linux        COMMAND(1)
+
+NAME
+     commande - résumé de l'action de la commande
+
+SYNOPSYS
+    <syntaxe complète de la commande>
+
+DESCRIPTION
+    Des explications concernant l'exécution de la commande
+
+OPTIONS
+    Liste des options disponibles et ce qu'elles font
+
+FILES
+    Les fichiers utilisés par la commande 
+
+SEE ALSO
+    commande_cousine(1), commande_frere(5), etc.
+
+BUGS
+    les bugs existants dans la commande
+
+AUTHOR
+    Le nom de l'auteur
+</textarea>
+
+<h4>Un peu de mal avec l'anglais ?</h4>
+Essayez de vous forcer un peu. Dans vos études en informatique, tout sera en anglais et on vous demandera un vocabulaire informatique conséquent.
+Et n'oubliez pas qu'en exam ou en recode-soutenance, les mans (en anglais) seront votre seul secours !<br />
+Si vraiment c'est un trou noir pour vous, une excellente traduction des man en français :<br />
+[ <a href="http://www.linux-kheops.com/doc/man/manfr/man-html-0.9/index.php" target="_blank">LIEN</a> ]
+
+<div class="commentaires"><a href="http://zero.com.1freebb.com/t195.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=195" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-astuces"><h2><-; Retour à la catégorie "Tek1 / Astuces".</h2></a>

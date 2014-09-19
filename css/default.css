@@ -1,0 +1,15 @@
+body
+{
+    background: black;
+    color: white;
+}
+
+img, .code, td, th
+{
+    border-color: #736F6E;
+}
+
+a
+{
+    color: white;
+}

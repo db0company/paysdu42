@@ -1,0 +1,166 @@
+/*
+** str_to_int.c for str to int in /u/all/lepage_b/cu
+** 
+** Made by barbara lepage
+** Login   <lepage_b@epitech.net>
+** 
+** Started on  Mon Dec  7 13:35:57 2009 barbara lepage
+** Last update Sun Dec 13 15:10:50 2009 barbara lepage
+*/
+
+/*
+** Ce petit programme pas tres complet qui ne compile pas
+** explique la maniere generale de realiser un str_to_wordtab
+** version int. Pourquoi faire ? Pour, entre autre, le fdf.
+** C'est une maniere de voir la chose, ce n'est pas tres complet.
+*/
+
+#include <stdlib.h>
+
+    intis_a_nb(char c)
+{
+  if ((c >= '0') && (c <= '9'))
+    return (1);
+  return (0);
+}
+
+			  intcp_nb(char *str)
+{
+			  inti;
+			  intlen;
+
+  i = 0;
+  while (str[i] != 0)
+    {
+      while ((str[i] != 0) && (is_a_nb(str[i]) == 1))
+        i++;
+      while ((str[i] != 0) && (is_a_nb(str[i]) == 0))
+        i++;
+      len++;
+    }
+  return (len - 1);
+}
+
+			  int*str_to_int_(char *str)
+{
+			  inti;
+			  intj;
+			  intlen;
+			  int*tab;
+
+  i = 0;
+  while (is_a_nb(str[i]) == 0)
+    i++;
+  str = &str[i];
+  len = cp_nb(str);
+  if ((tab = malloc((len + 1) * sizeof(*tab))) == NULL)
+    return (0);
+  i = 0;
+  j = 0;
+  while (str[i] != 0)
+    {
+      tab[j] = my_getnbr(&str[i]);
+      while ((str[i] != 0) && is_a_nb(str[i]) == 1)
+			  i++;
+      while ((str[i] != 0) && is_a_nb(str[i]) == 0)
+			  i++;
+      j++;
+    }
+  tab[j] = -1;
+  return (tab);
+}
+
+			  int*str_to_int(char *str)
+{
+			  int*tab;
+			  inti;
+
+  tab = str_to_int_(str);
+  /* sert a afficher pour tester, a enlever */
+  i = 0;
+  while (tab[i] != -1)
+    {
+      my_put_nbr(tab[i]);
+      my_putchar('\n');
+      i++;
+    }
+  /* fin sert */
+  return (0);
+}
+
+			  intmain()
+{
+			  inti;
+			  int**tab;
+			  intlen;
+			  char*s;
+
+  len = /* Une fonction qui compte le nombre de ligne */;
+  tab = malloc((len + 1) * sizeof(*tab));
+
+  i = 0;
+  fd = open/* blabla*/;
+  while ((s = get_next_line(fd)))
+    {
+      tab[i] = str_to_int(s);
+      i++;
+    }
+  tab[i] = NULL;
+  return (0);
+}
+
+/*
+
+                                        ,=???II7?????I?~::
+                               :+=:~=?77Z?+?+7II+????+?I77:.
+                           =,:I7I??II+?+++?+??7??????I????7I7+,
+                         ?Z7?+++++++++++?????I7?7?????I????I7$7+,
+                       Z$?+++++++++++??+?????$I?ZZ????I$I?+I?IZ$II
+                     $?++++++??+++?++?+??I?IIZ??OO7????I$7?+I77IZO7:
+                  IZI=+++++?I++++?+??+???7?77ZI?OOZ$II77?$I?+7?I7?O7I:
+                 I?==+++++7++?+????I????7$?$ZZ$I8O8ZZI77$IZ7??ZIIZI$O$,
+               ?Z?==+++++?=+++????7I???IZ$?$8$87O8D8ZZ$7$$$Z7I$O$IZ7+I$~
+              ?7+==++++?Z?++??I7??7I???7OZIZDZDOODDDO87O$$IZZ7IZOZZO7=$Z?
+             ??===++++ZZI?+???ZI??77?IIZOZIZDONDDODNDOZ$O7Z$ZO?7O87O8$,+OI
+            I$===+++?$$7I????I$??7$I?77O8Z7ZD888O$7$O88ZZOZZZO$IZ8$$88I,~Z
+           I$=+==++IZ$77I++?I7?+I$Z?I7$D8Z$$8$$+=====?Z8$OZZZOO77O8$Z8$?,,I
+          ?$====+?Z$Z877I+??IZI?I$Z?I7Z8$OZ$8IZ?======DZ8$OOZ88O7ZDO$88Z=,Z+
+          I?=+=+?77O8Z7$?+I?$8II$7OI77OZIO$Z87O7=~~~~=$?$O8OZ888ZZ88Z$DOI,:O~
+          I=+=?I$78OO$$7++7$OOI7Z$87$$O$?Z$88O$Z=~~~~~+$+ZDOOOODOOZ$8ZODO+.~Z,
+          I=+=I$788OZZZ7??7Z8OI$O$8$$$OZ$O+7O$~$+~:::~$DMM88OOONDOO=OOIOO$,.+?
+          I++?7$88ZZ7OO7?I$O8O7ZO$DZ$Z8I+I+=Z$~=I=:::~DMMZMDOOOOD8O~?8~ZI8   +
+          I?I$Z88$IZ$8O7I7$ODO7Z8$8O8OOI+=$Z7O~:=+::::MM8OON8OZ8Z8O~~O,7~7   ~
+         +$$7I8ZZ$DZOOO$7$ZOD87OD$8ZZZO$ODD8I7==:=::::7MMM~ODOZ87ZO~ Z. ~:
+       IIODIIO7O$D8ZOO8$7$Z8D87OD8OIOOMMMM8?+$I:::::::~OZZ=IDD$87IZ  7.
+       ZDZI7O7O88Z$ZOO8Z$$Z88OI8DOOIDMMMMM?77::::::::::~$8O+ODZO$?Z,
+    ?IOOON7Z?O8$??OOOZ8O$$O88$7ZD88$MMMMMMMMM=::::::::::====?D$8OIO+
+  $ZZZZONM$I8D?I$ZOOOOO8$ZO887$ZD8ODMMMMNNNN8Z::::::::::,===+8?ZOZI7=
+  ZZZZOMNN7D$?Z$$$8OZ7ODZZO8OIO$DOOMNOMMN8NZZN:::::::::::+===Z??7OI?7
+  ZZZZDNND8Z?$$$OOOO$7ODOZO8OI878O8DI=MN?~Z8D?:::::::::::====$I??$7?I+
+  ZZZODNONZZO8Z$$$OO88888ZO8OI8ZO8OZ+::~7O$~~~~::::::::::~===OO7??Z$?7
+  ZZOONODNO7$Z$$$$OOOD$88OO8OIZ8ZZ$Z7::::=~~~~~:::::::=$$~==+~DO$?I$$I+
+  ZOODDONMZ7$$I???O8O8$OOOZ887$O8ZZ+$=::::~~~~~:::::~$7$=~==?,=8O$??$$7+
+  OODDZDNMO7Z$7?I?Z8O8?78ZZ8D$7Z88OI~+:::::::::::::::~==~=~Z+  :OOI?I7I7=
+  DDNDONMNO7Z$$?II$8OOO=$$OODZIZ$8Z7=:::::::::::::,:::~~~=IO    $Z$IIZ$7+
+  DNDZDNMN87Z7$II778OO8OD8ZOD8?$$$ZO?::::::::::::,::::~~==D       8ZZI$OO$
+  NDZODMMN8$O7Z$I$IO8O8O88D8DDI7ZIOO$=:::::::,:::,::::~==?         ~8OZI7ZO$
+  DZZODMMM8$O7ZZI7IZ8Z8O88DODD7?Z78ZO7??+=::::::::::~~~=+D          $8$II7O8=,
+  OZOONMMM8$O77Z7$7$OODOO8DO8DZ?$$O8ZZ????????I$Z$$$$$$ON            +O$$I$O87,
+  OZOOMM87$ZO$78$$7$ZZDOOD8O888IIZ$8DZ????????+Z8DD8D8ODDD            78$$7$ZO$:
+  OZOO?   7ZO778O$$$Z$DOO8D8888$?Z7O8ZZ??+?+?++O88O88Z8$OZ8            :O8ZZ$ZODZ$
+  +?ZO,   7OO$$88ZZ$ZZDOO8DDO8D8I7IZ8ZZO7++++++ZZD?78ID7=$8              =OZZZZOOZ
+          7ZO7$O88OZZ$D8OO8D8888$I7IO8?$ZZ+=+++I+?,:~7=$,=+               +8OZZZZZ
+          Z$$$ZOZOZOZ$D8OODD8888OIZI$8??+IZ7+==I?=++==+I+:,~                ?8OZOZ
+          Z??$$O$7OOZZDDDODDD88OOZZ$IZ8OOOOO887+::::::~~~=                    88OZ
+          Z~+ZIOZ~DO$Z8?8D8D$8DOZ87Z77$?+====~~::::::::::~~=                   78O
+           :~$~ZZ:8ZZO8I+88$O88DZ8IZI$OI+===~::::::::,,:::~~=+                  ~$            _ _      ___
+            ,7:IZ=8O8887,~Z8IO8OZO77$$$$?==~:::,:,,,:,,:::~~~=                               | | |    / _ \
+             +=$D+:IIZOO:,IIZOZZZZOIZ$OI?+~~::,,:,,:,,,,,::~~~=                            __| | |__ | | | |
+              ~,I:,:~=:ZIZ:$IO$I$$O$$ZO8I+~::::,::,::,,,,,::~~+:                          / _` | '' \| | | |
+                        8~$+7$Z+$7O$$ZZO8+~::::,,,,::,,:,,::~~==.                        | (_| | |_) | |_| |
+                          ~?$I$=I78I$$ZZ8$~::::::,,::,,,,,::~~~7II7                       \__,_|_.__/ \___/
+                                +$O$+ZZZO8+::::::,,::,,,,,:::~~?+:$I
+                                 $ZO+IZZZ8?=~~:~::::::::::::~~=+?~$$$                 sur db0.fr
+			   OZ7ZZZOZ$7777777777777777777$Z7ZZZZ                   Zerofansub.net
+
+*/

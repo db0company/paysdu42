@@ -1,0 +1,46 @@
+
+
+/*********************/
+
+	Pourquoi printf met tout a la fin ?
+
+  Printf ne fonctionne pas comme celui que nous avons coder.
+ C&rsquo;etait la tout le but de le recoder :-)
+  En fait, printf fait un buffer dans lequel il concatene tout ce qu&rsquo;on
+  lui demande puis &rsquo;relache&rsquo; son buffer d&rsquo;un coup (affiche a l&rsquo;ecran)
+  quand il rencontre un &rsquo;\n&rsquo;. C&rsquo;est pour ca que lorsque l&rsquo;on fait :
+
+  my_putstr("J&rsquo;ai ");
+  printf("%d", 12);
+  my_putstr("ans.\n");
+
+  On a a l&rsquo;ecran :
+
+  ($)>./a.out
+  J&rsquo;ai ans.
+  12($)>
+
+  alors qu&rsquo;en faisant :
+
+  my_putstr("J&rsquo;ai ");
+  printf("%d\n", 12);
+  my_putstr("ans.\n");
+
+  On a a l&rsquo;ecran :
+
+  ($)>./a.out
+  J&rsquo;ai 12
+  ans.
+  ($)>
+
+  C&rsquo;est pour ca qu&rsquo;un \n a la fin d&rsquo;un printf doit etre automatique !
+
+  La meilleure solution : utilisez votre printf. En plus, vous serez fiers de dire :
+  "C&rsquo;est moi qui l&rsquo;ai fait !" ;-)
+
+  C&rsquo;est une explication &rsquo;en gros&rsquo; du pourquoi du comment du printf.
+
+  Pour les curieux, plus de details ici : http://zerofansub.net/db0/journal/index.php?page=42/printf
+
+/*********************/
+

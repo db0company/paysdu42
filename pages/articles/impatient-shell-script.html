@@ -1,0 +1,484 @@
+<h3 id="up">Impatient Shell Script</h3>
+
+<h4>Sommaire</h4>
+<ol>
+  <li><a href="#fichier-et-execution">Fichier et execution</a></li>
+  <li><a href="#syntaxe">Syntaxe</a></li>
+  <li><a href="#conditions-et-equivalences-en-c">Conditions et equivalences en C</a></li>
+  <li><a href="#tests-sur-des-fichiers">Tests sur des fichiers</a></li>
+  <li><a href="#commandes-shell-particulierement-pratiques-pour-des-shell-scripts">Commandes shell particulierement pratiques pour des shells scripts</a></li>
+  <li><a href="#autres-commandes-shell">Autres commandes shell</a></li>
+  <li><a href="#exemples">Exemples</a></li>
+  <li><a href="#exercices">Exercices</a></li>
+  <li><a href="#corrections">Corrections</a></li>
+</ol>
+
+<hr />
+
+<h4 id="fichier-et-execution">Fichier et execution</h4>
+<ul>
+  <li>Extension <strong>.sh</strong></li>
+  <li>Droits d'execution 755 (+x) (chmod)</li>
+  <li>Se lance avec ./mon_script ou sh mon_script</li>
+  <li>Avec <strong>.</strong> mon_script, on lance le script directement dans le shell en court sans passer par un sous-processus.</li>
+  <li>Lancer un script avec <strong>sh -x</strong> mon_script, on peut voir toutes les commandes que le script execute.</li>
+  <li>Header :<br />
+    <pre><code>
+      <strong>#!/bin/sh</strong>
+    </code></pre>
+    Le path peut etre remplace par un autre shell (bash, tcsh, ksh, zsh, 42sh, ...).
+  </li>
+  <li>Les lignes commentees commencent par un <strong>#</strong>.</li>
+  <li>On peut separer une commande sur plusieurs lignes grace au <strong>/</strong>.</li>
+  <li>L'indentation n'a pas d'importante mais il faut faire attention aux espaces. On peut mettre des ";" en fin de ligne mais ca marche aussi sans.</li>
+</ul>
+<a href="#up">UP</a>
+
+<h4 id="syntaxe">Syntaxe</h4>
+<ul>
+  <li>Commandes shell les unes en dessous des autres.<br />
+    Voir <a href="?page=impatient-shell" target="_blank">Impatient Shell Commands</a>.
+  </li>
+  <li>Les variables ont un <strong>$</strong> devant quand on les utilise mais pas quand on
+    leur donne une assignation :
+    <pre><code>
+      ma_variable=42
+      ma_chaine_de_caracteres="le pays du 42"
+      echo $ma_variable
+      echo $ma_chaine_de_caracteres</code></pre>
+  </li>
+  <li>On recupere le nom du script grace a <strong>$0</strong>.</li>
+  <li>On recupere les arguments donnes en ligne de commande grace a <strong>$1</strong>,
+    <strong>$2</strong>, <strong>$3</strong>,...
+  </li>
+  <li>On recupere le nombre d'arguments donnes en ligne de commande grace a <strong>$#</strong>.
+  </li>
+  <li>On recupere le PID grace a <strong>$$</strong>.</li>
+  <li>On peut avoir un nombre aleatoire grace a <strong>$RANDOM</strong></li>
+  <li>La construction "si" se fait grace a la syntaxe suivante :<br />
+    <pre><code>
+      <strong>if</strong> [ condition ]
+      then
+	commande1
+	commande2
+      <strong>elif</strong> [ conditon ]
+      then
+	commande3
+      <strong>else</strong>
+	commande4
+      <strong>fi</strong></code></pre>
+    </li>
+  <li>La construction "executer tant que" se fait grace a la syntaxe suivante :<br />
+    <pre><code>
+      <strong>while</strong> [ condition ]
+      do
+	commande1
+        break
+	continue
+	commande2
+      done</code></pre>
+  </li>
+  <li>La construction "executer selon le cas" se fait grace a la syntaxe suivante :<br />
+    <pre><code>
+      <strong>case</strong> $nom_variable <strong>in</strong>
+        valeur1)
+		commande1
+		commande2
+		;;
+        valeur2)
+		commande3
+		;;
+        *)
+		commande_si_autre
+		;;
+      esac
+</code></pre>
+  </li>
+  <li>La construction "tant que" avec incrementation se fait grace a la syntaxe suivante :<br />
+    <pre><code>
+      <strong>for</strong> nom_variable_dincrementation <strong>in</strong> valeur1 valeur2 ...
+      do
+	commande1
+        break
+	continue
+	commande2
+      done</code></pre>
+  </li>
+  <li>On peut declarer des fonctions grace a la syntaxe suivante :<br />
+    <pre><code>
+      <strong>nom_fonction()</strong>		#declaration de la fonction
+      {
+        commande1 $1 $2
+        commande2
+      }
+      nom_fontion "pays" 42	#appel de la fonction avec 2 args</code></pre>
+  </li>
+  <li>Verifier les valeurs de retours des commandes.</li>
+  <li>Il vaut mieux quitter en indiquant si on a reussi ou echouer en utilisant exit (0 = ok / autre = echec)</li>
+  <li>Avec bash comme shell, on peut faire des calculs avec la syntaxe suivante :
+    <pre><code>
+      resultat=$(($variable1+3))
+    </code></pre>
+  </li>
+  <li>En mettant <strong>eval</strong> devant une commande, le shell interprete les <a href="?page=impatient-regexp" target="_blank">regexp</a> avant d'executer.</li>
+</ul>
+<a href="#up">UP</a>
+
+<h4 id="conditions-et-equivalences-en-c">Conditions et equivalences en C</h4>
+<table>
+  <tr>
+    <th width="25%">Francais</th>
+    <th >C</th>
+    <th>Shell Script</th>
+  </tr>
+  <tr>
+    <td>expression1 <strong>et</strong> expression2 <strong>vraies</strong></td>
+    <td>((expression1) <strong>&&</strong> (expression2))</td>
+    <td>[ expression1 <strong>-a</strong> expression2 ]<br /></td>
+  </tr>
+  <tr>
+    <td>expression1 <strong>ou</strong> expression2 <strong>vraies</strong></td>
+    <td>((expression1) <strong>||</strong> (expression2))</td>
+    <td>[ expression1 <strong>-o</strong> expression2 ]</td>
+  </tr>
+  <tr>
+    <td><strong>Longueur</strong> de la chaine de caracteres <strong>differente de zero</strong></td>
+    <td>(<strong>strlen</strong>(string) <strong>!= 0</strong>)</td>
+    <td>[ <strong>-n</strong> string ]</td>
+  </tr>
+  <tr>
+    <td><strong>Longueur</strong> de la chaine de caracteres <strong>egale a zero</strong></td>
+    <td>(<strong>strlen</strong>(string) <strong>== 0</strong>)</td>
+    <td>[ <strong>-z</strong> string ]</td>
+  </tr>
+  <tr>
+    <td>Chaine de caractere 1 <strong>egale</strong> a chaine de caractere 2</td>
+    <td>(<strong>strcmp</strong>(string1, string2) <strong>== 0</strong>)</td>
+    <td>[ string1 <strong>=</strong> string2 ]</td>
+  </tr>
+  <tr>
+    <td>Chaine de caractere 1 <strong>differente</strong> de chaine de caractere 2</td>
+    <td>(<strong>strcmp</strong>(string1, string2) <strong>!= 0</strong>)</td>
+    <td>[ string1 <strong>!=</strong> string2 ]</td>
+  </tr>
+  <tr>
+    <td>integer a <strong>egal</strong> integer b</td>
+    <td>(a <strong>==</strong> b)</td>
+    <td>[ a <strong>-eq</strong> b ]</td>
+  </tr>
+  <tr>
+    <td>integer a <strong>superieur ou egal</strong> integer b</td>
+    <td>(a <strong>>=</strong> b)</td>
+    <td>[ a <strong>-ge</strong> b ]</td>
+  </tr>
+  <tr>
+    <td>integer a <strong>superieur</strong> integer b</td>
+    <td>(a <strong>></strong> b)</td>
+    <td>[ a <strong>-gt</strong> b ]</td>
+  </tr>
+  <tr>
+    <td>integer a <strong>inferieur ou egal</strong> integer b</td>
+    <td>(a <strong><=</strong> b)</td>
+    <td>[ a <strong>-le</strong> b ]</td>
+  </tr>
+  <tr>
+    <td>integer a <strong>inferieur</strong> integer b</td>
+    <td>(a <strong><</strong> b)</td>
+    <td>[ a <strong>-lt</strong> b ]</td>
+  </tr>
+  <tr>
+    <td>integer a <strong>different</strong> integer b</td>
+    <td>(a <strong>!=</strong> b)</td>
+    <td>[ a <strong>-ne</strong> b ]</td>
+  </tr>
+</table>
+<a href="#up">UP</a>
+
+
+<h4 id="tests-sur-des-fichiers">Tests sur des fichiers</h4>
+
+<table>
+  <tr>
+    <th width="25%">Francais</th>
+    <th>Shell Script</th>
+  </tr>
+  <tr>
+    <td>Le fichiers existe</td>
+    <td>[ <strong>-e</strong> file ]</td>
+  </tr>
+  <tr>
+    <td>Le fichiers n'existe pas</td>
+    <td>[ <strong>! -e</strong> file ]</td>
+  </tr>
+  <tr>
+    <td>Le fichiers existe et on peut lire</td>
+    <td>[ <strong>-r</strong> file ]</td>
+  </tr>
+  <tr>
+    <td>Le fichiers existe et on peut ecrire</td>
+    <td>[ <strong>-w</strong> file ]</td>
+  </tr>
+  <tr>
+    <td>Le fichiers existe et est executable</td>
+    <td>[ <strong>-x</strong> file ]</td>
+  </tr>
+<tr>
+    <td>Le fichiers existe et c'est un dossier</td>
+    <td>[ <strong>-d</strong> file ]</td>
+  </tr>
+</table>
+<p>---> Lire le <a href="?page=impatient-man-pages" target="_blank">man</a> test pour plus de tests sur les fichiers.</p>
+<a href="#up">UP</a>
+
+<h4 id="commandes-shell-particulierement-pratiques-pour-des-shell-scripts">Commandes shell particulierement pratiques pour des shells scripts</h4>
+<ul>
+  <li><strong>echo</strong><br />
+    Affiche les arguments passes en parametres sur la sortie standard.<br />
+    Remplace $NOM par les variables locales et d'environnements.
+    <pre><code>      echo "Bonjour $USER"</code></pre>
+  </li>
+  <li><strong>printf</strong><br />
+    Fonctionne comme le printf en C avec une chaine formatee.
+    <pre><code>      age=42
+      printf "J'ai %d ans\n" $age</code></pre>
+  </li>
+  <li><strong>cat</strong> nom_fichier<br />
+    Affiche le contenu des fichiers passes en parametres.
+  </li>
+  <li><strong>sleep</strong> nombre_de_seconde<br />
+    Attends le nombre de seconde indiques avant de continuer le script.
+  </li>
+  <li><strong>clear</strong><br />
+    Efface le contenu du terminal.
+  </li>
+  <li><strong>touch</strong> nom_fichier<br />
+    Creer un fichier.
+  </li>
+  <li><strong>read</strong> NOM<br />
+    Lit l'entree standard jusqu'a un "\n" et met son contenu dans la variable $NOM.
+    <pre><code>      echo -n "Entrez votre nom ici : "
+      read nom_utilisateur<br />
+      echo "Vous vous appelez $nom_utilisateur."</code></pre>
+  </li>
+  <li><strong>bc</strong><br />
+    Calculatrice
+    <pre><code>      echo "(42+(21*2))/2" | bc</code></pre>
+  </li>
+  <li><strong>grep</strong> string<br />
+    Garde uniquement les lignes qui contiennent string.
+    <pre><code>      echo "Informations sur mon compte :"
+      cat /etc/passwd | grep $USER</code></pre>
+  </li>
+  <li><strong>sed</strong><br />
+    Edition de ligne tres complet utilisant les <a href="?page=impatient-regexp" target="_blank">regexp</a>.</li>
+  <li><strong>rev</strong><br />
+    Afficher en miroir.
+    <pre><code>      echo "srevne'l a elrap 24 ud syap eL" | rev</code></pre>
+  </li>
+  <li><strong>sort</strong><br />
+    Affiche apres avoir trie par ordre ASCII. (A l'envers avec -r)
+    <pre><code>      echo "chenille\nmaison\narbre\nbuisson" | sort</code></pre></li>
+  <li><strong>tr</strong> string1 string2<br />
+    Change des caracteres (en utilisant des <a href="?page=impatient-regexp" target="_blank">regexp</a>).
+    <pre><code>      echo "JE NE VEUX PAS DE MAJUSCULES" | tr '[A-Z]' '[a-z]'</code></pre>
+  </li>
+  <li><strong>cut</strong><br />
+    Selectionne seulement certaines parties de l'affichage. Fonctionne aussi avec des colonnes.
+    <pre><code>      echo "Liste des comptes utilisateurs :"
+      cat /etc/passwd | cut -d':' -f1</code></pre>
+  </li>
+  <li><strong>head</strong><br />
+    Affiche les 10 premieres lignes seulement. (nombre de ligne avec -n)
+    <pre><code>      cat mon_fichier | head -n 3</code></pre></li>
+  <li><strong>tail</strong><br />
+    Affiche les 10 dernieres lignes seulement. (nombre de ligne avec -n)
+    <pre><code>      cat mon_fichier | tail -n 2</code></pre></li>
+  <li><strong>wc</strong><br />
+    Affiche le nombre de lignes, de mots et de caracteres.
+    <pre><code>      echo "Nombre de comptes utilisateurs :"
+      cat /etc/passwd | wc -l</code></pre>
+  </li>
+  <li><strong>find</strong><br />
+    Fais des recherches de fichiers et eventiellement des actions dessus.
+    (<a href="?page=dev-sh-menage-express" target="_blank">exemple</a>)
+  </li>
+  <li><strong>dialog</strong><br />
+    Pratique pour faire de jolis menus.
+    (<a href="images/pages/dialog_exemple.png" target="_blank">exemple</a>)
+  </li>
+</ul>
+
+<h4 id="autres-commandes-shell">Autres commandes shell</h4>
+<p>
+  Voir article <a href="?page=impatient-shell" target="_blank">Impatient shell</a>.
+</p>
+<a href="#up">UP</a>
+<br />
+<br />
+<script type="text/javascript"><!--
+google_ad_client = "pub-7354724707087704";
+/* Shell Script */
+google_ad_slot = "8764379307";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<h4 id="exemples">Exemples</h4>
+Exemple simple de traitement des arguments :
+<pre><code>
+  #!/bin/sh
+  # Made by		db0
+  # Contact		db0company[at]gmail[dot]com
+  # Website		http://db0.fr/
+
+  if [ $# -eq 2 ]
+  then
+    echo "J'ai deux arguments : " $1 "et" $2
+  elif [ $# -eq 1 ]
+  then
+    echo "J'ai un argument : " $1
+  else
+    echo "donne moi un argument !"
+  fi</code></pre>
+Exemple de petit programme simple a comprendre qui propose 3 options dont une avec un petit jeu pour deviner un nombre et les deux autres pour faire des mini-fiches utilisateurs :
+<pre><code>
+#!/bin/bash
+# Made by             db0
+# Contact             db0company[at]gmail[dot]com
+# Website             http://db0.fr/
+
+# Fonctions
+
+devine_nombre()
+{
+    rand_number=$[ $RANDOM % 20]
+    search_number=0
+    echo "Cherche le nombre compris entre 1 et 20"
+    while [ $search_number -ne $rand_number ]
+    do
+        echo -n "Choisis un nombre : "
+        read search_number
+	tmp_nombre=$search_number
+	tmp_nombre=$[search_number+0]
+	if [ $search_number = $tmp_nombre ];
+	then
+            if [ $search_number -ne $rand_number ]
+            then
+		echo -n "Essaye encore "
+		if [ $search_number -gt $rand_number ]
+		then
+		    echo "avec un nombre plus petit."
+		else
+		    echo "avec un nombre plus grand."
+		fi
+            elif [ $search_number -eq $rand_number ]
+	    then
+		echo "Bravo ! Le nombre etait bien $rand_number"
+            fi
+	else
+	    echo "Tu m'as pas donne de chiffre, vilain"
+	    search_number=0
+	fi
+
+    done
+    echo "Merci pour ce petit jeu."
+}
+
+fiche_user()
+{
+    fiche_user="fiche_user_$1.txt"
+  # mettre le nom dans la fiche
+    echo "Nom : $1" > $fiche_user
+  # mettre le shell par defaut dans la fiche
+    result_grep=`grep $1 /etc/passwd`
+    if [ -z $result_grep ]
+    then
+        echo "L'utilisateur $1 n'existe pas"
+        rm -f $fiche_user
+        exit 1
+    fi
+    result_cut=`echo $result_grep | cut -d':' -f7`
+    if  [ -n $result_cut ]
+    then
+        echo "Shell par defaut :" $result_cut >> $fiche_user
+    fi
+  # affichage de la fiche
+    echo "Fiche terminee :"
+    cat $fiche_user
+}
+
+# Recuperer le nom d'utilisateur dans la ligne de commande
+if [ $# -eq 1 ]
+then
+    echo "Bonjour $1"
+else
+    echo "Attention tu as oublie de me dire ton nom comme argument."
+    exit 1
+fi
+
+# Demander l'option
+echo "Option 1 : Jeu, Devine le nombre"
+echo "Option 2 : Creer une fiche sur $1"
+echo "Option 3 : Creer une fiche sur $USER"
+
+echo -n "Quelle option tu choisis ? "
+read option
+
+case $option in
+    1)
+	devine_nombre
+	;;
+    2)
+	fiche_user $1
+	;;
+    3)
+	fiche_user $USER
+	;;
+    *)
+	echo "l'option n'existe pas"
+	exit 1
+	;;
+esac</code></pre>
+
+
+<div class="download"><pre>
+                  .
+   .. ............;;.
+    ..::::::::::::;;;;.      [  <a href="files/mon_premier_script_shell.sh">Download</a>  ]
+  . . ::::::::::::;;:'
+                  :'</pre></div>
+<a href="#up">UP</a>
+
+<h4 id="exercices">Exercices</h4>
+<ul>
+  <li>Faire un script qui affiche le pid, le nombre d'argument et les arguments.</li>
+  <li>Faire un script qui compte jusqu'a 10 en patientant une seconde entre chaque chiffre et qui affiche un joli ASCII Art a la fin du compteur.</li>
+  <li>Modifier le script precedent pour y afficher le nombre de test de chiffre avant de trouver le bon.</li>
+  <li>Modifier le script precedent pour que l'on puisse choisir la taille de random maximum du chiffre a deviner.</li>
+  <li>Modifier le script precedent pour qu'il stocke le meilleur score dans un fichier et affiche le meilleur score a chaque fois qu'un utilisateur joue. Evidemment, si le score est battu, le fichier est modifie en consequence.</li>
+  <li>Modifier le script precedent pour qu'il affiche d'autres infos dans la fiche sur l'utilisateur comme sa home(/etc/passwd), son id (/etc/passwd), son groupe, ... </li>
+</ul>
+<h5 id="corrections">Corrections</h5>
+<pre>
+total 20
+<a href="files/exo/print_pid_args.sh" target="_blank">-rwxr-xr-x 1 dbzero users  267 Aug  6 11:54 print_pid_args.sh*</a>
+<a href="files/exo/chrono.sh" target="_blank">-rwxr-xr-x 1 dbzero users  201 Aug  6 12:36 chrono.sh*</a>
+<a href="files/exo/ascii_art_file" target="_blank">-rw-r--r-- 1 dbzero users  128 Aug  6 12:33 ascii_art_file</a>
+<a href="files/exo/mon_premier_script_shell_modif1.sh" target="_blank">-rwxr-xr-x 1 dbzero users 2253 Aug  6 13:00 mon_premier_script_shell_modif1.sh*</a>
+<a href="files/exo/mon_premier_script_shell_modif2.sh" target="_blank">-rwxr-xr-x 1 dbzero users 2521 Aug  6 12:52 mon_premier_script_shell_modif2.sh*</a>
+</pre>
+<a href="#up">UP</a>
+<br />
+<br />
+
+<a href="http://commentaires.zerofansub.net/t244.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&t=244" target="_blank">
+  Ajouter un commentaire
+</a>

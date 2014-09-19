@@ -1,0 +1,91 @@
+<h3>Impatient - Man Pages</h3>
+
+<h4 id="trouver-ouvrir-un-man">Trouver, ouvrir un man</h4>
+Ouvrir un terminal et taper :<br />
+
+<br /><div class="code">
+  man ma_commande
+
+</div><br />
+
+Si vous chercher une commande pour laquelle il y a plusieurs pages de man, pas la peine d'essayer tout les chiffres à l'aveuglette :<br />
+
+<br /><div class="code">
+  man -a ma_commande
+
+</div><br />
+
+permet de parcourir toutes les pages de man existantes pour la commande recherchée. Tout simplement, quand on quitte le man (q), on passe au man suivant.<br />
+Si on ne veut pas se taper tout les mans, on peut aussi taper<br />
+
+<br /><div class="code">
+  whatis man ma_commande
+
+</div><br />
+
+pour avoir la liste des mans existants.<br />
+Si on ne connait pas le nom exact de la commande ou qu'on cherche un mot clé, on peut taper :<br />
+
+<br /><div class="code">
+  man -k ma_recherche
+
+</div><br />
+
+Pour plus d'informations sur les mans :<br />
+
+<br /><div class="code">
+  man man
+
+</div><br />
+
+
+<h4 id="de-quoi-se-compose-le-man">De quoi se compose le man ?</h4>
+<br /><div class="code"><pre>COMMAND(1)        Manuel de l'utilisateur Linux        COMMAND(1)
+
+NAME
+     commande - résumé de l'action de la commande
+
+SYNOPSYS
+    <syntaxe complète de la commande>
+
+DESCRIPTION
+    Des explications concernant l'exécution de la commande
+
+OPTIONS
+    Liste des options disponibles et ce qu'elles font
+
+FILES
+    Les fichiers utilisés par la commande 
+
+SEE ALSO
+    commande_cousine(1), commande_frere(5), etc.
+
+BUGS
+    les bugs existants dans la commande
+
+AUTHOR
+    Le nom de l'auteur
+</pre></div>
+
+<h4 id="un-peu-de-mal-avec-l-anglais">Un peu de mal avec l'anglais ?</h4>
+Essayez de vous forcer un peu. En informatique, la plupart des informations qu'on cherche sont en anglais et on vous demandera le vocabulaire adequat.<br />
+Si vraiment c'est un trou noir pour vous, une excellente traduction des man en français :<br />
+
+<div class="download"><pre>
+                  .
+   .. ............;;.
+    ..::::::::::::;;;;.      [ <a href="http://www.linux-kheops.com/doc/man/manfr/man-html-0.9/index.php" target="_blank">LIEN</a> ]
+  . . ::::::::::::;;:'
+                  :'
+
+</pre></div>
+
+<br />
+<br />
+<a href="http://commentaires.zerofansub.net/t195.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&t=195" target="_blank">
+  Ajouter un commentaire
+</a>

@@ -1,0 +1,23 @@
+<h3>Makefile, le retour (compatible archi)</h3>
+<div class="news">
+<img src="images/bancale.png" alt="Attention ! Cet article est bancale et mérite quelques corrections." />
+## Compiler sur d'autres OS ? maya, inca, tout ca ? Ha ha ha, vous pensiez que<br />
+## j'allais vous donner la reponse si facilement ? Non. Mais des indices, oui.<br />
+<br />
+## Sur chaque OS, la regle pour compiler est differente.<br />
+## maya : /usr/sfw/bin/gcc , inca, freebsd : gcc suffit.<br />
+## trouvez maintenant un moyen de faire appeler a votre Makefile le bon CC<br />
+## selon la machine. Utilisez l'environnement... mettez ${OSTYPE} et vous<br />
+## verrez ce que votre Makefile va remplacer, ect.<br />
+<br />
+## Une fois que vous avez vos regles de compilation, c'est regle.<br />
+## Oui, c'est tout. Seulement, pour faire un make sous maya, il sera pas<br />
+## content. Il faut faire /usr/ccs/bin/make a la place.<br />
+<br />
+## Vous compilez, ca marche, mais vous avez d'etranges warning d'undeclared ?<br />
+## Quelques petits condition a ajouter dans votre .h, quelques truc.h a<br />
+## aller chercher.<br />
+	<div class="commentaires"><a href="http://zero.com.1freebb.com/t164.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=164" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-c"><h2><-; Retour à la catégorie "Tek1 / C".</h2></a>

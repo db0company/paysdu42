@@ -1,0 +1,22 @@
+<h3>Verifier les fuites memoires (valgrind)</h3>
+<div class="news">
+
+Les m'sieurs en rouge n'ont pas le droit d'utiliser valgrind en soutenance.<br />
+Mais c'est une commande qui, quand on teste notre programme, peut nous etre<br />
+tres utile ! Elle permet, en gros, de verifier si tout les mallocs sont free.<br />
+<br />
+Comment elle s'utilise ?<br />
+--> valgrind ./executable<br />
+S'affiche alors apres avoir execute le programme le nombre d'allocation,<br />
+le nombre de free et le nombre de pertes en memoire.<br />
+<br />
+Oh non ! J'ai pas tout free... Mais comment faire pour voir ce que j'ai oublie  ?<br />
+--> valgrind --leak-check=yes --show-reachable=yes ./executable<br />
+permet d'afficher les details.<br /><br />
+
+Merci Google !<br />
+
+<div class="commentaires"><a href="http://zero.com.1freebb.com/t168.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=168" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-astuces"><h2><-; Retour à la catégorie "Tek1 / Astuces".</h2></a>

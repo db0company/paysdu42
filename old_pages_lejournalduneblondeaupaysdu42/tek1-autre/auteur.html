@@ -1,0 +1,39 @@
+<h3>Comment faire un fichier auteur ? (exam)</h3>
+<div class="news">
+
+Un des exercices les plus difficiles d'exam et il y en a encore qui n'y arrivent pas !
+Voici donc un petit tuto :
+
+<h4>Methode rapide</h4>
+cd rendu<br />
+echo $USER > auteur
+<h4>Methode moyenne</h4>
+cd rendu<br />
+emacs auteur<br />
+*Taper le login*<br />
+Entrée<br />
+Ctr-X-Ctrl-S<br />
+Ctrl-X-Ctrl-C<br />
+<h4>Methode lente</h4>
+mkdir tmp<br />
+cd tmp<br />
+emacs tmp_auteur<br />
+*Je regarde sur ma carte etudiant comment je m'appelle*<br />
+*Je recopie soignesement mon login depuis la carte etudiant*<br />
+Entrée<br />
+Ctr-X-Ctrl-S<br />
+Ctrl-X-Ctrl-C<br />
+mv tmp_auteur ../<br />
+cd ..<br />
+cp ././././././tmp_auteur ~/rendu<br />
+rmdir tmp<br />
+cd ~/rendu<br />
+ls -l<br />
+mv tmp_auteur auteur<br />
+cat -e auteur<br />
+<br />
+
+<div class="commentaires"><a href="http://zero.com.1freebb.com/t188.htm" target="_blank">Commentaires</a> ~ 
+<a href="http://zero.com.1freebb.com/posting.php?mode=reply&t=188" target="_blank">Ajouter un commentaire</a></div>
+</div>
+<a href="?page=tek1-c"><h2><-; Retour à la catégorie "Tek1 / C".</h2></a>

@@ -1,0 +1,18 @@
+
+/* * * * * * */
+
+Les m'sieurs en rouge n'ont pas le droit d'utiliser valgrind en soutenance.
+Mais c'est une commande qui, quand on teste notre programme, peut nous etre
+tres utile ! Elle permet, en gros, de verifier si tout les mallocs sont free.
+
+Comment elle s'utilise ?
+--> valgrind ./executable
+S'affiche alors apres avoir execute le programme le nombre d'allocation,
+le nombre de free et le nombre de pertes en memoire.
+
+Oh non ! J'ai pas tout free... Mais comment faire pour voir ce que j'ai oublie  ?
+--> valgrind --leak-check=yes --show-reachable=yes ./executable
+permet d'afficher les details.
+
+/* * * * * * */
+

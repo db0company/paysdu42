@@ -1,0 +1,17 @@
+
+/* * * * * * * * * * */
+
+   MAIS ! Pourquoi un get_next_line plutot qu&rsquo;un simple read, me direz-vous ?
+
+   Parce qu&rsquo;un read, vous allez lui envoyer une certaine taille de buffer.
+   Il se peut que l&rsquo;utilisateur (vetu de rouge et sans doute mal-intentione)
+   ecrive plus que ce buffer ! il le depasse, place des octets arbitraires sur
+   la pile au dela de la zone que vous lui avez reserve. Cela ecrase une
+   partie de la pile, et l&rsquo;utilisateur mal-intotionne y aura place du code !
+   Ainsi, il entrera a l&rsquo;interieur de votre machine et la detruiera de
+   l&rsquo;interieur ! Mouhahaha et il deviendra le maitre du monde !
+
+   Ou plus simplement, vous risquez de Segmentation Faulter.
+
+/* * * * * * * * * * */
+

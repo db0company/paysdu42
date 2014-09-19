@@ -1,0 +1,23 @@
+body
+{
+	background: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: rgb(80,67,136);
+	font-size: 12px;
+	text-align: center;
+	margin-top: 50px;
+}
+img {
+	border: none;
+	font-size: 12px;
+	vertical-align: center;
+}
+a {
+	text-decoration: none;
+	color: rgb(80,67,136);
+	border-bottom: 1px dashed rgb(80,67,136);
+}
+a:hover {
+	border-bottom: 1px solid rgb(80,67,136);
+	cursor: crosshair;
+}

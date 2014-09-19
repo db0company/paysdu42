@@ -1,0 +1,25 @@
+<h3>Dev - SH - My IP</h3>
+<p>
+  Une commande shell qui parse ifconfig pour recuperer l'IP. Testee sur Ubuntu et Debian. Devrait sans doute etre adaptee pour d'autres systemes. (Remplacer f3 par un autre numero)
+</p>
+
+<div class="code">/sbin/ifconfig | grep "inet addr" | cut -d ":" -f3 | cut -d " " -f1 | head -n 1</div>
+
+<br />
+
+<p>
+  Une commande shell qui parse un site qui donne l'adresse IP publique pour recuperer l'IP.
+</p>
+
+<div class="code">alias ip_public 'wget http://checkip.dyndns.org/ -O - -o /dev/null | perl -e '\''&lt;STDIN&gt; =~ m/((\d{1,3}\.){3}\d{1,3})/ && print "$1\n"'\'</div>
+
+<br />
+<br />
+
+<a href="http://commentaires.zerofansub.net/t246.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&amp;t=246" target="_blank">
+  Ajouter un commentaire
+</a>

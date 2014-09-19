@@ -1,0 +1,123 @@
+body
+{
+    font-family: monospace;
+    font-size: 1em;
+    text-align: left;
+    margin-top: 30px;
+}
+
+img
+{
+    border: none;
+    font-size: 0.5em;
+}
+
+a
+{
+    text-decoration: none;
+    border-bottom: 1px solid white;
+}
+
+a:hover
+{
+    text-decoration: underline;
+    cursor: crosshair;
+}
+
+p
+{
+    text-indent: 10px;
+}
+
+/* * * * * * * * * */
+
+code, .code
+{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #736F6E;
+}
+.download
+{
+    white-space: pre;
+    
+}
+
+/* * * * * * * * * */
+
+table
+{
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
+td, th
+{
+    padding: 5px;
+    border: 1px solid #736F6E;
+}
+
+caption, th
+{
+    font-weight: bold;
+}
+
+.lil th, .lil td
+{
+    padding: 0px;
+    border: 1px dotted #736F6E;
+    font-size: 0.8em;
+}
+
+li
+{
+    margin-bottom: 8px;
+}
+
+/* * * * * * * * * */
+
+.green, .blue, .yellow, .red, .cyan, .pink
+{
+    font-weight: bold;
+}
+
+.green
+{
+    color: #00FF00;
+}
+.blue
+{
+    color: #307a9f;
+}
+.yellow
+{
+    color: #FFFF00;
+}
+.red
+{
+    color: #FF0000;
+}
+
+.cyan
+{
+    color: #00FFFF;
+}
+
+.pink
+{
+    color: #FF00FF;
+}
+/* * * * * * * * * */
+.center
+{
+    text-align: center;
+}
+.left
+{
+    text-align: left;
+}
+.right
+{
+    text-align: right;
+}

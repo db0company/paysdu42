@@ -1,0 +1,374 @@
+<?php
+echo utf8_decode("
+<h3>Python pour les impatients</h3>
+
+<p><i>Plongez votre nez dans Python avec la pratique et sans passer par la case lecture interminable de longs tutoriaux !<br />
+Ici, pas de blabla, juste ce qu'il faut pour apprendre mais aussi pour réutiliser comme fiche de référence par la suite.<br /><br />
+Des remarques, retours, commentaires, éléments à ajouter ou corriger, ou des erreurs ? Utilisez les commentaires en fin de page. Merci !
+</i></p>
+
+<h1 id=\"environnement\">Environnement</h1>
+<ul>
+<li>Les fichiers terminent par <strong>\".py\"</strong></li>
+<li>Il est possible de lancer un interpréteur avec la commande \"python\"</li>
+<li>C'est un langage <strong>interprété</strong>. <a href=\"#\" onClick=\"show('lang-int');return(false)\" id=\"plus\">Qu'est-ce que c'est ?</a><br />
+	<div id=\"lang-int\" style=\"display: none;\"><br />
+\"<strong>C</strong>\" est un langage compilé. Un compilateur lit le code, fait des vérifications, ajoute des bibliothèques et le transforme en un exécutable.<br />
+Python, tout comme Perl ou PHP, est un langage interprété. Il n'y a pas de compilateur. Lorsque l'on lance un programme, l’exécuteur va lire la source au fur et à mesure de l’exécution et effectuer les vérifications pendant l’exécution.<br />
+L'avantage des langages interprétés sont :
+<ul>
+<li>Les fichiers font office à la fois de source et d’exécutable</li>
+<li>C'est plus portable</li>
+</ul>
+Les inconvénients :
+<ul>
+<li>C'est plus lent puisque le fichier doit être parsé avant de pouvoir être exécuté</li>
+<li>Il n'y a aucune pré-vérification, donc c'est important de tester chaque morceau du code et de passer dans chaque \"if\" au moins une fois pour s'assurer qu'il est correct</li>
+</ul>
+</div>
+</li>
+<li>C'est un langage <b>faiblement typé</b>. <a href=\"#\" onClick=\"show('lang-type');return(false)\" id=\"plus\">Qu'est-ce que c'est ?</a>
+	<div id=\"lang-type\" style=\"display: none;\">
+<p>Les langages à typage faible permettent de donner n'importe quel type à n'importe quelle variable. Ils utilisent beaucoup de \"casts\" implicites. Python, PHP et Perl sont faiblement typés.</p>
+<p>Les langages à typage forts sont très stricts. Une variable se voit attribuer un type très précis. Utiliser une fonction qui prend en paramètre une string en lui donnant un int ne fonctionnera pas et produira une erreur. Il faut donc utiliser des \"casts\" explicites.</p>
+<p>C et C++ sont des entre-deux : il faut spécifier des types, mais certains casts sont implicites.</p>
+</div>
+</li>
+<li>C'est un langage à multiples <b>paradigmes</b> : impératif, objet, fonctionnel, procédural et reflexion</li>
+<li>Il est possible de séparer le code en <b>\"modules\"</b>. Chaque fichier correspond à un module. Un seul fichier doit contenir le main (voir \"Bonnes pratiques\")</li>
+<li>Les opérateurs habituels peuvent avoir un comportement différent selon les types qui les utilisent.</li>
+<li>Les règles de \"scoping\" habituelles sont valables en python : une variable défini dans une fonction n'existera que dans celle-ci. Ce n'est pas le cas pour tous les scopes.</li>
+</ul>
+<h1 id=\"syntaxe-et-semantique\">Syntaxe et Sémantique</h1>
+<ul>
+<li>Les noms de variables et de fonctions sont sensibles à la casse. \"a\" est différent de \"A\".</li>
+<li>Il n'y a pas de \";\" en fin de lignes. On marque la fin d'une ligne... par un retour à la ligne.</li>
+<li>Les blocs sémantiques (ou \"scopes\") sont définis par l'indentation avec des espaces ou des tabulations (en C, ils le sont grâce aux accolades { }).</li>
+<li>L'indentation doit être logique d'une ligne à l'autre. Si une ligne est indenté avec 3 espaces et la suivante avec 4 sans sous bloc (<code>if statement:</code> par exemple), c'est une erreur de syntaxe.</li>
+<li>Un langage basé sur l'indentation, ça peut paraître étrange, mais c'est logique, bien fait, bien géré par la plupart des IDE et on s'y fait très vite.</li>
+<li>Les commentaires commencent par des \"#\"</li>
+<li>Opérateurs : + - / // * += -= ++ -- <a href=\"#\" onClick=\"show('operators');return(false)\" id=\"plus\">Qu'est-ce que c'est ?</a>
+	<div id=\"operators\" style=\"display: none;\">
+<ul>
+<li><b>+</b> : addition</li>
+<li><b>-</b> : soustraction</li>
+<li><b>/</b> : division avec nombres flottants</li>
+<li><b>//</b> : division sur int</li>
+<li><b>*</b> : multiplication</li>
+<li><b>+=</b> : a += b revient a: <code>a = a + b</code></li>
+<li><b>-=</b> : même chose mais avec une soustraction</li>
+<li><b>++</b> : ajoute 1</li>
+<li><b>--</b> : soustrait 1</li>
+</ul>
+</div>
+<li>
+Comparaisons : ==, !=, &lt;, &lt;=, &gt;, &gt;=, or (= || en C), and (= &amp;&amp; en C), <a href=\"?page=impatient-C#conditions-et-boucles\" target=\"_blank\">Qu'est-ce que c'est ?</a></li>
+<li>Définir une variable :</li>
+</ul>
+<pre><code>a = 5
+</code></pre>
+
+<ul>
+<li>Définir une fonction :</li>
+</ul>
+<pre><code>def addition(a, b, print):
+    result = a + b
+    if print:
+        print 'The result is:', str(result)
+    return result
+</code></pre>
+
+<ul>
+<li>Appeler une fonction :</li>
+</ul>
+<pre><code>addition(2, 3, true)
+</code></pre>
+
+<ul>
+<li>\"Si\"</li>
+</ul>
+<pre><code>if a == '*':
+  doeverything()
+elif a == '-':
+  donothing()
+else:
+  dosomething(a)
+</code></pre>
+
+<ul>
+<li>While :</li>
+</ul>
+<pre><code>while i &lt; len(a):
+    print a[i]
+    i += 3
+</code></pre>
+
+<ul>
+<li>For :</li>
+</ul>
+<pre><code>words = ['cat', 'window', 'defenestrate']
+for w in words:
+    print w, len(w)
+</code></pre>
+
+<ul>
+<li>Inclure un module  :</li>
+</ul>
+<pre><code>import sys
+</code></pre>
+
+<ul>
+<li>Utiliser une variable ou une fonction provenant d'un autre module :
+<ul>
+<li>Fichier <code>hello.py</code>
+   <pre><code>def say(name):
+    print 'Hello', name</code></pre>
+</li>
+<li>Fichier <code>main.py</code>
+   <pre><code>import hello
+hello.say('Alice');</code></pre>
+</li>
+</ul>
+</li>
+<li>Il peut y avoir plusieurs fonctions portant le même noms mais dans des modules (fichiers) différents.</li>
+<li>Utiliser une fonction ou une variable provenant d'un autre module sans avoir à spécifier le nom du module (cette pratique est peu recommandé) :</li>
+</ul>
+<pre><code>from hello import say
+say('Kim');
+</code></pre>
+
+<ul>
+<li>Voir le module <code>str</code> pour les informations sur la syntaxe des strings</li>
+<li>En python, on utilise et manipule des listes et non des tableaux. Voir le module <code>list</code> pour plus d'informations</li>
+<li>Le type \"tuple\" existe également : <a href=\"#\" onClick=\"show('tuple');return(false)\" id=\"plus\">Qu'est-ce que c'est ?</a>
+	<div id=\"tuple\" style=\"display: none;\"><br />
+<p>C'est un regroupement de variables en une seule. Contrairement aux listes, un tuple a une taille fixe. On peut le comparer aux structures en C, mais sans nommage des éléments.</p>
+<pre><code>user = ('cindy', 12)</code></pre>
+<p>Les tuples ne sont pas modifiables, mais certains utilitaires marchent comme <code>len</code>, <code>[ ]</code>.</p>
+<p>On peut déconstruire un tuple :</p>
+<pre><code>(name, age) = cindy</code></pre>
+</div></li>
+</ul>
+
+<h1 id=\"modules\">Modules</h1>
+<h2 id=\"sys\">Sys</h2>
+<ul>
+<li><code>sys.arg</code> contient le nom du script et les arguments passés en ligne de commande</li>
+<li><code>sys.exit</code> est une fonction pour quitter qui prend en paramètre le code de retour du programme.
+<a href=\"#\" onClick=\"show('code-retour');return(false)\" id=\"plus\">Qu'est-ce que c'est ?</a>
+	<div id=\"code-retour\" style=\"display: none;\"><br />
+<p>Chaque programme retourne un nombre qui correspond à son statut. Le standard est 0 si tout s'est bien passé et &gt; 0 s'il y a eu une erreur.</p>
+<p>On peut afficher le retour d'un programme dans un shell :</p>
+<pre><code>$&gt; echo $?</code></pre>
+<div></li>
+<li><code>sys.stdin</code>, <code>sys.stdout</code>, ...</li>
+<li>Documentation complète : <a href=\"https://docs.python.org/2/library/sys.html\" target=\"_blank\">lien</a></li>
+</ul>
+<h2 id=\"strings\">Strings</h2>
+<ul>
+<li>Les strings peuvent s'écrire avec des guillemets simples ou doubles, mais les simples sont plus communément utilisés. Il est possible d'utiliser des simples dans des doubles, et inversement. Sinon, on peut utiliser un <code>\</code> pour en utiliser à l'intérieur des strings.</li>
+<li>Il est possible de faire des string sur plusieurs lignes en les mettant entre triple guillemets
+(<code>\"\"\"</code> ou <code>'''</code>)</li>
+<li>Accéder à un caractère d'une string :</li>
+</ul>
+<pre><code>name = 'john'
+print name[1] # affiche 'o'
+</code></pre>
+
+<ul>
+<li>Pour ne pas interpréter les '\' d'une string, utiliser :</li>
+</ul>
+<pre><code>rawstring = r'this\\nthat\\t'
+</code></pre>
+
+<ul>
+<li>Le module <code>string</code> existe mais n'est pas recommandé, utiliser le module <code>str</code></li>
+<li>Les strings ne sont pas modifiables une fois créees.</li>
+<li><code>len</code> renvoie la taille de la string</li>
+<li>Concaténer : <code>'hello' + ' ' + 'world'</code> donne <code>hello world</code></li>
+<li>Répéter : <code>'hello ' * 3</code> donne <code>hello hello hello</code></li>
+<li>La fonction <code>str</code> convertit une valeur d'un autre type en string</li>
+<li><code>print</code> affiche sur la sortie standard suivi d'un retour à la ligne. Pour éviter celui-ci, finir l'appel par une virgule</li>
+<li>Une string peut être utilisé comme un objet avec des méthodes. Dans les exemples ci-dessous, on considère une string qui porte le nom <code>s</code>.
+<ul>
+<li>s.lower(), s.upper() - une version de la string en majuscule ou minuscule</li>
+<li>s.strip() - supprime les espaces et tabulations inutiles en début et fin de la string</li>
+<li>s.isalpha()/s.isdigit()/s.isspace()/... - divers tests</li>
+<li>s.startswith('other'), s.endswith('other') - test si la string commence ou finit par</li>
+<li>s.find('other') - cherche une string dans la string et retourne la position ou -1</li>
+<li>s.replace('old', 'new') - remplace des mots par d'autres dans une string</li>
+<li>s.split('delim') - sépare les mots entre le délimiteur et retourne une liste</li>
+<li>s.split sans argument utilise les espaces et tabulations comme délimiteur</li>
+<li>s.join(list) - l'inverse de split, concatène les string d'une liste en utilisant la string (s) comme délimiteur</li>
+</ul>
+</li>
+<li>Il est possible de récupérer une portion d'une string en utilisant : <code>s[debut:fin]</code>, sachant que l'un, l'autre ou les deux peuvent être omis, et les deux peuvent être négatif. <code>s[:]</code> va simplement renvoyer une copie.</li>
+<li>Il est possible de générer des strings similaires au <code>printf</code> en C :</li>
+</ul>
+<pre><code>presentation = &quot;my name is %s and I'm %d years old&quot; % ('Rachel', 18)
+</code></pre>
+
+<ul>
+<li>Pour utiliser des caractères unicode :</li>
+</ul>
+<pre><code>u'todo'
+</code></pre>
+
+<ul>
+<li><code>print</code> ne fonctionne pas avec des strings unicode. Il faut donc les convertir :
+<ul>
+<li><code>s.ustring.encode('utf-8')</code> pour encoder</li>
+<li><code>unicode(s, 'utf-8')</code> pour décoder</li>
+</ul></li></ul>
+<h1 id=\"listes\">Listes</h1>
+<ul>
+<li>Créer :</li>
+</ul>
+<pre><code>people = ['erika', 'manuel', 'josh']
+</code></pre>
+
+<ul>
+<li>Récupérer des éléments :</li>
+</ul>
+<pre><code>you = people[1] # = 'manuel'
+</code></pre>
+
+<ul>
+<li>Contrairement aux strings, les listes sont modifiées directement et non copiées.</li>
+<li>Concaténer :</li>
+</ul>
+<pre><code>family = [&quot;mom&quot;, &quot;dad&quot;] + [&quot;sister&quot;, &quot;brother&quot;]
+</code></pre>
+
+<ul>
+<li>Assigner <code>friends = people</code> ne va pas créer une copie mais utiliser la même liste</li>
+<li>Pour chaque éléments :</li>
+</ul>
+<pre><code>friends = [&quot;julia&quot;, &quot;martin&quot;]
+num = 1
+for friendname in friends
+    print 'my friend number ', str(num), ' is ', friendname
+    num++
+print 'and I love them all'
+</code></pre>
+
+<ul>
+<li>Vérifier qu'un élément est dans une liste :</li>
+</ul>
+<pre><code>if 'maria' in friends:
+    print 'she\'s my friend'
+</code></pre>
+
+<p>Note : 'in' marche aussi sur les string et itère sur les caractères de celle-ci.
+- Utiliser des rangées de nombre pour, entre autre, itérer un certain nombre de fois :</p>
+<pre><code>for i in range(10)
+    print str(i) # va afficher les nombres de 0 à 99
+</code></pre>
+
+<ul>
+<li>Ajouter des éléments au fur et à mesure :</li>
+</ul>
+<pre><code>list = []
+list.append('carl')
+list.append('jim')
+</code></pre>
+
+<ul>
+<li><a href=\"#\" onClick=\"show('list-func');return(false)\" id=\"plus\">Plus de fonctions de liste - click</a>
+	<div id=\"list-func\" style=\"display: none;\"><br />
+<ul>
+<li>list.append(elem) -- adds a single element to the end of the list. Common error: does not return the new list, just modifies the original.</li>
+<li>list.insert(index, elem) -- inserts the element at the given index, shifting elements to the right.</li>
+<li>list.extend(list2) adds the elements in list2 to the end of the list. Using + or += on a list is similar to using extend().</li>
+<li>list.index(elem) -- searches for the given element from the start of the list and returns its index. Throws a ValueError if the element does not appear (use \"in\" to check without a ValueError).</li>
+<li>list.remove(elem) -- searches for the first instance of the given element and removes it (throws ValueError if not present)</li>
+<li>list.sort() -- sorts the list in place (does not return it). (The sorted() function shown below is preferred.)</li>
+<li>list.reverse() -- reverses the list in place (does not return it)</li>
+<li>list.pop(index) -- removes and returns the element at the given index. Returns the rightmost element if index is omitted (roughly the opposite of append()).</li>
+</ul><br />
+</div>
+</li>
+<li>La syntaxe <code>list[debut:fin]</code> vue pour les strings fonctionnent de la même façon pour les listes.</li>
+<li><code>sorted</code> permet de trier une liste. Contrairement aux autres, elle ne modifie pas la liste et en créer une nouvelle. Cette fonction marche aussi sur d'autres éléments et a de nombreuses options pour trier efficacement. Plus d'informations : todo doc</li>
+<li><code>Comprehensions</code>, il est possible de créer une liste à partir d'une liste et d'une formule avec la syntaxe <code>[ expr for var in list ]</code>, exemple :</li>
+</ul>
+<pre><code>nums = [1, 2, 3, 4]
+squares = [ n * n for n in nums ]   ## [1, 4, 9, 16]
+</code></pre>
+
+<h2 id=\"dautres-modules\">D'autres modules</h2>
+<ul>
+<li><code>list</code> : manipuler des listes</li>
+<li><code>re</code>: \"regular expressions\"</li>
+<li><code>os</code>: Système d'exploitation, système de fichiers</li>
+<li>Documentation des modules standards : <a href=\"http://docs.python.org/library\" target=\"_blank\">http://docs.python.org/library</a></li>
+</ul>
+<h1 id=\"bonnes-pratiques-et-coding-style\">Bonnes pratiques et Coding style</h1>
+<ul>
+<li>
+Utiliser des noms de variable et de fonctions les plus explicites possibles. Comme le typage est faible, certains coding style demandent d'expliciter le type des variables dans leurs noms. À vous de voir !</li>
+<li>Le code est vérifié que lorsqu'il est exécuté.<br />
+Dans l'exemple ci-dessous, si le cas où <code>phonenumber</code> vaut 1 n'est jamais testé, python ne préviendra jamais qu'il y a une faute de frappe dans l'appel à la fonction, et que la fonction appelé n'existe donc pas.
+Il est donc très important de se relire et de faire des tests pour tous les cas. Tester au fur et à mesure permet d'éviter des oublis.</li>
+</ul>
+<pre><code>if phonenumber == 1
+    makeaphnecall('111')
+else
+    makeaphonecall(phonenumber)
+</code></pre>
+
+<ul>
+<li>Commencer par la fonction main :</li>
+</ul>
+<pre><code>def main():
+    print 'Hello', sys.argv[1]
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<ul>
+<li>Utiliser des espaces pour l'indentation et pas des \"tab\".</li>
+<li>La documentation officielle recommande d'utiliser 4 espaces pour indenter. Google en conseille 2.</li>
+<li>Ne pas utiliser des noms de fonctions communément utilisés par les modules standards, comme \"len\", pour éviter les conflits.</li>
+<li>Documenter chaque fonction avec une \"docstring\".</li>
+</ul>
+<pre><code>def helloworld():
+    &quot;&quot;&quot;It will print the famous: Hello World&quot;&quot;&quot;
+    print 'Hello World'
+</code></pre>
+
+<p>Les \"docstring\" peuvent aussi être récupérées directement depuis le code :</p>
+<pre><code>help(len) # donne la docstring de la fonction len
+help(sys) # donne la docstring du module sys
+dir(sys) # donne une liste des fonctions et variables du module sys
+</code></pre>
+
+<ul>
+<li>Besoin d'aide ?
+<ul>
+<li>Chercher sur Google en utilisant le mot clé \"python\" pour trouver toutes les solutions.</li>
+<li>Il existe aussi une doc officielle : <a href=\"http://docs.python.org\" target=\"_blank\">docs.python.org</a></li>
+<li>Et de nombreuses  mailing lists : <a href=\"https://mail.python.org/mailman/listinfo\" target=\"_blank\">lien</a></li>
+<li><a href=\"http://stackoverflow.com/questions/tagged/python\" target=\"_blank\">StackOverflow est aussi une bonne ressource.</li>
+<li>Coding Style par Google : <a href=\"http://google-styleguide.googlecode.com/\" target=\"_blank\">lien</a></li>
+</ul>
+</ul>
+<h1 id=\"objet\">Objets</h1>
+
+<pre><code>class MyClass(OtherClassToHeritFrom):
+    \"\"\"A simple example class\"\"\"
+    i = 12345
+    def __init__(self, str):
+        self.str = str
+    def f(self):
+        return 'hello world'
+
+example = MyClass('abc')
+</code></pre>
+
+<i>En cours...</i>
+<p>En attendant : <a href=\"https://docs.python.org/2/tutorial/classes.html\">lien</a></p>
+
+");
+?>

@@ -1,0 +1,30 @@
+body
+{
+    background: #F6CEF5;
+    color: #B404AE;
+}
+
+img, .code, td, th
+{
+    border-color: #04B4AE;
+}
+
+a
+{
+    color: #04B4AE;
+}
+
+#main:before
+{
+    content: url('/images/petit-poney.gif');
+}
+
+#header:after
+{
+    content: "... et des petits poneys !";
+}
+
+.code
+{
+    background: white;
+}

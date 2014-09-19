@@ -1,0 +1,354 @@
+<h3 id="up">Impatient Shell Debutant</h3>
+
+<h4>Sommaire</h4>
+<ol>
+  <li><a href="#terrifiante-boite-noire">La terrifiante boite noire...</a></li>
+  <li><a href="#terminal-shell-quelle-difference">Terminal/Shell, quelle difference ?</a></li>
+  <li><a href="#comment-ca-fonctionne">Comment ca fonctionne ?</a></li>
+  <li><a href="#ou-suis-je">Ou suis-je ?</a></li>
+  <li><a href="#les-fichiers-dossiers">Les fichiers/dossiers</a></li>
+  <li><a href="#commandes-importantes">Commandes importantes</a></li>
+  <li><a href="#jouer-avec-les-fichiers-dossiers">Jouer avec les fichiers/dossiers</a></li>
+  <li><a href="#gestion-d-utilisateurs-droits">Gestions d'utilisateurs / Droits</a></li>
+  <li><a href="#environnement">L'environnement</a></li>
+  <li><a href="#installer-des-programmes">Installer des programmes</a></li>
+  <li><a href="#modifier-des-fichiers">Manipuler des fichiers</a></li>
+  <li><a href="#aller-plus-loin-avec-le-shell">Aller plus loin avec le shell</a></li>
+</ol>
+
+<hr />
+
+<h4 id="terrifiante-boite-noire">La terrifiante boite noire...</h4>
+<ul>
+  <li><strong>Sur Ubuntu :</strong> Applications / Accessoires / Terminal (ou Applications / Accessories / Terminal)</li>
+  <li><strong>Sur OSX (mac) :</strong> Applications / Utilitaires / Terminal</li>
+  <li><strong>Sur Mandriva :</strong> Outils / Terminal Konsole</li>
+</ul>
+<a href="#up">UP</a>
+
+<h4 id="terminal-shell-quelle-difference">Terminal/Shell, quelle difference ?</h4>
+<p>
+  Le terminal, c'est grosso-modo le logiciel qui vous permet de communiquer entre le clavier, l'ecran, et vous afficher une jolie boite.<br />
+  Le shell, c'est le programme dedant, qui va lire les commandes et les executer.<br />
+  (J'ai un peu de mal a expliquer ces deux notions, si quelqu'un a mieux --> commentaires)
+</p>
+
+<p>Le Terminal par defaut <strong>Ubuntu</strong> est Gnome Terminal (sous Gnome, bureau par defaut).<br />
+  Le shell par defaut est bash.<br />
+  (Testez aussi zsh, tcsh, ksh,...!)
+</p>
+<a href="#up">UP</a>
+
+<h4 id="comment-ca-fonctionne">Comment ca fonctionne ?</h4>
+<p>
+  En haut a gauche apparait un petit texte : le prompt.<br />
+  En francais, on l'appelle l'invite de commande, car, comme son nom l'indique, il nous invite a taper des commandes.<br />
+  Il devrait ressembler a ca :
+  <div class="code">user@nom_machine:~$ </div>
+</p>
+<p>
+  Ca marche de maniere tres simple :
+  <ul>
+    <li>Un "prompt" (ou "invite de commande") apparait.</li>
+    <li>Je tape le nom de la commande</li>
+    <li>J'appuie sur entree pour valider</li>
+    <li>La commande s'execute</li>
+    <li>Une fois que la commande se termine, un nouveau prompt apparait</li>
+    <li>Et rebelotte</li>
+  </ul>
+</p
+<a href="#up">UP</a>
+
+<h4 id="ou-suis-je">Ou suis-je ?</h4>
+<p>
+  A chaque instant, dans notre shell, on se trouve virtuellement a un <strong>endroit</strong>.<br />
+  Par endroit, j'entends un "dossier", dans l'arborescence des fichiers et dossiers.<br />
+</p>
+<p>
+  On appelle la <strong>home</strong>, ou la <strong>racine du compte</strong> le dossier principal de l'utilisateur (chaque utilisateur a le sien).<br />
+  Ca correspondrait sur Windows au fameux "Mes documents".<br />
+  Il se trouve en general sur ubuntu dans /home/nom_user (remplacer nom_user  )
+  On peut parfois remplacer le <strong>chemin</strong> de la home par <strong>~</strong>.
+</p>
+<p>
+  On appelle le <strong>chemin</strong> (ou <strong>path</strong>) la suite des dossiers qu'il faut parcourir pour arriver a notre dossier.<br />
+  <br />
+  Exemple de chemins (path) :
+  <ul>
+    <li>/home/db0/Pictures/ (= ~/Pictures/)</li>
+    <li>/usr/bin/</li>
+    <li>/</li>
+    <li>/root/</li>
+  </ul>
+  Il peut aussi y avoir des chemins pour des fichiers et pas uniquement des dossiers :<br />
+  <ul>
+    <li>/home/db0/Pictures/image.jpg (= ~/Pictures/image.jpg)</li>
+  </ul>
+  Si on se trouve dans un dossier, on n'est pas oblige de mettre le chemin complet du dossier.
+  Si je suis dans "/home/db0/dossier" et que je veux utiliser le chemin "/home/db0/dossier/sous-dossier", je peux directement mettre "sous-dossier".
+</p>
+<a href="#up">UP</a>
+
+<h4 id="les-fichiers-dossiers">Les fichiers/dossiers</h4>
+<p>
+  Dans chaque dossier se trouvent des dossiers qui se nomment "." et "..".
+  <ul>
+    <li>"." = dossier courant.</li>
+    <li>".." = dossier parent.</li>
+  </ul>
+  Si je suis dans "/home/db0/dossier/sous-dossier" et que je veux utiliser le chemin "/home/db0/dossier/autre", je peux mettre "../autre"
+</p>
+<p>
+  Les fichiers et dossiers caches ont des noms qui commencent par un ".".<br />
+  Les extensions (.jpg, .doc, .png, .c, .pl, ...) n'ont aucune importance sur un systeme linux et ne sont la qu'a titre indicatif pour l'utilisateur.<br />
+  Sur un systeme Unix/Linux, tout est fichiers (dossiers, fichiers, peripheriques, drivers), mais ca, c'est une autre histoire.<br />
+</p>
+<a href="#up">UP</a>
+
+<h4 id="commandes-importantes">Commandes importantes</h4>
+<ul>
+  <li><strong>pwd</strong><br />
+    Pour savoir ou on se trouve a tout instant :
+    <div class="code">pwd</div>
+    Ou, selon la configuration du shell, directement dans le prompt. Si vous regardez l'exemple de prompt de tout a l'heure, il contenait un ~, qui correspondait a l'endroit ou vous vous trouvez.
+  </li>
+  <li><strong>cd</strong><br />
+  Pour changer de dossier (se deplacer) :
+    <div class="code">cd DIRECTORY</div>
+    En remplacant DIRECTORY par le dossier dans lequel on veut aller.<br />
+    Si je veux aller dans /home/db0/Pictures,<br />
+    je peux faire :
+    <ul>
+      <li><div class="code">cd /home/db0/Pictures</div></li>
+      <li><div class="code">cd ~/Pictures</div></li>
+      <li><div class="code">cd Pictures</div>
+      (uniquement si je suis dans ~)</li>      
+    </ul>
+    D'autres facons d'utiliser cd :
+    <ul>
+      <li>Revenir au dossier que l'on vient de quitter :
+	<div class="code">cd -</div></li>
+      <li>Aller au dossier parent :
+	<div class="code">cd ..</div></li>
+      <li>Aller dans la home (~) :
+	<div class="code">cd</div></li>
+    </ul>
+  </li>
+  <li><strong>ls</strong><br />
+    Lister le contenu d'un dossier :
+    <div class="code">ls DIRECTORY</div>
+    <ul>
+      <li>Pour le contenu du dossier dans lequel je suis :
+	<div class="code">ls</div></li>
+      <li>Pour avoir des details sur les fichiers (date, droits, a qui ils appartiennent, taille) :
+	<div class="code">ls -l</div></li>
+      <li>Pour voir aussi les fichiers et dossiers caches (qui ont un nom commencant par un ".") :
+	<div class="code">ls -a</div></li>
+      <li>On peut combiner les options :
+	<ul>
+	  <li><div class="code">ls -l -a</div></li>
+	  <li><div class="code">ls -la</div></li>
+	</ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<a href="#up">UP</a>
+
+<h4 id="jouer-avec-les-fichiers-dossiers">Jouer avec les fichiers/dossiers</h4>
+<ul>
+  <li><strong>mkdir</strong><br />
+  Creer un dossier :
+    <div class="code">mkdir CHEMIN_DOSSIER</div>
+    (si on est dans le bon dossier, le nom suffit, pas besoin du chemin complet. et c'est pareil pour toutes les commandes)
+  </li>
+  <li><strong>touch</strong><br />
+  Creer un fichier :
+    <div class="code">touch CHEMIN_FICHIER</div>
+  </li>
+  <li><strong>cat</strong><br />
+    Affichier le contenu d'un fichier :
+    <div class="code">cat CHEMIN_FICHIER</div>
+  </li>
+  <li><strong>cp</strong><br />
+  Copier-Coller :
+    <div class="code">cp FICHIER NOUVEAU_FICHIER</div>
+  </li>
+  <li><strong>mv</strong><br />
+  Deplacer, renommer :
+    <div class="code">mv ANCIEN_CHEMIN NOUVEAU_CHEMIN</div>
+  </li>
+  <li><strong>rm</strong><br />
+  Supprimer un fichier :
+    <div class="code">rm FICHIER</div>
+  </li>
+  <li><strong>rmdir</strong><br />
+  Supprimer un dossier (s'il est vide) :
+    <div class="code">rmdir DOSSIER</div>
+  </li>
+  <li><strong>rm -r</strong><br />
+  Supprimer recursivement (dossiers, sous-dossiers, fichiers, etc) :
+    <div class="code">rm -r CHEMIN</div>
+    /!\ Soyez tres prudent avec cette commande !!
+  </li>
+</ul>
+<a href="#up">UP</a>
+
+<h4 id="gestion-d-utilisateurs-droits">Gestions d'utilisateurs / Droits</h4>
+<p>
+  Les fichiers/dossiers appartiennent a des utilisateurs, sur Linux.<br />
+  Lorsque vous creez un fichier, il vous appartient.<br />
+  Lorsque vous listez le contenu d'un dossier, vous pouvez voir votre nom d'utilisateur sur vos fichiers.<br />
+  Les utilisateurs sont tries par groupe.<br />
+</p>
+<p>
+  Les droits des utilisateurs sur les fichiers sont les suivants :
+  <ul>
+    <li><strong>Lecture</strong> (<strong>r</strong> comme read) : Voir le contenu des dossiers/fichiers</li>
+    <li><strong>Ecriture</strong> (<strong>w</strong> comme write) : Modifier le contenu des dossiers/fichiers</li>
+    <li><strong>Execution</strong> (<strong>x</strong> comme execution) : Executer le programme (si c'en est un), se deplacer dans un dossier</li>
+  </ul>
+</p>
+<p>
+  La commande <strong>ls -l</strong> nous donne les details des droits de chaque fichiers.
+Exemple :
+<div class="code"><pre>drwxr-xr-x 2 db0 db0 4096 2010-10-15 12:07 dossier1
+drwxr-xr-x 2 db0 db0 4096 2010-10-15 12:07 dossier2
+drwxr-xr-x 2 db0 db0 4096 2010-10-15 12:07 dossier3
+-rw-r--r-- 1 db0 db0    0 2010-10-15 12:06 fichier1
+-rw-r--r-- 1 db0 db0    0 2010-10-15 12:07 fichier2
+-rwxr--r-- 1 db0 db0    0 2010-10-15 12:07 fichier3
+-rw-r--r-- 1 db0 db0    0 2010-10-15 12:07 fichier4
+-rw-r--r-- 1 db0 db0    0 2010-10-15 12:07 fichier5
+-rw-r--r-- 1 db0 db0    0 2010-10-15 12:07 fichier6</pre></div>
+Les droits sont tout a gauche.</p>
+<p>
+  Le premier caractere indique quel type de fichier c'est :
+  <ul>
+    <li>- = fichier banal</li>
+    <li>d = dossier</li>
+    <li>l = lien symbolique (grosso modo equivalent aux raccourcis sur windows)</li>
+    <li>c, b, f = fichiers "speciaux" (fifo, peripherique, etc)</li>
+  </ul>
+  
+  Les trois caracteres suivant sont les droits pour l'utilisateur a qui appartient le fichier (l'owner) :<br />
+  <ul>
+    <li>r ou - = droits de lecture ou pas</li>
+    <li>w ou - = droits d'ecriture ou pas</li>
+    <li>x ou - = droits d'execution ou pas</li>
+  </ul>
+  Les trois suivants sont pour le groupe de l'utilisateur.<br />
+  Et enfin, les trois derniers sont pour tout les autres.<br />
+</p>
+<p>
+  Pour changer les droits d'un fichier, il faut faire un peu de calcul :
+  <ul>
+    <li>r = 4</li>
+    <li>w = 2</li>
+    <li>x = 1</li>
+  </ul>
+  (C'est exprime en octal, mais on s'en fout pour l'instant).<br />
+  Prenons un fichier au hasard qui aurait les droits suivant :<br />
+  <div class="code">-rwxrw-r--</div>
+  <ul>
+    <li>Droits user = rwx = 4 + 2 + 1 = <strong>7</strong></li>
+    <li>Droits groupe = rw- = 4 + 2 + 0 = <strong>6</strong></li>
+    <li>Droits tout le monde = r-- = 4 + 0 + 0 = <strong>4</strong></li>
+    ---> Les droits se ce fichier sont donc : <strong>0764</strong>.
+       </ul>
+       On met un 0 devant pour indiquer que c'est de l'octal (base 8).
+</p>
+<p>  
+<ul>
+  <li><strong>chmod</strong><br />
+  Pour changer les droits d'un fichier :  
+    <div class="code">chmod DROITS FICHIER</div>
+    En remplacant DROITS par le code calcule comme precedemment.
+  </li>
+  <li><strong>chown</strong><br />
+    Pour changer le proprietaire d'un fichier :
+    <div class="code">chown NOUVEAU_PROPRIETAIRE:GROUPE FICHIER</div>
+    (:GROUPE est facultatif)
+  </li>
+  <li><strong>ACL</strong><br />
+  Il existe un systeme de droit plus "puissant" : les acl. Ils se modifient avec la commande :
+    <div class="code">fs setacl</div>
+  </li>
+</ul>
+<p>
+  Sur Linux, il existe un systeme de <strong>Super Utilisateur</strong>.<br />
+  Cet utilisateur est tout puissant. Il a tout les droits sur votre machine.<br />
+  S'il il veut, il peut tout supprimer et detruire votre OS ! Niark niark niark.<br />
+  Cet utilisateur s'appelle le <strong>root</strong>.<br />
+  C'est assez dangereux d'utiliser son ordinateur en tant que root, donc on le fait que quand on doit faire des actions tres particulieres.
+  <ul>
+    <li><strong>su</strong><br />
+      Pour obtenir un shell en tant que root :
+      <div class="code">su</div>
+      (comme super user)
+    </li>
+    <li><strong>sudo</strong><br />
+      Pour lancer une seule commande en tant que root :
+      <div class="code">sudo COMMANDE</div>
+      (comme super user do)
+    </li>
+    <li><strong>su</strong><br />
+      Pour se connecter en tant qu'un autre utilisateur (pas forcement le root) :
+      <div class="code">su NOM_USER</div>
+    </li>
+  </ul>
+</p>
+<a href="#up">UP</a>
+
+<h4 id="environnement">Environnement</h4>
+<p>A faire...</p>
+<a href="#up">UP</a>
+
+<h4 id="installer-des-programmes">Installer des programmes</h4>
+<ul>
+  <li>
+  Rechercher un programme :
+    <div class="code">aptitude search NOM</div>
+  </li>
+  <li>
+    Installer un programme :
+    <div class="code">sudo aptitude install NOM</div>
+  </li>
+  <li>
+    Installez emacs, gcc, irssi :
+    <div class="code">sudo aptitude install emacs gcc irssi</div>
+  </li>
+</ul>
+<a href="#up">UP</a>
+
+<h4 id="modifier-des-fichiers">Modifier des fichiers</h4>
+<p>
+  Utilisez emacs en le lancant avec :
+  <div class="code">emacs -nw NOM_FICHIER</div>
+  Pour en savoir plus sur emacs : <a href="http://i.paysdu42.fr/?page=impatient-emacs" target="_blank">Lien</a>.
+</p>
+<p>
+   Si vous n'aimez pas emacs, il existe un autre editeur de texte appele vim : <a href="http://i.paysdu42.fr/?page=impatient-vim" target="_blank">Lien</a>.
+</p>
+<a href="#up">UP</a>
+
+<h4 id="aller-plus-loin-avec-le-shell">Aller plus loin avec le shell</h4>
+<p>
+  Des commandes : <a href="http://i.paysdu42.fr/?page=impatient-shell" target="_blank">Lien</a>.
+</p>
+<p>
+  Faire des Scripts Shell : <a href="http://i.paysdu42.fr/?page=impatient-shell-script" target="_blank">Lien</a>.
+</p>
+<a href="#up">UP</a>
+
+<br />
+<br />
+<br />
+</ul>
+<a href="http://commentaires.zerofansub.net/t249.htm" target="_blank">
+  Commentaires
+</a>
+ | 
+<a href="http://commentaires.zerofansub.net/posting.php?mode=reply&t=249" target="_blank">
+  Ajouter un commentaire
+</a>

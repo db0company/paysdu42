@@ -1,0 +1,44 @@
+<?php 
+
+$echo_ByteSize = function($bytes) 
+{
+  $size = $bytes / 1024;
+  if($size < 1024)
+    printf("%4.1f Ko ", $size);
+  else 
+    {
+      if($size / 1024 < 1024) 
+	printf("%4.1f Mo ", $size / 1024);
+      else if ($size / 1024 / 1024 < 1024)  
+	printf("%4.1f Go ", $size / 1024 / 1024);
+    }
+  return $size;
+};
+
+if (!isset($dir)) {
+  $dir = 'pages/articles/';
+}
+
+if ($handle = opendir($dir))
+  {
+    $files = array();
+    while ($file = readdir($handle))
+      $files[] = $file;
+    sort($files);
+    foreach ($files as $file)
+      {
+	if ($file[0] != '.'
+	    && substr($file, -5) == '.html')
+	  {
+	    echo '-rwrw-rw- 1 db0&#160;&#160;&#160;db0&#160;';
+	    $echo_ByteSize(filesize($dir.$file));
+	    echo @date("Y-m-d H:i ", filemtime($dir.$file));
+	    echo '<a href="?page='.substr($file, 0, -5).'">';
+	    echo ucwords(str_replace('-', ' ', substr($file, 0, -5))).'<br />';
+	    echo '</a>';
+	  }
+      }
+    closedir($handle);
+  }
+
+?>
