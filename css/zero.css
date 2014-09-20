@@ -1,6 +1,6 @@
 body
 {
-    background: white url('//zerofansub.net/images/interface/fond.jpg');
+    background: #fff url('//zerofansub.net/images/interface/fond.jpg');
     color: black;
     font-family: sans-serif;
 }
@@ -13,7 +13,7 @@ body
 .code
 {
     background: black;
-    color: white;
+    color: #fff;
     font-family: monospace;
 }
 pre
@@ -28,7 +28,7 @@ a
 
 #main
 {
-    background: white;
+    background: #fff;
     padding: 20px;
     margin:auto;
     width: 750px;

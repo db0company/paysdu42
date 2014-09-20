@@ -1,7 +1,7 @@
 body
 {
     background: black;
-    color: white;
+    color: #fff;
 }
 
 img, .code, td, th
@@ -11,5 +11,5 @@ img, .code, td, th
 
 a
 {
-    color: white;
+    color: #fff;
 }

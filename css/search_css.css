@@ -19,7 +19,7 @@
 .cse .gsc-control-cse,
 .gsc-control-cse {
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid #fff;
 }
 .cse .gsc-control-cse:after,
 .gsc-control-cse:after {
@@ -45,10 +45,10 @@ input.gsc-search-button {
 .cse .gsc-tabHeader.gsc-tabhInactive,
 .gsc-tabHeader.gsc-tabhInactive {
   border-bottom: none;
-  color: white;
+  color: #fff;
   background-color: black;
   border: 1px solid;
-  border-color: white;
+  border-color: #fff;
   border-bottom: none;
 }
 /* Active tab */
@@ -129,7 +129,7 @@ input.gsc-search-button {
   font-family: Arial, sans-serif;
   font-size: 13px;
   position: absolute;
-  background: white;
+  background: #fff;
   border: 1px solid #666;
   margin-left: 0;
   margin-right: 0;
