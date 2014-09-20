@@ -37,9 +37,9 @@
 .cse input.gsc-search-button,
 input.gsc-search-button {
   font-family: monospace;
-  color: #000000;
+  color: #000;
   background-color: black;
-  border: 0px solid #000000;
+  border: 0 solid #000;
 }
 /* Inactive tab */
 .cse .gsc-tabHeader.gsc-tabhInactive,
@@ -54,7 +54,7 @@ input.gsc-search-button {
 /* Active tab */
 .cse .gsc-tabHeader.gsc-tabhActive,
 .gsc-tabHeader.gsc-tabhActive {
-  background-color: #FFFFFF;
+  background-color: #FFF;
   border: 1px solid;
   border-top: 2px solid;
   border-color: #e9e9e9;
@@ -72,7 +72,7 @@ input.gsc-search-button {
 .gsc-webResult.gsc-result {
   padding: .25em;
   border: 1px solid;
-  border-color: #ffffff;
+  border-color: #fff;
   margin-bottom: 1em;
 }
 /* Result hover event styling */
@@ -85,7 +85,7 @@ input.gsc-search-button {
 /* The entire promo */
 .cse .gs-promotion.gs-result,
 .gs-promotion.gs-result {
-  background-color: #FFFFFF;
+  background-color: #FFF;
   border: 1px solid;
   border-color: #336699;
 }
@@ -95,11 +95,11 @@ input.gsc-search-button {
 /* Promotion title */
 .cse .gs-promotion.gs-result a.gs-title:link,
 .gs-promotion.gs-result a.gs-title:link {
-  color: white;
+  color: #FFF;
 }
 .cse .gs-promotion.gs-result a.gs-title:visited,
 .gs-promotion.gs-result a.gs-title:visited {
-  color: white;
+  color: #FFF;
 }
 .cse .gs-promotion.gs-result a.gs-title:hover,
 .gs-promotion.gs-result a.gs-title:hover {
@@ -112,7 +112,7 @@ input.gsc-search-button {
 /* Promotion snippet */
 .cse .gs-promotion.gs-result .gs-snippet,
 .gs-promotion.gs-result .gs-snippet {
-  color: white;
+  color: #FFF;
 }
 /* Promotion url */
 .cse .gs-promotion .gs-result .gs-visibleUrl, .gs-promotion.gs-result .gs-visibleUrl {
@@ -130,7 +130,7 @@ input.gsc-search-button {
   font-size: 13px;
   position: absolute;
   background: white;
-  border: 1px solid #666666;
+  border: 1px solid #666;
   margin-left: 0;
   margin-right: 0;
   /* The top, left, and width are set in JavaScript. */

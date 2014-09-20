@@ -1,5 +1,5 @@
 body {
-	background: #ffffff url('http://zerofansub.net/archives/db0/journal_/images/interface/bg.jpg');
+	background: #ffffff url('//zerofansub.net/archives/db0/journal_/images/interface/bg.jpg');
 	color: rgb(80,67,136);
 }
 a {
@@ -16,12 +16,12 @@ a:hover {
 	background: white;
 }
 #header {
-	background: url('http://zerofansub.net/archives/db0/journal_/images/interface/bg-h.png');
+	background: url('//zerofansub.net/archives/db0/journal_/images/interface/bg-h.png');
 	color: blue;
 }
 #header:before
 {
-    content: url('http://zerofansub.net/archives/db0/journal_/images/interface/header.png');
+    content: url('//zerofansub.net/archives/db0/journal_/images/interface/header.png');
 }
 #header a , h2 a{ text-decoration: none; border-bottom: 0; }
 #header a:hover, h2 a:hover { border-bottom: 0; }
@@ -29,7 +29,7 @@ a:hover {
 	padding: 10px;
 }
 h3 {
-	background: rgb(178,195,227) url('http://zerofansub.net/archives/db0/journal_/images/interface/bg-h.png');
+	background: rgb(178,195,227) url('//zerofansub.net/archives/db0/journal_/images/interface/bg-h.png');
 	color: rgb(178,195,227);
 	padding: 5px;
 	border: rgb(178,195,227) 2px solid;

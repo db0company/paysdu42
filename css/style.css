@@ -1,3 +1,10 @@
+hr
+{
+	border: 0;
+	height: 1px;
+	background: #333;
+}
+
 body
 {
     font-family: monospace;
@@ -15,7 +22,7 @@ img
 a
 {
     text-decoration: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #FFF;
 }
 
 a:hover
@@ -65,7 +72,7 @@ caption, th
 
 .lil th, .lil td
 {
-    padding: 0px;
+    padding: 0;
     border: 1px dotted #736F6E;
     font-size: 0.8em;
 }
