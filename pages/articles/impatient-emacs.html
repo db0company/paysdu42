@@ -1,46 +1,59 @@
 <h3>Impatient Emacs</h3>
 
-(^ = Touche Ctrl)
+Petite information, pour mieux comprendre ce qui va suivre:
+C- veut dire 'appuyez sur la touche control'.
+M- veut dire 'appuyez sur la touche Meta', dépend de votre configuration, la plupart du temps c'est la touche Alt, mais il arrive que ce soit la touche Esc par exemple.
 
-<h4 id="debuter-avec-emacs">D�buter avec Emacs</h4>
+<h4 id="debuter-avec-emacs">Débuter avec Emacs</h4>
 <ul>
   <li>Ouvrir emacs : Taper <b>emacs -nw</b> dans votre terminal.</li>
-  <li>Mettre un header : ^C ^H</li>
-  <li>Fermer emacs : ^X ^C</li>
+  <li>Mettre un header / affiche l'aide : C-c C-h</li>
+  <li>Sauvegarder : C-x C-s</li>
+  <li>Fermer emacs : C-x C-c</li>
   <li>Ouvrir un fichier : emacs "chemin du fichier"</li>
-  <li>Ouvrir un fichier dans emacs d�j� ouvert : ^X ^F</li>
-  <li>Changer le mode d'emacs (couleurs) : Alt X 'mode'-mode (exemple : C-mode, html-mode, ect)</li>
-  <li>Annuler ce que je suis en train de demander : ^G</li>
-  <li>Annuler (revenir en arri�re) : ^ /</li>
+  <li>Ouvrir un fichier dans emacs déjà ouvert : C-x C-f</li>
+  <li>Changer le mode d'emacs (couleurs) : M-x 'mode'-mode (exemple : C-mode, html-mode, ect)</li>
+  <li>Annuler ce que je suis en train de demander : C-g</li>
+  <li>Annuler (revenir en arrière) : C-/</li>
   <li>Ne pas utiliser en mode graphique : emacs -nw</li>
 </ul>
 
-<h4 id="partager-la-fenetre-emacs">Partager la fen�tre emacs</h4>
+<h4 id="partager-la-fenetre-emacs">Partager la fenêtre emacs</h4>
 <ul>
-  <li>S�parer la fen�tre en 2 verticalement : ^X 3</li>
-  <li>S�parer la fen�tre en 2 horizontalement : ^X 2</li>
-  <li>Aller � l'autre fen�tre : ^X O</li>
-  <li>Supprimer une fen�tre : ^X 0</li>
+  <li>Séparer la fenêtre en 2 verticalement : C-x 3</li>
+  <li>Séparer la fenêtre en 2 horizontalement : C-x 2</li>
+  <li>Aller à l'autre fenêtre : C-x o</li>
+  <li>Supprimer une fenêtre : C-x 0</li>
 </ul>
 
-<h4 id="fonctionnalites-sympas">Fonctionnalit�s sympas</h4>
+<h4 id="fonctionnalites-sympas">Fonctionnalités sympas</h4>
 <ul>
-  <li>Faire une tabulation : Alt I</li>
-  <li>Completer automatiquement un mot deja ecrit : Alt /</li>
-  <li>Rechercher un mot : ^S</li>
-  <li>Remplacer un mot par un autre : Alt X 'replace-string'</li>
-  <li>GDB dans emacs : Alt X 'gdb'. A ouvrir avec le partage de fen�tre pour voir les �tapes une par une dans le fichier source.</li>
-  <li>Parcourir un dossier : ^X D</li>
-  <li>Selectionner une zone : ^ espace puis les fleches haut et bas pour selectionner.<br />
-    Arreter la selection avec ^ G</li>
-  <li>Commenter la selection : ^ C C</li>
-  <li>Decommenter : ^ U C C</li>
+  <li>Faire une tabulation : M-i</li>
+  <li>Complèter automatiquement un mot déjà écrit : M-/</li>
+  <li>Rechercher un mot : C-s</li>
+  <li>Remplacer un mot par un autre : M-x 'replace-string'</li>
+  <li>GDB dans emacs : M-x 'gdb'. A ouvrir avec le partage de fenêtre pour voir les étapes une par une dans le fichier source.</li>
+  <li>Parcourir un dossier : M-x d</li>
+  <li>Sélectionner une région : C-espace puis les fleches haut et bas pour selectionner.<br />
+    Arreter la sélection avec C-g </li>
+  <li>Tout dépendra du mode dans lequel vous travaillez pour les commentaires.
+    Le plus facile est 'M-x comment-region' pour commenter et 'M-x uncomment-region' pour dé-commenter.</li>
+  <li>Commenter la selection (c-mode): C-c C-c</li>
+  <li>Dé-commenter : C-u C-c C-c</li>
+  <li>Couper depuis le curseur jusqu'à la fin de la ligne : C-k</li>
+  <li>Couper une région : C-w</li>
+  <li>Coller depuis le curseur jusqu'à la fin de la ligne : C-y</li>
+  <li>Revenir au début de la ligne : C-a</li>
+  <li>Aller à la fin de la ligne : C-e</li>
+  <li>Inverser deux lettres : C-t</li>
+  <li>Inverser deux lignes : C-x t</li>
+  <li>Supprimer le caractère sous le curseur : C-d</li> 
+  <li>Mettre le mot à partir du curseur (jusqu'au prochain espace) en majuscule : M-u</li>
+  <li>Mettre le mot à partir du curseur (jusqu'au prochain espace) en minuscule : M-l</lil>
 </ul>
-
-
 <h4 id="infos">Infos</h4>
 <ul>
-  <li>Il existe une version "legere" d'emacs : mg</li>
+  <li>Il existe plusieurs versions "légeres" d'emacs par exemple mg ou uemacs</li>
 </ul>
 
 <br />
