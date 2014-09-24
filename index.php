@@ -29,7 +29,7 @@ function comments() {
   if (isset($_GET['page']))
     echo ":: ".ucwords(str_replace('-', ' ', $_GET['page']));
 ?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="fr" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
