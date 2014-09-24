@@ -2,14 +2,14 @@
 
 <p>
   <i>
-    Ce cours se veut etre utilisable comme une fiche de reference (des "rappels" ou un "support de cours") mais aussi permettre aux debutants d'apprendre.<br />
-    C'est pour cette raison que l'ont y trouve des informations explicatives aux debutants melanges a des indications plus avancees (caches, il faut clique sur "details" pour les voir).<br />
-    J'ai conscience qu'il est difficile de satisfaire deux publics differents avec un meme texte, c'est pourquoi j'ecouterai volontiers vos remarques et commentaires permettant de l'ameliorer. Particulierement celles d'un debutant.<br />
-    (Le systeme de commentaires en bas de page est la pour ca)
+    Ce cours se veut être utilisable comme une fiche de référence (des "rappels" ou un "support de cours") mais aussi permettre aux débutants d'apprendre.<br />
+    C'est pour cette raison que l'on y trouve des informations explicatives aux débutants mélangées à des indications plus avancées (cachées, il faut cliquer sur "details" pour les voir).<br />
+    J'ai conscience qu'il est difficile de satisfaire deux publics différents avec un même texte, c'est pourquoi j'écouterai volontiers vos remarques et commentaires permettant de l'améliorer. Particulièrement celles d'un debutant.<br />
+    (Le systeme de commentaires en bas de page est là pour ca)
   </i>
 </p>
 
-<h4 id="sommaire">Sommaire</h4> 
+<h4 id="sommaire">Sommaire</h4>
 <ol>
   <h4><a href="#chap1">Chapitre I</a></h4>
   <li><a href="#structure-code-c">Structure d'un code en C</a></li>
@@ -17,14 +17,14 @@
   <li><a href="#un-exemple">Un exemple...</a></li>
   <li><a href="#la-compilation">La Compilation</a></li>
   <li><a href="#conditions-et-boucles">Conditions et boucles</a></li>
-  <li><a href="#operateurs-de-calcul-et-incrementations">Operateurs de calcul et incrementations</a></li>
+  <li><a href="#operateurs-de-calcul-et-incrementations">Opérateurs de calcul et incrémentations</a></li>
   <li><a href="#afficher-des-variables">Afficher des variables</a></li>
   <h4><a href="#chap2">Chapitre II</a></h4>
   <li><a href="#les-tableaux">Les tableaux</a></li>
   <li><a href="#les-pointeurs">Les pointeurs</a></li>
-  <li><a href="#les-chaines-de-caracteres">Les chaines de caracteres</a></li>
+  <li><a href="#les-chaines-de-caracteres">Les chaînes de caractères</a></li>
   <h4><a href="#chap3">Chapitre III</a></h4>
-  <li><a href="#la-recursivite">La recursivite</a></li>
+  <li><a href="#la-recursivite">La récursivité</a></li>
   <li><a href="#manipulation-de-fichiers">Manipulation de fichiers</a></li>
   <li><a href="#includes-compilation-separee-defines-macros">Les fichiers headers, les includes, les defines et les macros</a></li>
 <!--  <li><a href="#les-variables-de-la-ligne-de-commande">Les variables de la ligne de commande</a></li>-->
@@ -45,19 +45,19 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <h3 id="chap1">Chapitre I</h3>
 
-<h4 id="structure-code-c">Structure d'un code en C</h4> 
-<ul> 
-  <li>Du code C s'ecrit dans un fichier ayant pour extension <strong>.c</strong>. On le modifie avec n'importe quel editeur de texte (<a href="?page=impatient-emacs">emacs</a>, <a href="?page=impatient-vim">vim</a>, etc).</li>
-  <li>Un code C s'execute en suivant des instructions lignes par lignes dans des <strong>fonctions</strong>.</li> 
+<h4 id="structure-code-c">Structure d'un code en C</h4>
+<ul>
+  <li>Du code C s'écrit dans un fichier ayant pour extension <strong>.c</strong>. On le modifie avec n'importe quel éditeur de texte (<a href="?page=impatient-emacs">emacs</a>, <a href="?page=impatient-vim">vim</a>, etc).</li>
+  <li>Un code C s'exécute en suivant des instructions lignes par lignes dans des <strong>fonctions</strong>.</li>
   <li>Une fonction se compose de plusieurs partie :
     <ul>
-      <li>Declaration des variables utilisees</li>
+      <li>Déclaration des variables utilisées</li>
       <li>Instructions</li>
-      <li>Valeur retournee en fin de fonction (facultatif)</li>
+      <li>Valeur retournée en fin de fonction (facultatif)</li>
     </ul>
   </li>
-  <li>La premiere fonction appellee est la fonction <strong>main</strong>. Il doit toujours y en avoir une dans un programme en C.</li>
-  <li>Une fonction se <strong>declare</strong> de la maniere suivante :
+  <li>La première fonction appelée est la fonction <strong>main</strong>. Il doit toujours y en avoir une dans un programme en C.</li>
+  <li>Une fonction se <strong>déclare</strong> de la manière suivante :
     <div class="code"><pre>
       <span class="green">type_de_variable_retournee</span>	<span class="blue">nom_fonction</span>(<span class="green">type_argument1</span> <span class="yellow">nom_argument1</span>, <span class="green">type_argument2</span> <span class="yellow">nom_argument2</span>)
       {
@@ -69,25 +69,25 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         <span class="cyan">return</span> (valeur_retournee);
       }
     </pre></div>
-  </li> 
+  </li>
   <li>Une fonction peut appeler d'autres fonctions dans une instruction :
     <div class="code"><pre>
       valeur_retournee = ma_fonction(argument1, argument2);
     </pre></div>
   </li>
-  <li>L'instruction "return" renvoie une valeur et cesse l'execution de la fonction. Si on met des instructions apres un return, celle-ci ne seront jamais executees.</li>
-  <li><strong>Une fonction doit etre declaree avant d'etre appellee.</strong> Donc le main doit etre tout en bas du fichier.</li>
-</ul> 
+  <li>L'instruction "return" renvoie une valeur et cesse l'exécution de la fonction. Si on met des instructions après un return, celle-ci ne seront jamais exécutées.</li>
+  <li><strong>Une fonction doit être déclarée avant d'être appelée.</strong> Donc le main doit être tout en bas du fichier.</li>
+</ul>
 
 <a href="#sommaire">UP</a>
 
-<h4 id="les-variables">Les variables</h4> 
+<h4 id="les-variables">Les variables</h4>
 <ul>
 <li><p>Les instructions utilisent des <strong>variables</strong>.<br />
-  Ces variables ont des <strong>types</strong> permettant de definir leur taille (en octets).<br />
-  Dans une variable, on ne peut que stocker un nombre, dont la limite inferieure et superieure depend du type.<br /></li>
+  Ces variables ont des <strong>types</strong> permettant de définir leur taille (en octets).<br />
+  Dans une variable, on ne peut que stocker un nombre, dont la limite inférieure et supérieure depend du type.<br /></li>
 </ul>
-</p> 
+</p>
 <table cellpadding="2" cellspacing="2" border="0">
   <tbody>
     <tr>
@@ -176,28 +176,28 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     </tr>
   </tbody>
 </table>
-<small>(Ce tableau n'est pas forcement juste, il depend de l'architecture de votre machine. Il n'est, par exemple, pas valable en 64bits.)</small>
+<small>(Ce tableau n'est pas forcément juste, il dépend de l'architecture de votre machine. Il n'est, par exemple, pas valable en 64bits.)</small>
 <ul>
   <li>Les char, short, int, long et leurs unsigned respectifs ne peuvent contenir que des <strong>entiers</strong> (2, 6, 42, 254, ...).</li>
-  <li>Les float, double et long double peuvent contenir des <strong>nombres a virgule flottante</strong> (2.0, 6.21, 42.5694, -3.457, ...).</li>
+  <li>Les float, double et long double peuvent contenir des <strong>nombres à virgule flottante</strong> (2.0, 6.21, 42.5694, -3.457, ...).</li>
 <li><p>
-  Le mot-cle <strong>void</strong> signigie l'absence de variable, par exemple, si une fonction ne renvoie rien ou si elle ne prend pas de parametre.
+  Le mot-clé <strong>void</strong> signifie l'absence de variable, par exemple, si une fonction ne renvoie rien ou si elle ne prend pas de paramètre.
 </p></li>
 <li><p>
-  Il existe des types pre-definis qui portent un nom premettant de connaitre leurs roles.<br />
+  Il existe des types pré-definis qui portent un nom permettant de connaitre leurs rôles.<br />
   Par exemple, <strong>size_t</strong> contient la taille d'un tableau (voir plus tard ce qu'est un tableau.)<br />
-  <strong>ssize_t</strong> servira a parcourir un tableau.
+  <strong>ssize_t</strong> servira à parcourir un tableau.
 </p></li>
 <li><p>
-  Pour utiliser une variable, on doit la declarer en lui donnant un nom :
+  Pour utiliser une variable, on doit la déclarer en lui donnant un nom :
   <div class="code"><pre>	<span class="green">type</span>		<span class="yellow">nom</span>;</pre></div>
-Dans une fonction, on declare toutes les variables avant des les utiliser.<br />
+Dans une fonction, on déclare toutes les variables avant des les utiliser.<br />
 Les noms de fonctions ne doivent comporter que des lettres minuscules, des chiffres et des underscore ("_").<br />
-Ils doivent etre <strong>en anglais</strong> et <strong>explicite</strong>. Grace au nom de la variable, on doit comprendre ce qu'elle contient, a quoi elle sert dans le programme.<br />
-Le nom de variable <strong>i</strong> est souvent utilise pour un compteur.
+Ils doivent être <strong>en anglais</strong> et <strong>explicites</strong>. Grâce au nom de la variable, on doit comprendre ce qu'elle contient, à quoi elle sert dans le programme.<br />
+Le nom de variable <strong>i</strong> est souvent utilisé pour un compteur.
 </p></li>
-<li>Les variables sont internes aux fonctions. Une variable declaree dans une fonction n'existe nulle part ailleurs que dans celle-ci.</li>
-<li>Il est possible de declarer des variables dites <strong>globales</strong> en les declarant en dehors de toute fonction. <strong>Ce n'est pas recommande, il vaut mieux les eviter quand c'est possible.</strong></li>
+<li>Les variables sont internes aux fonctions. Une variable déclarée dans une fonction n'existe nulle part ailleurs que dans celle-ci.</li>
+<li>Il est possible de déclarer des variables dites <strong>globales</strong> en les déclarant en dehors de toute fonction. <strong>Ce n'est pas recommandé, il vaut mieux les éviter autant que possible.</strong></li>
 </ul>
 
 <a href="#sommaire">UP</a>
@@ -212,58 +212,58 @@ Le nom de variable <strong>i</strong> est souvent utilise pour un compteur.
       result = a - b;
       <span class="cyan">return</span> (result);
     }
-    
+
     <span class="green">int</span>			<span class="blue">main</span>(<span class="green">void</span>)
     {
       <span class="green">int</span>		<span class="yellow">i</span>;
-    
+
       i = 3;
       i = i + 5;
       i = subtraction(i, 2);
       <span class="cyan">return</span> (0);
     }
-  </pre></div> 
+  </pre></div>
 
 Voici ce qu'il se passe ici :
 <ul>
-  <li>Le programme commence son execution par la fonction <strong>main</strong> (elle ne prend aucun parametre).</li>
-  <li>Dans celle-ci, on declare une variable de type <strong>int</strong> et de nom "<strong>i</strong>".</li>
-  <li>On assigne ensuite une valeur a la variable i grace au "<strong>=</strong>".<br />
+  <li>Le programme commence son execution par la fonction <strong>main</strong> (elle ne prend aucun paramètre).</li>
+  <li>Dans celle-ci, on déclare une variable de type <strong>int</strong> et de nom "<strong>i</strong>".</li>
+  <li>On assigne ensuite une valeur à la variable i grace au "<strong>=</strong>".<br />
     --> i = 3.</li>
-  <li>L'instruction suivante utilise la valeur de i (3) et lui ajoute 5. Elle mets ensuite ce resultat dans i, ce qui ecrase son ancienne valeur.<br />
+  <li>L'instruction suivante utilise la valeur de i (3) et lui ajoute 5. Elle met ensuite ce résultat dans i, ce qui écrase son ancienne valeur.<br />
     --> i = 8.</li>
-  <li>L'instruction suivante <strong>appelle une fonction</strong> auquelle elle donne deux arguments : i (8) et 2.</li>
-  <li>On entre alors dans la fonction substraction. On voit qu'elle prend en parametre 2 arguments de type int (a et b). Ca tombe bien, c'est ce qu'on lui a envoye lors de l'appel !<br />
+  <li>L'instruction suivante <strong>appelle une fonction</strong> à laquelle elle donne deux arguments : i (8) et 2.</li>
+  <li>On entre alors dans la fonction substraction. On voit qu'elle prend en paramètre 2 arguments de type int (a et b). Ca tombe bien, c'est ce qu'on lui a envoyé lors de l'appel !<br />
     --> a = 8 et b = 2.</li>
-  <li>On declare ensuite une nouvelle variable de type int nomme "result".<br />
+  <li>On déclare ensuite une nouvelle variable de type int nomme "result".<br />
     --> a = 8, b = 2 et result = <strong>valeur inconnue (/!\ pas forcement = 0)</strong></li>
   <li>On effectue le calcul de a - b, c'est a dire 8 - 2, et on met cette valeur dans "result".<br />
     --> a = 8, b = 2 et result = 6</li>
   <li>L'instruction <strong>return</strong> renvoie la valeur de result et on retourne dans la fonction main.</li>
-  <li>La valeur que la fonction a renvoye est placee dans i.<br />
-    --> i = 6. (a, b et result n'existe plus : ils etaient propres a la fonction substraction).</li>
-  <li>La fonction main a alors terminee ses instructions et fais donc la derniere instruction qui retourne une valeur.<br /><strong>La valeur 0 signifie que l'execution du programme s'est bien passe. Une autre valeur signifie qu'il y a eu une erreur.</strong></li>
+  <li>La valeur que la fonction a renvoyé est placee dans i.<br />
+    --> i = 6. (a, b et result n'existe plus : ils étaient propres à la fonction substraction).</li>
+  <li>La fonction main a alors terminé ses instructions et fait donc la dernière instruction qui retourne une valeur.<br /><strong>La valeur 0 signifie que l'exécution du programme s'est bien passée. Une autre valeur signifie qu'il y a eu une erreur.</strong></li>
 </ul>
       Maintenant, pour tester ce programme, on va le compiler et le lancer. On se rendra compte qu'il n'affiche rien.<br /><br />
 </p>
 
 <a href="#sommaire">UP</a>
 
-<h4 id="la-compilation">La Compilation</h4> 
-<p>On compile avec <strong>gcc</strong> (alias <strong>cc</strong>).</p> 
- <p>Le compilateur genere alors un fichier (executable) <strong>a.out</strong>.<br />
+<h4 id="la-compilation">La Compilation</h4>
+<p>On compile avec <strong>gcc</strong> (alias <strong>cc</strong>).</p>
+ <p>Le compilateur génère alors un fichier (executable) <strong>a.out</strong>.<br />
    Il est possible de modifier le nom du fichier grace a l'option <strong>-o</strong>
    <div class="code"><pre>     gcc <strong>-o</strong> nom_executable mon_code.c</pre></div>
- </p> 
- <p>S'il y a une ou plusieurs erreurs, elles seront affichees et la compilation s'arretera.<br />
-   Cependant, certaines "erreurs" peuvent ne pas empecher la compilation, on les appelle les <strong>Warnings</strong>.<br />
-   Il est malgre tout tres important de corriger ces petits erreurs car la plupart du temps, elle perturberont le fonctionnement normal du programme.<br /><br />
-   Pour afficher plus de Warnings, il est possible (et conseille) d'ajouter des options (appellees flags de compilation) :
+ </p>
+ <p>S'il y a une ou plusieurs erreurs, elles seront affichées et la compilation s'arrêtera.<br />
+   Cependant, certaines "erreurs" peuvent ne pas empêcher la compilation, on les appelle les <strong>Warnings</strong>.<br />
+   Il est malgré tout très important de corriger ces petites erreurs car la plupart du temps, elle perturberont le fonctionnement normal du programme.<br /><br />
+   Pour afficher plus de Warnings, il est possible (et conseillé) d'ajouter des options (dites flags de compilation) :
    <ul>
-     <li><strong>-w</strong> : Desactive tout les warnings (deconseille)</li>
-     <li><strong>-Wextra</strong> : Affiche encore plus de warnings <a href="#" onClick="show('Wextra');return(false)" id="plus">(details)</a></li>
+     <li><strong>-w</strong> : Désactive tout les warnings (déconseillé)</li>
+     <li><strong>-Wextra</strong> : Affiche encore plus de warnings <a href="#" onClick="show('Wextra');return(false)" id="plus">(détails)</a></li>
      <div id="Wextra" style="display: none;">
-       Les options de Warnings activees sont les suivantes :<br />
+       Les options de Warnings activées sont les suivantes :<br />
        <ul>
 	  <li>-Wclobbered  </li>
           <li>-Wempty-body  </li>
@@ -279,9 +279,9 @@ Voici ce qu'il se passe ici :
           <li>-Wunused-but-set-parameter</li>
        </ul>
      </pre></div>
-     <li><strong>-Wall</strong> : Affiche plus de warnings <a href="#" onClick="show('Wall');return(false)" id="plus">(details)</a></li>
+     <li><strong>-Wall</strong> : Affiche plus de warnings <a href="#" onClick="show('Wall');return(false)" id="plus">(détails)</a></li>
      <div id="Wall" style="display: none;">
-       Les options de Warnings activees sont les suivantes :<br />
+       Les options de Warnings activées sont les suivantes :<br />
        <ul>
 	 <li>-Waddress   </li>
           <li>-Wc++0x-compat  </li>
@@ -292,7 +292,7 @@ Voici ce qu'il se passe ici :
           <li>-Wcomment  </li>
           <li>-Wformat   </li>
           <li>-Wmain</li>
-          <li>-Wmissing-braces</li>  
+          <li>-Wmissing-braces</li>
           <li>-Wnonnull  </li>
           <li>-Wparentheses  </li>
           <li>-Wpointer-sign  </li>
@@ -312,25 +312,25 @@ Voici ce qu'il se passe ici :
           <li>-Wvolatile-register-var </li>
        </ul>
      </pre></div>
-     <li><strong>-Werror</strong> : Considere les warnings comme des erreurs et cesse la compilation</li>
+     <li><strong>-Werror</strong> : Considère les warnings comme des erreurs et cesse la compilation</li>
      <li><strong>-ansi</strong> : Affiche des warnings en cas de non respect de la norme ISO C90</li>
    </ul>
    Beaucoup d'autres sont disponibles. Reportez-vous au <a href="?page=impatient-man-pages">man</a> gcc.
- </p> 
-   
+ </p>
+
 <p>
   Il est aussi possible de demander au compilateur d'effectuer (ou pas) des optimisations :
   <ul>
-    <li><strong>-O0</strong> : Desactive toutes les optimisations</li>
-    <li><strong>-O1</strong> : Optimisation de niveau 1 <a href="#" onClick="show('O1');return(false)" id="plus">(details)</a>
+    <li><strong>-O0</strong> : Désactive toutes les optimisations</li>
+    <li><strong>-O1</strong> : Optimisation de niveau 1 <a href="#" onClick="show('O1');return(false)" id="plus">(détails)</a>
     <div id="O1" style="display: none;">
-      Les options d'optimisation activees sont les suivantes :
+      Les options d'optimisation activées sont les suivantes :
       <ul>
 	<li>-fauto-inc-dec </li>
 	<li>-fcprop-registers </li>
 	<li>-fdce </li>
-	<li>-fdefer-pop</li> 
-	<li>-fdelayed-branch</li> 
+	<li>-fdefer-pop</li>
+	<li>-fdelayed-branch</li>
 	<li>-fdse </li>
 	<li>-fguess-branch-probability </li>
 	<li>-fif-conversion2 </li>
@@ -358,9 +358,9 @@ Voici ce qu'il se passe ici :
       </ul>
     </pre></div>
     </li>
-    <li><strong>-O2</strong> : Optimisation de niveau 2 <a href="#" onClick="show('O2');return(false)" id="plus">(details)</a>
+    <li><strong>-O2</strong> : Optimisation de niveau 2 <a href="#" onClick="show('O2');return(false)" id="plus">(détails)</a>
     <div id="O2" style="display: none;">
-      Les options d'optimisation activees, en plus de toutes celles de -O1, sont les suivantes :
+      Les options d'optimisation activées, en plus de toutes celles de -O1, sont les suivantes :
       <ul>
 	  <li>-fthread-jumps </li>
           <li>-falign-functions</li>
@@ -399,19 +399,19 @@ Voici ce qu'il se passe ici :
     </li>
     <li><strong>-O3</strong> : Optimisation de niveau 3 <a href="#" onClick="show('O3');return(false)" id="plus">(details)</a>
     <div id="O3" style="display: none;">
-      Les options d'optimisation activees, en plus de toutes celles de -O1 et -O2, sont les suivantes :
+      Les options d'optimisation activées, en plus de toutes celles de -O1 et -O2, sont les suivantes :
       <ul>
-	<li>-finline-functions</li> 
-	<li>-funswitch-loops</li> 
-	<li>-fpredictive-commoning</li> 
-	<li>-fgcse-after-reload</li> 
-	<li>-ftree-vectorize</li> 
-	<li>-fipa-cp-clone</li> 
+	<li>-finline-functions</li>
+	<li>-funswitch-loops</li>
+	<li>-fpredictive-commoning</li>
+	<li>-fgcse-after-reload</li>
+	<li>-ftree-vectorize</li>
+	<li>-fipa-cp-clone</li>
       </ul>
     </pre></div>
     </li>
   </ul>
-  Cependant, je ne recommande pas l'utilisation de ceux-ci pendant la realisation d'un programme C <a href="#" onClick="show('optimisation');return(false)" id="plus">(pourquoi ?)</a>. (Une fois qu'il est fini, pourquoi pas)</li>
+  Cependant, je ne recommande pas l'utilisation de ceux-ci pendant la réalisation d'un programme C <a href="#" onClick="show('optimisation');return(false)" id="plus">(pourquoi ?)</a>. (Une fois qu'il est fini, pourquoi pas)</li>
 <div id="optimisation" style="display: none;">
   <div class="code"><pre>         $> cat test.c
 	 /*
@@ -432,14 +432,14 @@ Voici ce qu'il se passe ici :
 	 $> gcc -W -Wall -ansi -pedantic -Wextra -Werror <strong>-O3</strong> test.c
 	 $> ./a.out
 	 $></pre></div>
-  ------> Ici, on voit qu'avec le flag d'optimisation -O3, le compilateur s'est contente de retirer la ligne qui provoquait l'erreur de segmentation sans meme nous en avertir. Et si, dans le fonctionnement de mon programme, cette ligne etait essentielle ? Je n'aurais alors pas vu l'erreur et n'aurait pas compris pourquoi le fonctionnement de mon programme n'etait pas celui attendu.
+  ------> Ici, on voit qu'avec le flag d'optimisation -O3, le compilateur s'est contenté de retirer la ligne qui provoquait l'erreur de segmentation sans meme nous en avertir. Et si, dans le fonctionnement de mon programme, cette ligne etait essentielle ? Je n'aurais alors pas vu l'erreur et n'aurait pas compris pourquoi le fonctionnement de mon programme n'était pas celui attendu.
 	</pre></div>
 	</p>
 	<p>On peut compiler plusieurs fichiers C pour un meme programme.</p>
 	<p>
 	  Exemple de compilation :
 	  <div class="code"><pre>     gcc -O0 -Wall -Wextra -Werror -ansi -o mon_executable mon_code.c</pre></div>
-	  Pour eviter d'avoir a taper cette longue commande a chaque compilation, faites-vous un alias ! <a href="#" onClick="show('alias');return(false)" id="plus">(Comment faire ?)</a>
+	  Pour eviter d'avoir à taper cette longue commande a chaque compilation, faites-vous un alias ! <a href="#" onClick="show('alias');return(false)" id="plus">(Comment faire ?)</a>
 	  <div id="alias" style="display: none;">
 	    <ul>
 	      <li>Ouvrir le fichier <strong>~/SHELLrc</strong> (en remplacant SHELL par sh, csh, tcsh, bash, 42sh,...)</li>
@@ -447,14 +447,14 @@ Voici ce qu'il se passe ici :
 		<div class="code"><pre><strong>alias</strong> mycc 'gcc -O0 -Wall -Wextra -Werror -ansi'</pre></div>
 	      </li>
 	      <li>Puis tapez <div class="code"><pre><strong>source</strong> ~/SHELLrc</pre></div></li>
-	      <li>Et enfin, pour compilez, faites <div class="code"><pre>mycc -o mon_executable mon_code.c</pre></div></li>
+	      <li>Et enfin, pour compiler, faites <div class="code"><pre>mycc -o mon_executable mon_code.c</pre></div></li>
 	      <li>C'est plus court, n'est-ce pas ?</li>
 	    </ul>
 	  </pre></div>
 	</p>
 	<p>
-	  Une fois que le programme est compile, on peut le lancer pour voir ce qu'il fait :
-	  <div class="code"><pre>     ./mon_executable	  </pre></div> 
+	  Une fois que le programme est compilé, on peut le lancer pour voir ce qu'il fait :
+	  <div class="code"><pre>     ./mon_executable	  </pre></div>
 	</p>
 
 <a href="#sommaire">UP</a>
@@ -462,10 +462,10 @@ Voici ce qu'il se passe ici :
 <h4 id="conditions-et-boucles">Conditions et boucles</h4>
 <ul>
   <li>
-    On peut demander a un programme de n'effectuer une action que dans un cas precis.<br />
+    On peut demander à un programme de n'effectuer une action que dans un cas précis.<br />
     Pour cela, on utilise la construction <strong>if</strong>.<br />
     On peut aussi lui demander de faire autre chose dans un autre cas avec <strong>else if</strong>. (facultatif)<br />
-    Puis, faire autre chose si aucun cas propose precedemment ne correspond grace a <strong>else</strong>. (facultatif)
+    Puis, faire autre chose si aucun cas propose précédemment ne correspond grace à <strong>else</strong>. (facultatif)
     <div class="code"><pre>      <strong><span class="cyan">if</span></strong> ( condition 1 )
       {
         action;
@@ -480,16 +480,16 @@ Voici ce qu'il se passe ici :
       }</pre></div>
   </li>
   <li>
-    On peut demander a notre programme d'executer une action tant qu'une condition est respecte grace a la construction <strong>while</strong>.
+    On peut demander a notre programme d'éxecuter une action tant qu'une condition est respectée grace à la construction <strong>while</strong>.
     <div class="code"><pre>      <strong><span class="cyan">while</span></strong> ( condition )
       {
         action;
         action;
       }</pre></div>
-    Il faudra alors faire attention a ce que la condition ne soit pas toujours respectee, car si c'est le cas, la boucle ne s'arretera jamais. On appelle ca une <strong>boucle infinie</strong>.
+    Il faudra alors faire attention à ce que la condition ne soit pas toujours respectée, car si c'est le cas, la boucle ne s'arrêtera jamais. On appelle ca une <strong>boucle infinie</strong>.
   </li>
   <li>
-    Une <strong>condition</strong> se construit de la maniere suivante :
+    Une <strong>condition</strong> se construit de la manière suivante :
     <table>
       <tr>
 	<th>Francais</th>
@@ -497,39 +497,39 @@ Voici ce qu'il se passe ici :
 	<th>Exemple</th>
       </tr>
       <tr>
-	<td><strong>egal</strong></td>
+	<td><strong>égal</strong></td>
 	<td><strong>==</strong></td>
 	<td>(n == 2)</td>
       </tr>
       <tr>
-	<td><strong>different de</strong></td>
+	<td><strong>différent de</strong></td>
 	<td><strong>!=</strong></td>
 	<td>(i != 0)</td>
       </tr>
       <tr>
-	<td><strong>superieur a</strong></td>
+	<td><strong>supérieur à</strong></td>
 	<td><strong>></strong></td>
 	<td>(j > 5)</td>
       </tr>
       <tr>
-	<td><strong>superieur ou egal a</strong></td>
+	<td><strong>supérieur ou égal à</strong></td>
 	<td><strong>>=</strong></td>
 	<td>(k >= 4)</td>
       </tr>
       <tr>
-	<td><strong>inferieur a</strong></td>
+	<td><strong>inférieur à</strong></td>
 	<td><strong><</strong></td>
 	<td>(count < 2)</td>
       </tr>
       <tr>
-	<td><strong>inferieur ou egal a</strong></td>
+	<td><strong>inférieur ou égal à</strong></td>
 	<td><strong><=</strong></td>
 	<td>(plop <= 3)</td>
       </tr>
     </table>
   </li>
   <li>
-    On peut demander ca ce que plusieurs conditions soient prises en compte.
+    On peut demander à ce que plusieurs conditions soient prises en compte.
     <table>
       <tr>
 	<th>Francais</th>
@@ -537,22 +537,22 @@ Voici ce qu'il se passe ici :
 	<th>Exemple</th>
       </tr>
       <tr>
-	<td><strong>ET</strong><br />Les deux conditions doivent etre verifiees</td>
+	<td><strong>ET</strong><br />Les deux conditions doivent être vérifiées</td>
 	<td><strong>&&</strong></td>
 	<td>((n == 3) && (j != 5))</td>
       </tr>
       <tr>
-	<td><strong>OU</strong><br />Au moins une condition doit etre verifee</td>
+	<td><strong>OU</strong><br />Au moins une condition doit être vérifée</td>
 	<td><strong>||</strong></td>
 	<td>((substraction(5, 3) < 1) || (n <= 7))</td>
       </tr>
       <tr>
-	<td><strong>OU exclusif</strong><br />Une condition des deux conditions doit etre respectee, mais pas les deux</td>
+	<td><strong>OU exclusif</strong><br />Une condition des deux conditions doit être respectée, mais pas les deux</td>
 	<td><strong>^</strong></td>
 	<td>((i < 3) ^ (function(d) == 6))
       </tr>
       <tr>
-	<td>condition ne doit pas etre verifiee</td>
+	<td>condition ne doit pas etre vérifiée</td>
 	<td><strong>!</strong></td>
 	<td>(!(k == 5))</td>
       </tr>
@@ -573,10 +573,10 @@ Voici ce qu'il se passe ici :
     <div class="code"><pre>      <span class="cyan">if</span> (subtraction(3, 5) != -2)
         return (-1);</pre></div>
   </li>
-  <li>On peut meme faire des calculs directement dans la condition :
+  <li>On peut même faire des calculs directement dans la condition :
     <div class="code"><pre>      <span class="cyan">if</span> ((n + 1) == 3)</pre></div>
   </li>
-  <li>En fait, le systeme de condition en C fonctionne comme un <strong>booleen</strong>. Le resultat final sera soit <strong>faux</strong> (= 0), soit <strong>vrai</strong> (toute autre valeur).<br />
+  <li>En fait, le système de condition en C fonctionne comme un <strong>booléen</strong>. Le resultat final sera soit <strong>faux</strong> (= 0), soit <strong>vrai</strong> (toute autre valeur).<br />
     Ainsi, il est possible de remplacer (a == 0) par (!a) et remplacer (a != 0) par (a).</li>
   <li>Exemple :
     <div class="code"><pre>
@@ -585,32 +585,32 @@ Voici ce qu'il se passe ici :
       <span class="green">(</span><span class="blue">(</span><span class="yellow">(</span><span class="red">(</span>a > 3<span class="red">)</span> || <span class="red">(</span>b > a<span class="red">)</span><span class="yellow">)</span> && <span class="yellow">(</span>a<span class="yellow">)</span><span class="blue">)</span> ^ <span class="blue">(</span>b == 3<span class="blue">)</span><span class="green">)</span>
     </pre></div>
 	<ul><ul>
-	  <li>Comme pour un calcul de maths habituel, on commence par regarder ce qui se trouve a l'interieur des parentheses les plus profondes.<br />
+	  <li>Comme pour un calcul de maths habituel, on commence par regarder ce qui se trouve à l'intérieur des parentheses les plus profondes.<br />
 	    On commence donc par <span class="red">(</span>a > 3<span class="red">)</span>.<br />
-	    a = 1 et 1 n'est pas superieur a 3.<br />
+	    a = 1 et 1 n'est pas supérieur a 3.<br />
 	    La condition est donc fausse.
 <pre><span class="green">(</span><span class="blue">(</span><span class="yellow">(</span><span class="red">(</span>FAUX<span class="red">)</span> || <span class="red">(</span>b > a<span class="red">)</span><span class="yellow">)</span> && <span class="yellow">(</span>a<span class="yellow">)</span><span class="blue">)</span> ^ <span class="blue">(</span>b == 3<span class="blue">)</span><span class="green">)</span></pre>
   </li>
-	  <li>Le separateur est un || (OU).<br />
+	  <li>Le séparateur est un || (OU).<br />
 	    Donc si l'instruction de droite est vraie, alors le tout est vrai.<br />
-	    Si l'instruction de gauche avait ete vraie, alors on aurait pas eu besoin de regarder l'instruction de droite, puisqu'il faut qu'au moins une soit vraie pour que le tout soit vrai.<br />
+	    Si l'instruction de gauche avait été vraie, alors on aurait pas eu besoin de regarder l'instruction de droite, puisqu'il faut qu'au moins une soit vraie pour que le tout soit vrai.<br />
 	    b = 3 et a = 1. <span class="red">(</span>3 > 1<span class="red">)</span> est bien vrai.
 	    On peut donc remplacer :<br />
 <pre><span class="green">(</span><span class="blue">(</span><span class="yellow">(</span><span class="red">(</span>FAUX<span class="red">)</span> || <span class="red">(</span>VRAI<span class="red">)</span><span class="yellow">)</span> && <span class="yellow">(</span>a<span class="yellow">)</span><span class="blue">)</span> ^ <span class="blue">(</span>b == 3<span class="blue">)</span><span class="green">)</span>
 <span class="green">(</span><span class="blue">(</span><span class="yellow">(</span>      VRAI      <span class="yellow">)</span> && <span class="yellow">(</span>a<span class="yellow">)</span><span class="blue">)</span> ^ <span class="blue">(</span>b == 3<span class="blue">)</span><span class="green">)</span></pre>
 	  </li>
-	  <li>Le prochain separateur est un && (ET).<br />
-	    Les deux conditions doivent etre vraie, donc on doit aussi regarder celle de droite.<br />
-	    a n'est pas egal a 0, donc a existe.<br />
+	  <li>Le prochain séparateur est un && (ET).<br />
+	    Les deux conditions doivent être vraies, donc on doit aussi regarder celle de droite.<br />
+	    a n'est pas égal a 0, donc a existe.<br />
 	    La condition est donc vraie.<br />
 <pre><span class="green">(</span><span class="blue">(</span><span class="yellow">(</span>VRAI<span class="yellow">)</span> && <span class="yellow">(</span>VRAI<span class="yellow">)</span><span class="blue">)</span> ^ <span class="blue">(</span>b == 3<span class="blue">)</span><span class="green">)</span>
 <span class="green">(</span><span class="blue">(</span>      VRAI      <span class="blue">)</span> ^ <span class="blue">(</span>b == 3<span class="blue">)</span><span class="green">)</span></pre>
 	  </li>
-	  <li>Le separateur est un ^ (Ou exclusif).<br />
-	    Il faut donc que l'une des deux conditions soit verifiee, mais pas l'autre.<br />
-	    La condition de gauche est vraie, donc la condition de droite doit etre fausse pour que le tout soit vrai.<br />
+	  <li>Le séparateur est un ^ (Ou exclusif).<br />
+	    Il faut donc que l'une des deux conditions soit vérifiée, mais pas l'autre.<br />
+	    La condition de gauche est vraie, donc la condition de droite doit être fausse pour que le tout soit vrai.<br />
 	    b = 3 donc (3 == 3) est vrai.<br />
-	    Les deux sont vraie, donc le tout est faux.
+	    Les deux sont vraies, donc le tout est faux.
 <pre><span class="green">(</span><span class="blue">(</span>VRAI<span class="blue">)</span> ^ <span class="blue">(</span>VRAI<span class="blue">)</span><span class="green">)</span>
 <span class="green">(</span>     FAUX      <span class="green">)</span></pre>
 	  </li>
@@ -620,9 +620,9 @@ Voici ce qu'il se passe ici :
 
 <a href="#sommaire">UP</a>
 
-<h4 id="operateurs-de-calcul-et-incrementations">Operateurs de calcul et incrementations</h4>
+<h4 id="operateurs-de-calcul-et-incrementations">Opérateurs de calcul et incrémentations</h4>
 <ul>
-  <li>Les operateurs de calculs sont ceux habituels :
+  <li>Les opérateurs de calculs sont ceux habituels :
     <ul>
       <li><strong>+</strong> : addition</li>
       <li><strong>-</strong> : soustraction</li>
@@ -630,8 +630,8 @@ Voici ce qu'il se passe ici :
       <li><strong>/</strong> : division</li>
       <li><strong>%</strong> : modulo (<a href="#" onClick="show('modulo');return(false)" id="plus">qu'est-ce que c'est ?</a>)
 	<div id="modulo" style="display: none;">
-	  Le resultat de l'operation A % B ("A modulo B") est le nombre qu'il reste une fois qu'on a soustrait le plus de fois possible B a A.<br />
-	  Le resultat, en mathematiques, peut etre positif comme negatif mais est forcement <strong>positif</strong> (ou nul) en informatique.<br />
+	  Le résultat de l'operation A % B ("A modulo B") est le nombre qu'il reste une fois qu'on a soustrait le plus de fois possible B à A.<br />
+	  Le résultat, en mathématiques, peut être positif comme négatif mais est forcément <strong>positif</strong> (ou nul) en informatique.<br />
 	  Exemple :<br />
 	  Calcul de 16 % 3.<br />
 	  16 - 3 = 13<br />
@@ -639,23 +639,23 @@ Voici ce qu'il se passe ici :
 	  10 - 3 = 7<br />
 	  7 - 3 = 4<br />
 	  4 - 3 = <strong>1</strong><br />
-	  1 - 3 = -2 --> negatif, donc le calcul est fini a la ligne precedente.<br />
+	  1 - 3 = -2 --> négatif, donc le calcul est fini a la ligne précédente.<br />
 	  --> 16 % 3 = 1.
 	</pre></div>
       </li>
     </ul><br />
   </li>
-  <li>Une instruction de calcul peut donner une nouvelle valeur a une variable en utilisant la valeur de celle-ci.
+  <li>Une instruction de calcul peut donner une nouvelle valeur à une variable en utilisant la valeur de celle-ci.
     <div class="code"><pre>   i = i + 3;</pre></div>
-    Dans ces cas-la, il est possible d'utiliser des operateurs d'affectations (=) effectuant un calcul sur la variable.
+    Dans ces cas-là, il est possible d'utiliser des opérateurs d'affectations (=) effectuant un calcul sur la variable.
     <div class="code"><pre>   i += 3;</pre></div>
-    donnera le meme resultat que la ligne precedente.
+    donnera le même résultat que la ligne précédente.
   </li>
   <li>
     <div class="code"><pre>   i += 2 * 6;</pre></div>
-    Le calcul sur la variable est effectue en dernier, donc ici, on calculera (2 * 6) + i.<br /><br />
+    Le calcul sur la variable est effectué en dernier, donc ici, on calculera (2 * 6) + i.<br /><br />
   </li>
-  <li>Ces operateurs d'affectations speciaux fonctionnent aussi avec les autres operateurs de calculs :
+  <li>Ces opérateurs d'affectations spéciaux fonctionnent aussi avec les autres opérateurs de calculs :
     <ul>
       <li><strong>+=</strong> : addition</li>
       <li><strong>-=</strong> : soustraction</li>
@@ -664,13 +664,13 @@ Voici ce qu'il se passe ici :
       <li><strong>%=</strong> : modulo</li>
     </ul>
   </li>
-  <li>Si l'on souhaite ajoute 1 a notre variable, il existe une syntaxe speciale d'incrementation :<br />
+  <li>Si l'on souhaite ajouter 1 a notre variable, il existe une syntaxe spéciale d'incrémentation :<br />
     <ul>
       <li>La <strong>post-incrementation</strong> : variable++<br />
-	On fait l'action, puis on incremente.<br />
+	On fait l'action, puis on incrémente.<br />
       </li>
       <li>La <strong>pre-incrementation</strong> : ++variable<br />
-	On incremente, puis on fait l'action.<br />
+	On incrémente, puis on fait l'action.<br />
       </li>
     <li>Exemple :
       <div class="code"><pre>        i = 1;
@@ -678,35 +678,35 @@ Voici ce qu'il se passe ici :
 	  i -= 2;</pre></div>
       <ul>
 	<li>(i++ == 2).<br />
-	  C'est une post-incrementation.<br />
-	  On va donc utiliser la valeur actuelle de i (1) pour faire la verification.<br />
+	  C'est une post-incrémentation.<br />
+	  On va donc utiliser la valeur actuelle de i (1) pour faire la vérification.<br />
 	  ---> i = 1;<br />
-	  1 n'est pas egal a 2. C'est donc FAUX.<br />
-	  Une fois la verification faite, on incremente.<br />
+	  1 n'est pas égal a 2. C'est donc FAUX.<br />
+	  Une fois la vérification faite, on incrémente.<br />
 	  ---> i = 2;</li>
 	<li>(++i == 2).<br />
-	  C'est une pre-incrementation.<br />
-	  On va donc incrementer i avant de faire la verification.<br />
+	  C'est une pré-incrementation.<br />
+	  On va donc incrémenter i avant de faire la verification.<br />
 	  ---> i = 3;<br />
-	  On fait maintenant la verification.<br />
-	  i (3) est bien egal a 3. C'est donc VRAI.<br />
+	  On fait maintenant la vérification.<br />
+	  i (3) est bien egal à 3. C'est donc VRAI.<br />
 	</li>
-	<li>La condition est donc vraie, et i vaut 3 a la fin de la verification de la condition.</li>
-	<li>Comme la condition est vraie, on fait le calcul. On enleve 2 a i (3), ce qui donne 1.</li>
+	<li>La condition est donc vraie, et i vaut 3 a la fin de la vérification de la condition.</li>
+	<li>Comme la condition est vraie, on fait le calcul. On enlève 2 à i (3), ce qui donne 1.</li>
       </ul>
-     <li>Il existe une syntaxe identique au meme comportement pour la <strong>decrementation</strong> de 1.<br />
+     <li>Il existe une syntaxe identique au même comportement pour la <strong>décrémentation</strong> de 1.<br />
      i-- est une post-decrementation<br />
      --i est une pre-decrementation.</li>
     </ul>
   </li>
   <li>On peut utiliser ces syntaxes d'[in-de]crementation pour remplacer une ligne de calcul.<br />
     <div class="code"><pre>i = i + 1;</pre></div>
-    peut alors etre remplace par :
+    peut alors etre remplacé par :
     <div class="code"><pre>++i;</pre></div>
-    (La pre-incrementation est recommande dans ces cas-la) (<a href="#" onClick="show('pre-incrementation');return(false)" id="plus">Pourquoi ?</a>)
+    (La pré-incrementation est recommandé dans ces cas-la) (<a href="#" onClick="show('pre-incrementation');return(false)" id="plus">Pourquoi ?</a>)
 	<div id="pre-incrementation" style="display: none;">
 	  A rediger...
-	</pre></div>    
+	</pre></div>
   </li>
 </ul>
 
@@ -714,9 +714,9 @@ Voici ce qu'il se passe ici :
 
 <h4 id="afficher-des-variables">Afficher des variables</h4>
 <p>
-  Pour donner a une variable comme valeur une lettre, on a deux solutions :
+  Pour donner à une variable comme valeur une lettre, on a deux solutions :
   <ul>
-    <li>Lui donner sa valeur de maniere claire en utilisant des quotes :
+    <li>Lui donner sa valeur de manière claire en utilisant des quotes :
       <div class="code"><pre><span class="green">char</span>		<span class="yellow">c</span>;
 
 c = <span class="green">'a'</span>;</pre></div></li>
@@ -734,9 +734,9 @@ Pour connaitre les valeurs ASCII de chaque lettre, on utilise la table ASCII que
 Exemple : La lettre 'F' a pour valeur ASCII 70 tandis que la lettre 'f' a pour valeur ASCII 102.
 </p>
 <p>
-  D'autres caracteres non visibles mais qui peuvent etre utiles :
+  D'autres caractères non visibles mais qui peuvent etre utiles :
   <ul>
-    <li>00 | <span class="green">'\0'</span> |  NULL, 0</li>
+    <li>00 | <span class="green">'\0'</span> | NULL, 0</li>
     <li>07 | <span class="green">'\a'</span> | bell, bip sonore</li>
     <li>08 | <span class="green">'\b'</span> | backspace</li>
     <li>09 | <span class="green">'\t'</span> | Tabulation</li>
@@ -753,11 +753,11 @@ Exemple : La lettre 'F' a pour valeur ASCII 70 tandis que la lettre 'f' a pour v
     {
       write(STDOUT_FILENO, &c, <span class="cyan">sizeof</span>(c));
     }
-  </pre></div>  
+  </pre></div>
   (Pour l'instant, il n'est pas utile de comprendre cette fonction)
 </p>
 <p>
-  Ce petit programme va afficher la lettre 'p' suivie d'un retour a la ligne et finir le programme en indiquant qu'il est reussi :
+  Ce petit programme va afficher la lettre 'p' suivie d'un retour à la ligne et finir le programme en indiquant qu'il est réussi :
   <div class="code"><pre>
     <span class="green">int</span>		<span class="blue">main</span>(<span class="green">void</span>)
     {
@@ -785,11 +785,11 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 <h3 id="chap2">Chapitre II</h3>
 
-<h4 id="les-tableaux">Les tableaux</h4> 
-<ul> 
+<h4 id="les-tableaux">Les tableaux</h4>
+<ul>
  <li>Si l'on a besoin de stocker plusieurs variables, on peut utiliser un <strong>tableau</strong>.<br />
-   Un tableau, c'est plusieurs variables d'un meme type les unes a la suite des autres.<br />
-   On peut declarer un tableau ainsi :<br />
+   Un tableau, c'est plusieurs variables d'un même type les unes à la suite des autres.<br />
+   On peut déclarer un tableau ainsi :<br />
    <div class="code"><pre>   <span class="green">type</span>		<span class="yellow">nom</span>[nombre_de_cases];</pre></div>
    Les cases du tableau commencent a 0.
    <div class="code"><pre>   <span class="green">int</span>		<span class="yellow">tab</span>[3];
@@ -797,38 +797,38 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
    tab[0] = 1;
    tab[1] = 76;
    tab[2] = 5;</pre></div>
-   Ici, la case tab[3] n'existe pas, ni toutes celles d'apres.</li> 
- <li>Pour ecrire plus qu'une lettre, mais ecrire un mot, les tableaux sont tres pratiques :
+   Ici, la case tab[3] n'existe pas, ni toutes celles d'après.</li>
+ <li>Pour écrire plus qu'une lettre, mais écrire un mot, les tableaux sont très pratiques :
    <div class="code"><pre>   <span class="green">char</span>		<span class="yellow">str</span>[4];
 
    str[0] = <span class="green">'L'</span>;
    str[1] = <span class="green">'o'</span>;
    str[2] = <span class="green">'L'</span>;
    str[3] = <span class="green">'\0'</span>;</pre></div>
-   Par convention, on termine un mot par le caractere '<strong>\0</strong>' qui sert a reperer la fin du mot.
-</li> 
+   Par convention, on termine un mot par le caractère '<strong>\0</strong>' qui sert a repérer la fin du mot.
+</li>
 </ul>
 
 <a href="#sommaire">UP</a>
 
 <h4 id="les-pointeurs">Les pointeurs</h4>
 <ul>
- <li>Chaque variable, pour etre utilisee, doit etre stockee quelque part dans la memoire.<br />
-   On dit que cette variable se trouve a une <strong>adresse</strong> en memoire.<br />
-   Cette adresse est un numero que l'on exprime en general en hexadecimal (type 0x7f6a8d).
- </li> 
- <li>Un <strong>pointeur</strong> est une variable qui contient l'<strong>adresse</strong> d'une autre variable.</li> 
- <li><img src="images/memory.png" alt="pointeurs C" /></li> 
- <li>Sur le schema, les petites cases representent les variables stockees dans la memoire.<br />
-   Notre tableau de tout a l'heure y est represente.<br />
-   En dessous, le contenu des cases du tableau, et au dessus, l'adresse ou elles sont stockees.<br />
-   A un autre endroit dans la memoire, une autre variable est stockee.<br />
-   Elle a pour contenu l'adresse de la premiere case du tableau.<br /><br />
+ <li>Chaque variable, pour être utilisée, doit être stockée quelque part dans la mémoire.<br />
+   On dit que cette variable se trouve a une <strong>adresse</strong> en mémoire.<br />
+   Cette adresse est un numero que l'on exprime en général en hexadecimal (type 0x7f6a8d).
+ </li>
+ <li>Un <strong>pointeur</strong> est une variable qui contient l'<strong>adresse</strong> d'une autre variable.</li>
+ <li><img src="images/memory.png" alt="pointeurs C" /></li>
+ <li>Sur le schema, les petites cases représentent les variables stockées dans la mémoire.<br />
+   Notre tableau de tout a l'heure y est représenté.<br />
+   En dessous, le contenu des cases du tableau, et au dessus, l'adresse ou elles sont stockées.<br />
+   A un autre endroit dans la mémoire, une autre variable est stockée.<br />
+   Elle a pour contenu l'adresse de la première case du tableau.<br /><br />
  </li>
  <li>
-   Dans la partie <strong>declarations</strong> d'une fonction :
+   Dans la partie <strong>déclarations</strong> d'une fonction :
    <ul>
-     <li>On declare un pointeur en indiquant comme type celui vers lequel il pointe et en ajoutant une <strong>*</strong> devans le nom.
+     <li>On déclare un pointeur en indiquant comme type celui vers lequel il pointe et en ajoutant une <strong>*</strong> devant le nom.
        <div class="code"><pre>	<span class="green">int</span>		*<span class="yellow">pointer</span>;</pre></div>
        est un pointeur dont le contenu sera l'adresse d'une variable de type int.
      </li>
@@ -837,9 +837,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
  <li>
    Dans la partie <strong>instructions</strong> d'une fonction :
    <ul>
-     <li>On recupere l'adresse d'une variable en ajoutant un <strong>&</strong> devant le nom de la variable.</li>
-     <li>On recupere ce qui se trouve a l'adresse contenue dans le pointeur en ajoutant une <strong>*</strong> devant le nom du pointeur.<br />
-       On dit alors qu'on <strong>dereference</strong> un pointeur.</li>
+     <li>On récupère l'adresse d'une variable en ajoutant un <strong>&</strong> devant le nom de la variable.</li>
+     <li>On récupère ce qui se trouve à l'adresse contenue dans le pointeur en ajoutant une <strong>*</strong> devant le nom du pointeur.<br />
+       On dit alors qu'on <strong>déréference</strong> un pointeur.</li>
    </ul>
  </li>
  <li>Exemple :
@@ -854,39 +854,39 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
      print_char(*p);
      print_char(<span class="green">'\n'</span>);</pre></div>
    <ul>
-     <li>On declare une variable de type char que l'on appelle <strong>c</strong>.</li>
-     <li>On declare un pointeur vers un char que l'on appelle <strong>p</strong>.</li>
+     <li>On déclare une variable de type char que l'on appelle <strong>c</strong>.</li>
+     <li>On déclare un pointeur vers un char que l'on appelle <strong>p</strong>.</li>
      <li>On met la lettre 'a' (valeur ASCII 97) dans la variable <strong>c</strong>.<br />
        --> c = 97 ; p = valeur inconnue.</li>
      <li>On affiche le contenu de la variable <strong>c</strong>.</li>
-     <li>On recupere l'adresse de la variable <strong>c</strong> et on la met dans le pointeur <strong>p</strong>.<br />
+     <li>On récupère l'adresse de la variable <strong>c</strong> et on la met dans le pointeur <strong>p</strong>.<br />
        --> c = 97 ; p = adresse de c (de type 0x75f5a).</li>
-     <li>On <strong>dereference</strong> le pointeur <strong>p</strong> pour modifier son contenu et y mettre la lettre z (valeur ASCII 122).<br />
+     <li>On <strong>déréference</strong> le pointeur <strong>p</strong> pour modifier son contenu et y mettre la lettre z (valeur ASCII 122).<br />
        --> c = 122 ; p = adresse de c.</li>
      <li>On affiche c. On voit qu'il contient bien la nouvelle valeur : 'z'.</li>
-     <li>On dereference le pointeur p pour afficher le contenu de la variable vers laquelle il pointe. C'est le contenu de c, donc ca affiche la meme chose que precedemment.</li>
+     <li>On déréference le pointeur p pour afficher le contenu de la variable vers laquelle il pointe. C'est le contenu de c, donc ca affiche la meme chose que précédemment.</li>
      <li>On affiche un retour a la ligne, c'est toujours plus joli.</li>
    </ul>
  </li>
 <br />
- <li><strong>Quand on declare un tableau, on declare en fait un pointeur vers la premiere case du tableau.</strong></li>
- <li>Concretement, ces deux lignes sont equivalantes :
+ <li><strong>Quand on déclare un tableau, on déclare en fait un pointeur vers la premiere case du tableau.</strong></li>
+ <li>Concrètement, ces deux lignes sont équivalantes :
    <div class="code"><pre>   tab[0] = 3;
    *tab = 3;</pre></div>
  </li>
- <li>On peut demander a un pointeur d'etre vide. On lui donne alors la valeur <span class="pink">NULL</span>.</li>
-</ul> 
+ <li>On peut demander à un pointeur d'être vide. On lui donne alors la valeur <span class="pink">NULL</span>.</li>
+</ul>
 
 <a href="#sommaire">UP</a>
 
-<h4 id="les-chaines-de-caracteres">Les chaines de caracteres</h4> 
- <p>On appelle une <strong>chaine de caracteres</strong> un tableau de type char qui contient des lettres (leurs valeurs ASCII) et qui se termine par un '\0'.</p>
+<h4 id="les-chaines-de-caracteres">Les chaînes de caractères</h4>
+ <p>On appelle une <strong>chaîne de caractères</strong> un tableau de type char qui contient des lettres (leurs valeurs ASCII) et qui se termine par un '\0'.</p>
 <!--<p>Exemple d'utilisation d'une chaine de caracteres (l'afficher) :
     <div class="code"><pre>
       void		print_string(char *string)
       {
         ssize_t		i;
-        
+
         i = 0;
         while (string[i] != '\0')
         {
@@ -894,7 +894,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
           ++i;
         }
       }
-      
+
       int		main(void)
       {
         print_string("Le pays du 42");
@@ -910,22 +910,22 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
       <li>On parcoure la chaine de caracteres jusqu'a ce que le contenu de la case du tableau soit egal a '\0', car c'est ce caractere qui nous permet d'identifier la fin de la chaine de caracteres.</li>
       <li>A chaque tour de boucle while, on affiche le caractere (la lettre) et on augmente le compteur de 1 pour passer a la lettre suivante.</li>
     </ul>-->
-On peut envoyer une chaine de caractere a une fonction en utilisant des  <strong>double quotes</strong>  (&quot;) "ma chaine de caracteres\n".<br />
-<small><i>Les simples quotes (&lsquo;) sont utilises pour les caracteres seuls.</i></small><br />
-La fonction a laquelle on aura envoye la chaine de caracteres grace a des doubles quotes prendra alors en parametre un pointeur vers un char. C'est le pointeur vers la premiere case du tableau qui contient une chaine de caracteres.<br />
+On peut envoyer une chaine de caractere à une fonction en utilisant des <strong>double quotes</strong> (&quot;) "ma chaine de caracteres\n".<br />
+<small><i>Les simples quotes (&lsquo;) sont utilisées pour les caractères seuls.</i></small><br />
+La fonction à laquelle on aura envoye la chaîne de caracteres grâce à des doubles quotes prendra alors en paramètre un pointeur vers un char. C'est le pointeur vers la première case du tableau qui contient une chaîne de caractères.<br />
     <div class="code"><pre>
       <span class="green">void</span>		<span class="blue">print_string</span>(<span class="green">char</span> *<span class="yellow">string</span>)
       {
         <span class="red">/* fonction qui affiche */</span>
       }
-      
+
       <span class="green">int</span>		<span class="blue">main</span>(<span class="green">void</span>)
       {
         print_string(<span class="green">"Le pays du 42"</span>);
         <span class="cyan">return</span> (0);
       }</pre></div>
 </p>
- 
+
 <a href="#sommaire">UP</a>
 
 <hr />
@@ -944,12 +944,12 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <h3 id="chap3">Chapitre III</h3>
 
-<h4 id="la-recursivite">La recursivite</h4>
-<ul> 
- <li>Une fonction recusrive est une fonction qui s'appelle elle-meme.</li> 
- <li>La recursivite peut s'utiliser en remplacement d'une boucle.</li> 
+<h4 id="la-recursivite">La récursivité</h4>
+<ul>
+ <li>Une fonction récursive est une fonction qui s'appelle elle-même.</li>
+ <li>La récursivité peut s'utiliser en remplacement d'une boucle.</li>
  <li>Exemple :<br />
-   Ces deux fonctions ont le meme comportement, mais l'une utilise une boucle et l'autre est recursive.
+   Ces deux fonctions ont le même comportement, mais l'une utilise une boucle et l'autre est récursive.
    <div class="code"><pre>     <span class="green">void</span>	<span class="blue">print_c_while</span>(<span class="green">int</span> <span class="yellow">n</span>)
      {
        <span class="green">int</span>	<span class="yellow">i</span>;
@@ -979,57 +979,57 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
        print_char(<span class="green">'\n'</span>);
        <span class="cyan">return</span> (0);
      }</pre></div>
- </li> 
-</ul> 
+ </li>
+</ul>
 
 <a href="#sommaire">UP</a>
 
-<h4 id="manipulation-de-fichiers">Manipulation de fichiers</h4> 
-<ul> 
-  <li>Pour lire et ecrire dans des fichiers, on utilise des <strong>filedescriptor</strong> (ou <strong>fd</strong>).<br />
-    Ce sont des int qui contiennent un numero.<br />
-    Ces "numeros" indiquent quel est le fichier sur lequel on ecrit.<br />
-    On n'attribut pas soi-meme ces nombres, ce sont des <strong>appels systemes</strong> qui le gerent.<br />
-    Certains nombres (fd) sont reserves :<br />
+<h4 id="manipulation-de-fichiers">Manipulation de fichiers</h4>
+<ul>
+  <li>Pour lire et écrire dans des fichiers, on utilise des <strong>filedescriptor</strong> (ou <strong>fd</strong>).<br />
+    Ce sont des int qui contiennent un numéro.<br />
+    Ces "numéros" indiquent quel est le fichier sur lequel on écrit.<br />
+    On n'attribue pas soi-même ces nombres, ce sont des <strong>appels système</strong> qui les gèrent.<br />
+    Certains nombres (fd) sont réservés :<br />
     <ul>
-      <li><strong>L'entree standard</strong> (ou STDIN_FILENO) : en general egal a zero, on l'associe souvent au clavier, sur lequel on va lire des informations. Quand j'entre une commande dans mon terminal, il va lire ce que j'ecris sur l'entree standard.</li>
-      <li><strong>La sortie standard</strong> (ou STDOUT_FILENO) : en general egal a un, c'est ce qui nous permet de lire des informations a l'ecran. Quand une commande ou un programme est execute, il affiche du contenu sur la sortie standard. C'est ce que faisait notre fonction print_char.</li>
-      <li><strong>La sortie d'erreur</strong> (ou STDERR_FILENO) : en general egal a deux, elle a souvent le meme comportement que la sortie standard mais permets de differencier les messages de bon fonctionnement du programme a ceux qui aparaissent en cas d'erreurs. Les erreurs et warnongs de compilations sont par exemple affiches sur la sortie d'erreur.</li>
+      <li><strong>L'entrée standard</strong> (ou STDIN_FILENO) : en général égal à zero, on l'associe souvent au clavier, sur lequel on va lire des informations. Quand j'entre une commande dans mon terminal, il va lire ce que j'écris sur l'entrée standard.</li>
+      <li><strong>La sortie standard</strong> (ou STDOUT_FILENO) : en général égal à un, c'est ce qui nous permet de lire des informations à l'ecran. Quand une commande ou un programme est exécuté, il affiche du contenu sur la sortie standard. C'est ce que faisait notre fonction print_char.</li>
+      <li><strong>La sortie d'erreur</strong> (ou STDERR_FILENO) : en général égal à deux, elle a souvent le même comportement que la sortie standard mais permet de différencier les messages de bon fonctionnement du programme à ceux qui apparaissent en cas d'erreur(s). Les erreurs et warnings de compilations sont par exemple affichés sur la sortie d'erreur.</li>
     </ul>
   </li>
-  <li>Les <strong>appels systemes</strong> sont des fonctions qui renvoient une valeur.<br />
-    Celle-ci doit absolument etre verifiee.<br />
-    En cas d'echec, il se peut que la suite de l'execution du programme soit perturbee, et il vaudra mieux, alors, en cas d'echec, arreter le programme (en affichant un message d'erreur, par exemple).</li>
- <li>Pour ecrire dans un fd, on utilise la fonction <strong>write</strong>.<br />
-   Elle prend en parametre le fd, une chaine de caracteres et une taille.<br />
-   Elle retourne le nombre de caracteres ecrits (et -1 en cas d'echec).<br />
+  <li>Les <strong>appels système</strong> sont des fonctions qui renvoient une valeur.<br />
+    Celle-ci doit absolument être vérifiée.<br />
+    En cas d'échec, il se peut que la suite de l'exécution du programme soit perturbée, et il vaudra mieux, alors, en cas d'échec, arrêter le programme (en affichant un message d'erreur, par exemple).</li>
+ <li>Pour écrire dans un fd, on utilise la fonction <strong>write</strong>.<br />
+   Elle prend en paramètre le fd, une chaine de caractères et une taille.<br />
+   Elle retourne le nombre de caractères écrits (et -1 en cas d'échec).<br />
    Lire le <a href="?page=impatient-man-pages">man</a> 2 de write !
-</li> 
+</li>
  <li>Pour lire dans un fd, on utilise la fonction <strong>read</strong>.<br />
-   Elle prend en parametre le fd, un <strong>buffer</strong> (un tableau qui sert a stocker) et une taille.<br />
-   Elle retourne le nombre de caracteres lus.<br />
+   Elle prend en paramètre le fd, un <strong>buffer</strong> (un tableau qui sert a stocker) et une taille.<br />
+   Elle retourne le nombre de caractères lus.<br />
    Lire le <a href="?page=impatient-man-pages">man</a> 2 de read !
- </li> 
- <li>Pour <strong>ouvrir un fichier</strong>, c'est-a-dire associer un fd a un fichier dans lequel on pourra lire et ecrire, on utilise la fonction <strong>open</strong>.<br />
-   Elle prend en parametre <strong>le chemin du fichier</strong> et le type d'ouverture.<br />
+ </li>
+ <li>Pour <strong>ouvrir un fichier</strong>, c'est-à-dire associer un fd a un fichier dans lequel on pourra lire et écrire, on utilise la fonction <strong>open</strong>.<br />
+   Elle prend en paramètre <strong>le chemin du fichier</strong> et le type d'ouverture.<br />
    Les types d'ouvertures :
    <ul>
      <li><strong>O_RDONLY</strong> : Lecture uniquement</li>
      <li><strong>O_WRONLY</strong> : Ecriture uniquement</li>
-     <li><strong>O_RDWR</strong> : Lecture et ecriture</li>
-     <li><strong>O_CREAT</strong> : Creer un fichier qui n'existe pas</li>
-     <li><strong>O_TRUNC</strong> : Ecrase le fichier dans le cas ou on essaierai de creer un fichier qui existe deja</li>
+     <li><strong>O_RDWR</strong> : Lecture et écriture</li>
+     <li><strong>O_CREAT</strong> : Créer un fichier qui n'existe pas</li>
+     <li><strong>O_TRUNC</strong> : Ecrase le fichier dans le cas ou on essaierai de créer un fichier qui existe déjà</li>
      <li><strong>O_APPEND</strong> : Ecrit a la fin du fichier</li>
    </ul>
-   On peut specifier plusieurs types d'ouverture en les separant par un <strong>|</strong>.<br />
+   On peut specifier plusieurs types d'ouverture en les séparant par un <strong>|</strong>.<br />
    Lire le <a href="?page=impatient-man-pages">man</a> 2 de open !
- </li> 
- <li>Le nombre de filedescriptor est liimite, donc il vaut mieux les economiser.<br />
-   Il est donc extremement important de "liberer" le numero filedescriptor correspondant a un fichier une fois que l'on a plus besoin de celui-ci.<br />
-   Pour cela, on utilise l'appel systeme <strong>close</strong> qui ferme un filedescriptor.<br />
-   Elle prend en parametre un filedescriptor et renvoie 0 en cas de reussite, -1 sinon.
  </li>
- <li>Exemple : Lire sur l'entree standard, ecrire sur la sortie standard.
+ <li>Le nombre de filedescriptor est limité, donc il vaut mieux les économiser.<br />
+   Il est donc extrêmement important de "libérer" le numero filedescriptor correspondant à un fichier aussitôt que l'on n'a plus besoin de celui-ci.<br />
+   Pour cela, on utilise l'appel système <strong>close</strong> qui ferme un filedescriptor.<br />
+   Elle prend en paramètre un filedescriptor et renvoie 0 en cas de réussite, -1 sinon.
+ </li>
+ <li>Exemple : Lire sur l'entree standard, écrire sur la sortie standard.
    <div class="code"><pre>
      <span class="blue">#include</span>		<span class="green">&lt;unistd.h&gt;</span>
      <span class="blue">#include</span>		<span class="green">&lt;stdlib.h&gt;</span>
@@ -1064,30 +1064,30 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
        print_string_fd(STDOUT_FILENO, <span class="green">". Quel joli nom !\n"</span>);
      }</pre></div>
    <ul>
-     <li>La fonction print_string_fd a le meme comportement que la fonction print_string.<br />
+     <li>La fonction print_string_fd a le même comportement que la fonction print_string.<br />
        Elle prend en plus en parametre un fd, ce qui lui permet d'ecrire sur le fd que l'on souhaite.<br />
-       Elle calcule aussi la taille de la chaine de caracteres et n'utilise qu'une fois l'appel systeme write.<br />
-       Si l'appel systeme write echoue, le programme est quitte grace a la fonction <strong>exit</strong>.
+       Elle calcule aussi la taille de la chaîne de caractères et n'utilise qu'une fois l'appel système write.<br />
+       Si l'appel systeme write échoue, le programme est quitté grace à la fonction <strong>exit</strong>.
      </li>
-     <li>On lit sur l'entree standard ce que l'utilisateur va ecrire.<br />
-       Ce qui est lu est stocke dans un buffer.<br />
+     <li>On lit sur l'entrée standard ce que l'utilisateur va écrire.<br />
+       Ce qui est lu est stocké dans un buffer.<br />
        Ce buffer est un tableau de 12 cases.<br />
-       On va donc lire une taille de 12 pour eviter de depasser la place qui nous est donnee.<br />
-       On recupere la valeur de retour de read pour deux raisons :
+       On va donc lire une taille de 12 pour éviter de dépasser la place qui nous est allouée.<br />
+       On récupère la valeur de retour de read pour deux raisons :
        <ul>
-	 <li>Pour verifier que l'appel systeme n'a pas echoue.</li>
-	 <li>Pour connaitre la taille du mot.<br />
-	   S'il est plus court, le tableau buffer ne sera pas completement rempli !</li>
+	 <li>Pour vérifier que l'appel système n'a pas échoué.</li>
+	 <li>Pour connaître la taille du mot.<br />
+	   S'il est plus court, le tableau buffer ne sera pas complètement rempli !</li>
        </ul>
      </li>
-     <li>Si l'appel systeme echoue, on affiche un message d'erreur sur la sortie d'erreur et on quitte le programme.<br />
-       <small>EXIT_FAILURE indique que le programme n'a pas reussi, EXIT_SUCCESS (= 0) indiquerai que le programme a quitte en ayant son comportement normal.<br />
-	 Rappel : Retourner la valeur 0 en fin de programme signifie que l'execution du programme s'est bien passe. Une autre valeur signifie qu'il y a eu une erreur.</small></li>
-     <li>L'appel systeme read ne mets pas de '\0' a la fin du mot qu'il a lu (puisqu'il ne lit pas que des mots, en fait).<br />
-     Il faut donc le mettre soi-meme, car si on ne le fait pas, notre fonction print_string_fd ne saura pas quand s'arreter.</li>
+     <li>Si l'appel système échoue, on affiche un message d'erreur sur la sortie d'erreur et on quitte le programme.<br />
+       <small>EXIT_FAILURE indique que le programme n'a pas réussi, EXIT_SUCCESS (= 0) indiquerai que le programme a quitté en ayant son comportement normal.<br />
+	 Rappel : Retourner la valeur 0 en fin de programme signifie que l'execution du programme s'est bien passé. Une autre valeur signifie qu'il y a eu une erreur.</small></li>
+     <li>L'appel système read ne met pas de '\0' a la fin du mot qu'il a lu (puisqu'il ne lit pas que des mots, en fait).<br />
+     Il faut donc le mettre soi-même, car si on ne le fait pas, notre fonction print_string_fd ne saura quand s'arrêter.</li>
    </ul>
-</li> 
- <li>Exemple : Lire dans un fichier, ecrire dans un nouveau fichier
+</li>
+ <li>Exemple : Lire dans un fichier, écrire dans un nouveau fichier
    <div class="code"><pre>
    <span class="green">void</span>		<span class="blue">readfile</span>(<span class="green">void</span>)
    {
@@ -1115,28 +1115,28 @@ droits en lecture.\n"</span>);
    }
    </pre></div>
    <ul>
-     <li>On commence par ouvrir le fichier de depart, en lecture seule. En cas d'echec, on quitte.</li>
-     <li>On creer ensuite un nouveau fichier. Si le fichier existe deja, on l'ecrase. On compte ecrire seulement dedans.</li>
-     <li>On lit dans le fichier puis on ecrit dans le nouveau fichier, et ce, tant qu'il y a des choses a lire (tant que read n'a pas revoye 0 ou une erreur.)</li>
+     <li>On commence par ouvrir le fichier de départ, en lecture seule. En cas d'échec, on quitte.</li>
+     <li>On créé ensuite un nouveau fichier. Si le fichier existe déjà, on l'écrase. On compte écrire seulement dedans.</li>
+     <li>On lit dans le fichier puis on écrit dans le nouveau fichier, et ce, tant qu'il y a des choses a lire (tant que read n'a pas renvoyé 0 ou une erreur.)</li>
      <li>On a termine avec les deux fichiers, on ferme les filedescriptors.</li>
-     <li>En lancant ce programme, on se rend compte que s'il n'y a pas eu d'erreur, rien ne s'affiche. C'est normal : On n'a rien ecrit sur la sortie standard, on a ecrit dans un fichier. En ouvrant le fichier new_file.txt, on voit qu'il contient la meme chose que file.txt.</li>
-     <li>Pourquoi n'a't-on pas ajoute de '\0' a la fin du buffer lu ? On ne lit pas forcement des chaines de caracteres, on peut aussi lire du binaire. On utilise directement write en lui donnant un nombre de caracteres a afficher. A aucun moment on ne parcoure le buffer a la recherche d'un '\0' indiquant la fin. Et pour cause : si on lit du binaire, par exemple, un '\0' pourra se trouver au milieu mais ne voudra pas dire que le fichier est termine !</li>
+     <li>En lançant ce programme, on se rend compte que s'il n'y a pas eu d'erreur, rien ne s'affiche. C'est normal : On n'a rien écrit sur la sortie standard, on a écrit dans un fichier. En ouvrant le fichier new_file.txt, on voit qu'il contient la même chose que file.txt.</li>
+     <li>Pourquoi n'a't-on pas ajoute de '\0' a la fin du buffer lu ? On ne lit pas forcement des chaînes de caractères, on peut aussi lire du binaire. On utilise directement write en lui donnant un nombre de caractères à afficher. A aucun moment on ne parcoure le buffer à la recherche d'un '\0' indiquant la fin. Et pour cause : si on lit du binaire, par exemple, un '\0' pourra se trouver au milieu mais ne voudra pas dire que le fichier est terminé !</li>
    </ul>
-</li> 
-</ul> 
+</li>
+</ul>
 
 <a href="#sommaire">UP</a>
 
 <h4 id="includes-compilation-separee-defines-macros">Les fichiers headers, les includes, les defines et les macros</h4>
-<ul> 
- <li>Il existe des fichiers a l'extension .h que l'on appelle les fichiers headers qui contiennent diverses informations pour utiliser des fonctions en C.</li> 
- <li>On a vu par exemple que l'on ne pouvait pas utiliser la fonction write sans ajouter cette ligne en debut de fichier :
+<ul>
+ <li>Il existe des fichiers a l'extension .h que l'on appelle les fichiers headers qui contiennent diverses informations pour utiliser des fonctions en C.</li>
+ <li>On a vu par exemple que l'on ne pouvait pas utiliser la fonction write sans ajouter cette ligne en début de fichier :
    <div class="code"><pre>	<span class="blue">#include</span>	<span class="green">&lt;unistd.h&gt;</span></pre></div>
- </li> 
- <li>La presence des <strong>&lt; &gt;</strong> indique que le fichier se trouve dans le dossier des headers standard. En general, c'est /usr/include. On peut donc voir le contenu du fichier pour mieux comprendre.</li> 
- <li>Si on met des <strong>" "</strong>, cela signifie que le fichier header est dans le dossier courant (ou celui specifie a la compilation grace a -I).</li> 
- <li>En general, on aura un fichier .h par fichier .c.</li>
- <li>Cela permet de compiler avec plusieurs fichiers separes.</li>
+ </li>
+ <li>La présence des <strong>&lt; &gt;</strong> indique que le fichier se trouve dans le dossier des headers standard. En général, c'est /usr/include. On peut donc voir le contenu du fichier pour mieux comprendre.</li>
+ <li>Si on met des <strong>" "</strong>, cela signifie que le fichier header est dans le dossier courant (ou celui spécifié à la compilation grace a -I).</li>
+ <li>En général, on aura un fichier .h par fichier .c.</li>
+ <li>Cela permet de compiler avec plusieurs fichiers séparés.</li>
  <li>Le mieux est d'avoir un fichier .c par fonction.</li>
  <li>Les fichiers headers contiennent des <strong>prototypes</strong> de fonction.<br />
    Un prototype de fonction :
@@ -1145,11 +1145,11 @@ droits en lecture.\n"</span>);
  </li>
  <li>Les fichiers headers contiennent aussi des <strong>define</strong>s.<br />
    <div class="code"><pre>	<span class="blue">#define</span>		<span class="yellow">NOM</span>	VALEUR</pre></div>
-   Ce sont des valeurs qui sont remplaces dans le code avant la compilation.<br />
-   On met leurs noms en majuscule de facon a la differencier des noms de variables.<br />
-   Tres utile lorsque que l'on utilise plusieurs fois une valeur : si on a besoin de la changer, on ne le fera qu'une seule fois.<br />
-   C'est toujours bien d'en utiliser, meme si la valeur n'est utilisee qu'une fois, dans le cas ou elle peut etre modifiee.<br />
-   Ca marche aussi avec des chaines de caracteres !
+   Ce sont des valeurs qui sont remplacées dans le code avant la compilation.<br />
+   On met leurs noms en majuscule de façon à la différencier des noms de variables.<br />
+   Très utile lorsque que l'on utilise plusieurs fois une valeur : si on a besoin de la changer, on ne le fera qu'une seule fois.<br />
+   C'est toujours bien d'en utiliser, même si la valeur n'est utilisée qu'une fois, dans le cas où elle peut être modifiée.<br />
+   Ca marche aussi avec des chaînes de caractères !
  </li>
  <li>Exemple :<br />
    Le fichier test_read.c :
@@ -1179,44 +1179,44 @@ droits en lecture.\n"</span>);
 
      <span class="blue">#  include</span>		<span class="green">&lt;stdlib.h&gt;</span>
      <span class="blue">#  include</span>		<span class="green">&lt;unistd.h&gt;</span>
-       
+
      <span class="blue">#  define</span>		<span class="yellow">FALSE</span>		0
      <span class="blue">#  define</span>		<span class="yellow">TRUE</span>		!FALSE
 
      <span class="blue">#  define</span>		<span class="yellow">BUFF_SIZE</span>	1024
      <span class="blue">#  define</span>		<span class="yellow">MSG_READ_ERR</span>	<span class="green">"Error: read\n"</span>
-     
+
      <span class="green">int</span>		<span class="blue">test_read</span>(<span class="green">int</span>);
 
      <span class="blue">#endif</span>		<span class="red">/* !TEST_READ_H_ */</span></pre></div>
       <ul>
-	<li>Vous vous en serez doute : STDOUT_FILENO, EXIT_SUCCESS, etc sont des defines !<br />
-	  Vous pouvez aller voir les declarations de STDOUT_FILENO anc co dans /usr/include/unistd.h.<br />
-	  Vous pouvez aller voir les declarations de EXIT_SUCCESS anc co dans /usr/include/stdlib.h.</li>
+	<li>Vous vous en serez douté : STDOUT_FILENO, EXIT_SUCCESS, etc sont des defines !<br />
+	  Vous pouvez aller voir les déclarations de STDOUT_FILENO anc co dans /usr/include/unistd.h.<br />
+	  Vous pouvez aller voir les déclarations de EXIT_SUCCESS anc co dans /usr/include/stdlib.h.</li>
 	<li>Le fichier .c inclut son fichier .h associe, et rien d'autre.<br />
 	  Les defines, includes, macros, prototypes se trouvent dans le fichier .h.</li>
 	<li>On peut faire des if et des else dans les .h !<br />
 	  <ul>
-	    <li><span class="blue">#if</span> EXPRESSION = si EXPRESSION est vrai (les expressions sont a peu pres equivalante au C)</li>
+	    <li><span class="blue">#if</span> EXPRESSION = si EXPRESSION est vrai (les expressions sont a peu près équivalante au C)</li>
 	    <li><span class="blue">#elif</span> EXPRESSION = equivalent au else if en C</li>
 	    <li><span class="blue">#else</span> = equivalent au else en C</li>
-	    <li><span class="blue">#ifdef</span> NOM_DEFINE = si NOM_DEFINE a ete declare</li>
-	    <li><span class="blue">#ifndef</span> NOM_DEFINE = si NOM_DEFINE n'a pas ete declare</li>
-	    <li><span class="blue">#endif</span> = a la fin des verifications</li>
+	    <li><span class="blue">#ifdef</span> NOM_DEFINE = si NOM_DEFINE a été déclaré</li>
+	    <li><span class="blue">#ifndef</span> NOM_DEFINE = si NOM_DEFINE n'a pas été déclaré</li>
+	    <li><span class="blue">#endif</span> = à la fin des vérifications</li>
 	  </ul>
 	  Dans l'exemple ci-dessus, on a fait ce qui s'appelle une <strong>protection contre la multi-inclusion</strong>.<br />
-	  En fait, on definit toutes nos declarations dans une definition appelee TEST_READ_H_.<br />
-	  Mais avant de le faire, on verifie si cette grosse definition n'a pas ete faite auparavant, si, par exemple, j'avais inclut 2 fois le fichier test_read_h.<br />
-	  Il est extremement important de <strong>proteger</strong> tout les fichiers headers contre la multi-inclusion !
+	  En fait, on définit toutes nos déclarations dans une définition appelée TEST_READ_H_.<br />
+	  Mais avant de le faire, on vérifie si cette grosse définition n'a pas été faite auparavant, si, par exemple, j'avais inclus 2 fois le fichier test_read_h.<br />
+	  Il est extrêmement important de <strong>protéger</strong> tout les fichiers headers contre la multi-inclusion !
 	</li>
       </ul>
  </li>
- <li>Les <strong>macros</strong> sont tout simplement des defines qui ont pour particularites de contenir <strong>des morceaux de code</strong> et de prendre des valeurs (ou variables) en parametre.<br />
-   En general, on y met des <strong>ternaires</strong>.<br />
+ <li>Les <strong>macros</strong> sont tout simplement des defines qui ont pour particularité de contenir <strong>des morceaux de code</strong> et de prendre des valeurs (ou variables) en paramètre.<br />
+   En général, on y met des <strong>ternaires</strong>.<br />
    <div class="code"><pre>	<span class="blue">#define		IS_NEGATIVE</span>(<span class="yellow">value</span>)	(value < 0 ? TRUE : FALSE)</pre></div>
-																	 Cette macro prend en parametre une valeur (peu importe le type) et renvoie TRUE si elle est negative, FALSE sinon. (TRUE et FALSE definie plus tot)
+																	 Cette macro prend en paramètre une valeur (peu importe le type) et renvoie TRUE si elle est négative, FALSE sinon. (TRUE et FALSE définie plus tot)
  </li>
-</ul> 
+</ul>
 
 <script type="text/javascript"><!--
 google_ad_client = "pub-7354724707087704";
@@ -1230,7 +1230,7 @@ google_ad_height = 90;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 <br />
-<!--<h2>Na pas oublier de parler de :</h2> 
+<!--<h2>Na pas oublier de parler de :</h2>
 
 <h4 id="les-variables-de-la-ligne-de-commande">Les variables de la ligne de commande</h4>
 <ul>
@@ -1258,32 +1258,32 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <h4>les includes</h4>
 
--->	
+-->
 
-<!-- 
- 
+<!--
+
 <a href="#sommaire">up</a>
 
 <a href="#sommaire">UP</a>
 
-<h4></h4> 
-<ul> 
- <li></li> 
- <li></li> 
- <li></li> 
- <li></li> 
- <li></li> 
-</ul> 
+<h4></h4>
+<ul>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+</ul>
 
 <li><strong></strong> : </li>
 
 <div class="code"><pre></pre></div>
- 
+
 -->
 
 <a href="#sommaire">UP</a>
 
-<h4>En cours...</h4> 
+<h4>En cours...</h4>
 
 <a href="http://commentaires.zerofansub.net/t248.htm" target="_blank">
  Commentaires
