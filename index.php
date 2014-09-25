@@ -63,13 +63,9 @@ function comments() {
         {
           tabler = document.getElementById(id);
           if (tabler.style.display=="none")
-          {
             tabler.style.display="";
-          }
           else
-          {
             tabler.style.display="none";
-          }
         }
       }
     </script>
@@ -89,45 +85,39 @@ function comments() {
 </div>
 
       <br />
-      
+
       <!-- Menu -->
       <div class="menu">
       <a href=".">Accueil</a>
-      | 
-      <a href="?page=old">Archives</a>   
-      |    
-      <a href="https://github.com/db0company/paysdu42" target="_blank">Contribuer <span style="color: red">&#9829;</span></a>   
-      |    
-      <a href="?page=faq">Plus</a>   
       |
-      db0company[at]gmail[dot]com 
+      <a href="?page=old">Archives</a>
+      |
+      <a href="https://github.com/db0company/paysdu42" target="_blank">Contribuer <span style="color: red">&#9829;</span></a>
+      |
+      <a href="?page=faq">Plus</a>
+      |
+      db0company[at]gmail[dot]com
       </div>
       <br />
 
       $> ls -l<br />
 
       <?php
-         $list = "pages/list.html";	
-         if (file_exists($list)) {
-	   include($list);
-         }
+         $list = "pages/list.html";
+         if (file_exists($list))
+		   include($list);
          ?>
-      
+
       <br />
       <br />
 
-      
       <!-- Contenu de la page -->
 
     <?php
       if (isset($_GET['page']))
-	{
-	  $page = $_GET['page'];
-	}
+		$page = $_GET['page'];
       else
-	{
-	  $page = "home";
-	}
+		$page = "home";
 if (file_exists("pages/$page.html"))
   {
     echo '<div class="pages">';
@@ -150,12 +140,10 @@ elseif (file_exists("pages/old/$page.html"))
     comments();
   }
  else
-   {
      require("pages/error.html");
-   }
 ?>
 
-<div id="footer"></div>      
+<div id="footer"></div>
       <script type="text/javascript">
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -168,4 +156,3 @@ elseif (file_exists("pages/old/$page.html"))
     </div>
   </body>
 </html>
-
