@@ -30,7 +30,7 @@ function comments() {
 {
 		$page = $_GET['page'];
       
-if (file_exists("pages/$page.html"))
+if (file_exists("pages/$page.html" OR "pages/articles/$page.html" OR "pages/old/$page.html"))
   {
     echo ":: ".ucwords(str_replace('-', ' ', htmlentities($page)));
   }
