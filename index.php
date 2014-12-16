@@ -26,8 +26,17 @@ function comments() {
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Le pays du 42 <?php
-  if (isset($_GET['page']))
-    echo ":: ".ucwords(str_replace('-', ' ', $_GET['page']));
+ if (isset($_GET['page']))
+{
+		$page = $_GET['page'];
+      
+if (file_exists("pages/$page.html") OR file_exists("pages/articles/$page.html") OR file_exists("pages/old/$page.html"))
+  {
+    echo ":: ".ucwords(str_replace('-', ' ', htmlentities($page)));
+  }
+  
+    
+}
 ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="fr" />
